@@ -2,13 +2,13 @@
 
 # SITE Capstone Project
 
-SITE Course Year: **20__**
+SITE Course Year: **2025**
 
-Cohort: **Add Company Sponsor Name**
+Cohort: **Salesforce FTL**
 
-Team Member Names:**Insert Team Member Names**
+Team Member Names:**Heiryn Hernandez Rojas, Luis-Angel Moreno, Joanna Echeverri Porras**
 
-Mentors Names: **Insert Professional Mentor Names**
+Mentors Names: **Lisa Church, Ashwin Tumma, Santhosh Raja**
 
 Project Code Repository Links
 
