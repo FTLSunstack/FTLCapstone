@@ -4,7 +4,11 @@ Pod Members: **HEIRYN HERNANDEZ ROJAS, JOANNA ECHEVERRI PORRAS, LUIS-ANGEL MOREN
 
 ## Problem Statement
 
-Many Spanish-speaking beginners interested in learning how to code or enter the tech industry struggle to find accessible, high-quality educational resources in their native language. Most tutorials, documentation, and coding platforms are primarily in English, creating a language barrier that makes it harder for them to enter or feel confident in the tech field.
+Many Spanish-speaking beginners interested in learning how to code struggle to find accessible, high-quality educational resources in their native language. Most tutorials, documentation, and coding platforms are primarily in English, creating a language barrier that makes it harder for them to enter or feel confident in the tech field.
+
+## Target Audience
+
+Spanish-speaking beginners interested in entering the tech industry but struggling due to the lack of accessible learning resources in their native language.
 
 ## Description
 
