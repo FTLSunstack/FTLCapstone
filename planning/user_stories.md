@@ -12,17 +12,20 @@ Spanish-speaking individuals with little to no prior coding experience who want 
 
 ## User Roles
 
-Beginner Tech Learner User
+Beginner Tech Learner - Basic User
 
 ## User Personas
 
-Include at least 2 personas per User Role
 
 ## User Stories
 
-Include at least 10 user stories.
-
-1. **As a [user role], I want to [what], so that [why]**
+1. **As a user, I want to copy and paste code into the IDE, so that I can quickly test what I’m learning.**
+2. **As a user, I want to see an output panel with code results and explanations in Spanish so that I can learn through feedback.**
+3. **As a user, I want to search for tech terms in a glossary so that I can better understand documentation.**
+4. **As a user, I want to see visual highlights linking code to explanations so that I can follow the logic.**
+5. **As a user, I want to create a profile so that I can save my code and progress.**
+6. **As a user, I want to see real-world examples in Spanish so that I can relate better to the material.**
+7. **As a user, I want to choose between different difficulty levels, so that I can learn at my own pace.**
 
 ## Wireframe (Bonus)
 
