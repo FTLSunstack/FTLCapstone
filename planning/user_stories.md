@@ -1,6 +1,6 @@
 # Project Proposal
 
-Pod Members: **Luis-Angel Moreno, Heiryn Hernandez Rojas, Joanna Echeverri Porra**
+Pod Members: **Luis-Angel Moreno, Heiryn Hernandez Rojas, Joanna Echeverri Porras**
 
 ## Problem Statement
 
@@ -12,7 +12,7 @@ Spanish-speaking individuals with little to no prior coding experience who want 
 
 ## User Roles
 
-Beginner Tech Learner - Basic User
+"Learner": a spanish-speaking user who is a beginner in tech
 
 ## User Personas
 
