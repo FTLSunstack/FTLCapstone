@@ -16,6 +16,8 @@ Spanish-speaking individuals with little to no prior coding experience who want 
 
 ## User Personas
 
+- Maria is a student whose first language is Spanish, she immigrated not too long ago so she isn't too comfortable in English yet. However she is very intersted in learning how to code and is in need of a good resource catered to her needs.
+- Jose is a a 30 year old whose language he's most comfortable with is Spanish. He is looking to switch careers but he is struggling...
 
 ## User Stories
 
