@@ -13,7 +13,6 @@ Spanish-speaking individuals with little to no prior coding experience who want 
 ## User Roles
 
 Beginner Tech Learner User
-Career Switcher User
 
 ## User Personas
 
