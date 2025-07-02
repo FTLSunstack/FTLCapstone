@@ -16,8 +16,8 @@ Spanish-speaking individuals with little to no prior coding experience who want 
 
 ## User Personas
 
-- Maria is a student whose first language is Spanish, she immigrated not too long ago so she isn't too comfortable in English yet. However she is very intersted in learning how to code and is in need of a good resource catered to her needs.
-- Jose is a a 30 year old whose language he's most comfortable with is Spanish. He is looking to switch careers but he is struggling.
+- Maria is an 18-year-old student from El Salvador who recently moved to the U.S. Spanish is her first language, and she’s still getting comfortable with English, especially when it comes to technical terms. She’s curious about coding and wants to explore computer science, but finds most tutorials too hard to follow. She mainly uses her phone to access learning resources and would benefit from short, clear explanations in Spanish. She wants a site that feels approachable and meets her where she’s at.
+- Jose is a 30-year-old from Miami with a background in retail. He’s fluent in Spanish and has basic knowledge of Python from online courses. He’s looking to switch into tech but struggles with confidence and understanding English-based documentation. He typically uses a laptop and studies in the evenings. He needs a tool that gives clear, Spanish-language support and tracks his learning progress so he can stay motivated and build toward a real career shift.
 
 ## User Stories
 
