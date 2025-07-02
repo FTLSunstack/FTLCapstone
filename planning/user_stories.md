@@ -17,17 +17,20 @@ Spanish-speaking individuals with little to no prior coding experience who want 
 ## User Personas
 
 - Maria is a student whose first language is Spanish, she immigrated not too long ago so she isn't too comfortable in English yet. However she is very intersted in learning how to code and is in need of a good resource catered to her needs.
-- Jose is a a 30 year old whose language he's most comfortable with is Spanish. He is looking to switch careers but he is struggling...
+- Jose is a a 30 year old whose language he's most comfortable with is Spanish. He is looking to switch careers but he is struggling.
 
 ## User Stories
 
 1. **As a learner, I want to copy and paste code into the IDE, so that I can quickly test what I’m learning.**
-2. **As a learner, I want to see an output panel with code results and explanations in Spanish so that I can learn through feedback.**
-3. **As a learner, I want to search for tech terms in a glossary so that I can better understand documentation.**
-4. **As a learner, I want to see visual highlights linking code to explanations so that I can follow the logic.**
-5. **As a learner, I want to create a profile so that I can save my code and progress.**
-6. **As a learner, I want to see real-world examples in Spanish so that I can relate better to the material.**
-7. **As a learner, I want to choose between different difficulty levels, so that I can learn at my own pace.**
+2. **As a learner, I want to select the programming language for my code, so it's correctly interpreted.**
+3. **As a learner, I want to see an output panel with code results and explanations in Spanish so that I can learn through feedback.**
+4. **As a learner, I want to create a profile so that I can save my code and progress.**
+5. **As a learner, I want to log in securely, so I can access my settings**
+6. **As a learner, I want the website to be responsive on any device, so I can learn comfortably.**
+7. **As a learner, I want explanations tailored to my profile, so they are more relevant to my skill level.**
+8. **As a learner, I want to choose between different difficulty levels, so that I can learn at my own pace.**
+9. **As a learner, I want a "Run Code" button, so I can execute my code and see its output.**
+10. **As a learner, I want an "Explain Code" button, so I can get an AI explanation in Spanish.**
 
 ## Wireframe (Bonus)
 
