@@ -23,7 +23,7 @@ Spanish-speaking individuals with little to no prior coding experience who want 
 
 1. **As a learner, I want to be able to run my code in an IDE, so that I can quickly test what I’m learning and see its output.**
 2. **As a learner, I want to select the programming language for my code, so it's correctly interpreted.**
-3. **As a learner, I want to see a pannel for explanations of my code so that I can learn through feedback.**
+3. **As a learner, I want to see a panel for explanations of my code so that I can learn through feedback.**
 4. **As a learner, I want to create a profile so that I can save my code, progress, and settings.**
 5. **As a learner, I want to log in securely, so my information is accessible only to me.**
 6. **As a learner, I want to be able to edit or delete my user account as I please, so I have control over my information and account.**
