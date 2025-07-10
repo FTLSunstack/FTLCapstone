@@ -21,16 +21,17 @@ Spanish-speaking individuals with little to no prior coding experience who want 
 
 ## User Stories
 
-1. **As a learner, I want to copy and paste code into the IDE, so that I can quickly test what I’m learning.**
+1. **As a learner, I want to be able to run my code in an IDE, so that I can quickly test what I’m learning and see its output.**
 2. **As a learner, I want to select the programming language for my code, so it's correctly interpreted.**
-3. **As a learner, I want to see an output panel with code results and explanations in Spanish so that I can learn through feedback.**
-4. **As a learner, I want to create a profile so that I can save my code and progress.**
-5. **As a learner, I want to log in securely, so I can access my settings**
-6. **As a learner, I want the website to be responsive on any device, so I can learn comfortably.**
-7. **As a learner, I want explanations tailored to my profile, so they are more relevant to my skill level.**
-8. **As a learner, I want to choose between different difficulty levels, so that I can learn at my own pace.**
-9. **As a learner, I want a "Run Code" button, so I can execute my code and see its output.**
-10. **As a learner, I want an "Explain Code" button, so I can get an AI explanation in Spanish.**
+3. **As a learner, I want to see a pannel for explanations of my code so that I can learn through feedback.**
+4. **As a learner, I want to create a profile so that I can save my code, progress, and settings.**
+5. **As a learner, I want to log in securely, so my information is accessible only to me.**
+6. **As a learner, I want to be able to edit or delete my user account as I please, so I have control over my information and account.**
+7. **As a learner, I want the website to be responsive on any device, so I can learn comfortably.**
+8. **As a learner, I want explanations tailored to my profile, so they are more relevant to my skill level.**
+9. **As a learner, I want to be able to change the language of both the website and the code explanations, so it is more personalized to my needs**
+10. **As a learner, I want to be able to search up any technical term, so I see it's translation, meaning, and usage**
+11. **As a learner, I want access to all key technical terms, so I can scroll through and learn new terms and topics.**
 
 ## Wireframe (Bonus)
 
