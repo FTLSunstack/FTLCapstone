@@ -83,7 +83,7 @@ Gemini Endpoints
 
 ## Sprint Planning
 
-[Trello Planning]([hare&utm_medium=link2&utm_source=sharebutton](https://trello.com/invite/b/6862d12ec3132ccb4eae3e9a/ATTI076a26513801733a830b02f9b9df7be7F991A33B/codifica))
+[Trello Planning](https://trello.com/invite/b/6862d12ec3132ccb4eae3e9a/ATTI076a26513801733a830b02f9b9df7be7F991A33B/codifica)
 
 
 ***Don't forget to set up your Issues, Milestones, and Project Board!***
