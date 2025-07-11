@@ -32,8 +32,15 @@ Many Spanish-speaking beginners interested in learning how to code struggle to f
 12. As a learner, I want to see my past code submissions and explanations, so I can continue and build upon what I was doing before.
 
 ## Pages/Screens
+Landing/Home Page:
+<img width="358" height="493" alt="Screenshot 2025-07-11 at 4 08 26 PM" src="https://github.com/user-attachments/assets/0b8681a8-190f-4356-b3c4-e5c09e831255" />
 
-List all the pages and screens in the app. Include wireframes for at least 3 of them.
+Product Page:
+<img width="647" height="587" alt="Screenshot 2025-07-07 at 3 22 44 PM" src="https://github.com/user-attachments/assets/adb8af83-d309-44a0-a223-eb411e5e0cc1" />
+
+Glossary Page:
+<img width="358" height="322" alt="Screenshot 2025-07-11 at 4 08 35 PM" src="https://github.com/user-attachments/assets/84f7ac4e-af5a-4c29-be2e-bfe47f4a81d1" />
+
 [Wireframe Website](https://www.canva.com/design/DAGsgNzgfro/COHOe_QXnHUxF3VL8MaUjA/edit?utm_content=DAGsgNzgfro&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
 
 ## Data Model
