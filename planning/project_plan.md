@@ -38,7 +38,8 @@ List all the pages and screens in the app. Include wireframes for at least 3 of 
 
 ## Data Model
 
-Describe your app's data model using diagrams or tables
+<img width="742" height="695" alt="Screenshot 2025-07-11 at 1 15 09 PM" src="https://github.com/user-attachments/assets/644de804-71e4-44a6-9acf-a6c3ad3b01b9" />
+
 
 ## Endpoints
 
