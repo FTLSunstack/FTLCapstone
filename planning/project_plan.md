@@ -50,6 +50,7 @@ Glossary Page:
 
 ## Endpoints
 
+User Endpoints
 | CRUD Operation | HTTP Method | Description                                | User Stories |
 | -------------- | ----------- | ------------------------------------------ | ------------ |
 | READ           | GET         | Gets a user’s information                  | 5            |
@@ -59,6 +60,7 @@ Glossary Page:
 | READ           | GET         | Gets user interactions within a time frame | 12           |
 
 
+Glossary Endpoints
 | CRUD Operation | HTTP Method | Description                            | User Stories |
 | -------------- | ----------- | -------------------------------------- | ------------ |
 | READ           | GET         | Gets all available terms               | 10           |
@@ -66,11 +68,13 @@ Glossary Page:
 | READ           | GET         | Gets all info of a single term         | 11           |
 
 
+Judge0
 | CRUD Operation | HTTP Method | Description         | User Stories |
 | -------------- | ----------- | ------------------- | ------------ |
 | CREATE         | POST        | Executes given code | 1, 2, 3      |
 
 
+Gemini Endpoints
 | CRUD Operation | HTTP Method | Description                                           | User Stories |
 | -------------- | ----------- | ----------------------------------------------------- | ------------ |
 | CREATE         | POST        | Generates explanation for code                        | 2, 3, 9, 10  |
