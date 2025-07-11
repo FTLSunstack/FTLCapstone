@@ -32,6 +32,7 @@ Spanish-speaking individuals with little to no prior coding experience who want 
 9. **As a learner, I want to be able to change the language of both the website and the code explanations, so it is more personalized to my needs**
 10. **As a learner, I want to be able to search up any technical term, so I see it's translation, meaning, and usage**
 11. **As a learner, I want access to all key technical terms, so I can scroll through and learn new terms and topics.**
+12. **As a learner, I want to see my past code submissions and explanations, so I can continue and build upon what I was doing before.**
 
 ## Wireframe (Bonus)
 
