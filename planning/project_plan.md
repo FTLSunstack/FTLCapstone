@@ -50,6 +50,31 @@ Glossary Page:
 
 ## Endpoints
 
-List the API endpoints you will need to implement.
+| CRUD Operation | HTTP Method | Description                                | User Stories |
+| -------------- | ----------- | ------------------------------------------ | ------------ |
+| READ           | GET         | Gets a user’s information                  | 5            |
+| CREATE         | POST        | Creates a new user profile                 | 4            |
+| UPDATE         | PUT         | Changes profile info                       | 6            |
+| DELETE         | DELETE      | Deletes existing user                      | 6            |
+| READ           | GET         | Gets user interactions within a time frame | 12           |
+
+
+| CRUD Operation | HTTP Method | Description                            | User Stories |
+| -------------- | ----------- | -------------------------------------- | ------------ |
+| READ           | GET         | Gets all available terms               | 10           |
+| READ           | GET         | Gets all terms that contain the search | 10           |
+| READ           | GET         | Gets all info of a single term         | 11           |
+
+
+| CRUD Operation | HTTP Method | Description         | User Stories |
+| -------------- | ----------- | ------------------- | ------------ |
+| CREATE         | POST        | Executes given code | 1, 2, 3      |
+
+
+| CRUD Operation | HTTP Method | Description                                           | User Stories |
+| -------------- | ----------- | ----------------------------------------------------- | ------------ |
+| CREATE         | POST        | Generates explanation for code                        | 2, 3, 9, 10  |
+| CREATE         | POST        | Generates summary of progress given past interactions | 12           |
+
 
 ***Don't forget to set up your Issues, Milestones, and Project Board!***
