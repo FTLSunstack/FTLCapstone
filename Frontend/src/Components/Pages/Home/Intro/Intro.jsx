@@ -4,7 +4,7 @@ import "../../../../tailwind.css";
 function Intro() {
   return (
     <>
-      <div className="flex flex-col items-center justify-center w-screen bg-gradient-to-r from-purple-500 to-blue-500 p-20">
+      <div className="flex flex-col items-center justify-center w-screen bg-gradient-to-r from-purple-500 to-blue-500 p-25">
         <h1 className="text-white text-5xl font-bold pb-8 text-center">
           Aprenda a Programar en Español!
         </h1>
