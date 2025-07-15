@@ -1,13 +1,15 @@
 import { useState } from "react";
 import "../../../../tailwind.css";
-import Card from "../Card/Card.jsx";
+import CreatorCard from "../CreatorCard/CreatorCard.jsx";
+import Mission from "../Mission/Mission.jsx";
 
 function AboutUs() {
   return (
     <>
-      <Card />
-      <Card />
-      <Card />
+      <Mission />
+      <CreatorCard />
+      <CreatorCard />
+      <CreatorCard />
     </>
   );
 }

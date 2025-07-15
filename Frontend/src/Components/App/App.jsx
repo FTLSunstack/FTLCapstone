@@ -13,7 +13,7 @@ function App() {
       <div>
         {/* <IDEPage /> */}
         <HomePage />
-        <GlossaryPage />
+        {/* <GlossaryPage /> */}
       </div>
     </>
   );

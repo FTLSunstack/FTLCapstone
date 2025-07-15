@@ -1,14 +1,14 @@
 import { useState } from "react";
 import "../../../../tailwind.css";
 
-function Card() {
+function CreatorCard() {
   return (
     <>
       <div>
-        <h1 className="text-green-500">Card</h1>
+        <h1 className="text-green-500">Creator Card</h1>
       </div>
     </>
   );
 }
 
-export default Card;
+export default CreatorCard;
