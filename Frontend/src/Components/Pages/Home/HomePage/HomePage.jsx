@@ -10,7 +10,7 @@ import GetStarted from "../GetStarted/GetStarted.jsx";
 function HomePage() {
   return (
     <>
-      <HomeNavBar />
+      {/* <HomeNavBar /> */}
       {/* <Intro />
       <Mission />
       <Features />

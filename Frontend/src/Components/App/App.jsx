@@ -12,10 +12,10 @@ function App() {
   return (
     <>
       <div>
-        {/* <IDEPage /> */}
-        <HomePage />
-        <GlossaryPage />
-        <AboutUsPage />
+        <IDEPage />
+        {/* <HomePage /> */}
+        {/* <GlossaryPage /> */}
+        {/* <AboutUsPage /> */}
       </div>
     </>
   );
