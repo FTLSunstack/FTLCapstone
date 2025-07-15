@@ -184,8 +184,10 @@ exports.requestResetPassword = async (req, res) => {
         return res.status(404).json({ error: "No user found with that email" });
     }
 
+    //create a random reset token
     const resetToken = crypto.randomBytes(32).toString("hex");
-    const tokenExpiry = new Date(Date.now() + 900000); // 15 minutes from now
+    // 15 minutes from now it will expire
+    const tokenExpiry = new Date(Date.now() + 900000); 
 
     await prisma.user.update({
         where: { email },
@@ -195,9 +197,11 @@ exports.requestResetPassword = async (req, res) => {
         },
     });
 
+    // link that will be sent to the user’s email.
+    // points to the front end reset password form
     const resetLink = `http://localhost:3000/auth/reset-password?token=${resetToken}`;
 
-    // Send the email
+    // Send the email and its content
     const mailOptions = {
         from: '"Codifica Support" <codificaftl@gmail.com>', // sender address
         to: email,
