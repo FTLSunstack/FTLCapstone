@@ -2,6 +2,10 @@ require('dotenv').config()
 const prisma = require("../db");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken")
+const crypto = require("crypto");
+const transporter = require("../nodemailer");
+
+
 
 // create the jwt token
 const generateToken = (user) => {
@@ -13,6 +17,7 @@ const generateToken = (user) => {
     );
 }; 
 function generateRefreshToken(user) {
+    //  frontend can ask for a new access token without the user logging in again
     return jwt.sign(
         { id: user.id, username: user.username},
         process.env.REFRESH_TOKEN_SECRET,
@@ -20,11 +25,30 @@ function generateRefreshToken(user) {
     );
 }
 
+exports.googleCallback = async (req, res) => {
+    // comes back from passport using those google credientials 
+    // and then we handle it like normal using JWT for the sessions
+    const user = req.user;
+
+    const accessToken = generateToken(user);
+
+    const refreshToken = generateRefreshToken(user);
+
+    res.cookie("refreshToken", refreshToken, {
+        httpOnly: true,
+        sameSite: "Strict",
+        secure: false,
+        maxAge: 2 * 24 * 60 * 60 * 1000
+    });
+
+    res.redirect(`http://localhost:3000?accessToken=${accessToken}`);
+};
+
 // sign up
 // -> /auth/signup
 exports.signup = async (req, res) => {
     try {
-        const { username, password } = req.body;
+        const { username, email, password } = req.body;
         // if either one was not typed send error
         if (!username || !password) {
             return res.status(400).json({ error: "Username and password are required." });
@@ -34,13 +58,19 @@ exports.signup = async (req, res) => {
             return res.status(400).json({ error: "Password must be at least 8 characters long." });
         }
         // otherwise try to check if the username is alr taken by searching the database
-        const existingUser = await prisma.user.findUnique({
-            where: { username }
+        const existingUser = await prisma.user.findFirst({
+            where: { 
+                OR: [
+                    {username:username},
+                    {email:email}
+                ]
+            }
         });
+
 
         // if username is taken then send error
         if (existingUser) {
-            return res.status(400).json({ error: "Username already taken." });
+            return res.status(400).json({ error: "Username or Email already taken." });
         }
 
         // otherwise hash the password the user wants
@@ -48,7 +78,7 @@ exports.signup = async (req, res) => {
 
         // create the user using the hashed password and the proposed username
         const newUser = await prisma.user.create({
-            data: { username, passwordHash: hashedPassword }
+            data: { username, email, passwordHash: hashedPassword }
         });
 
         const token = generateToken(newUser);
@@ -68,7 +98,7 @@ exports.login = async (req,res) => {
     const { username, password } = req.body;
 
     // if either one was not typed send error
-    if (!username || !password) {
+    if (!username || !email || !password) {
         return res.status(400).json({ error: "Username and password are required." });
     }
 
@@ -112,15 +142,15 @@ exports.login = async (req,res) => {
 }
 
 exports.logout = async (req,res) =>{
-    const authHeader = req.headers['authorization'];
-    const token = authHeader && authHeader.split(' ')[1];
+    // this is me MANUALLY checking if the token exsits technically authenticate token does it alr in the routes
+    // const authHeader = req.headers['authorization'];
+    // const token = authHeader && authHeader.split(' ')[1];
 
-    if (!token) {
-        return res.status(400).json({ error: "No token provided." });
-    }
+    // if (!token) {
+    //     return res.status(400).json({ error: "No token provided." });
+    // }
 
-
-    // need to refresh the token
+    // need to undo the token
     res.clearCookie("refreshToken", {
         httpOnly: true,
         secure: false,
@@ -146,8 +176,93 @@ exports.refresh = (req, res) => {
     });
 };
 
+exports.requestResetPassword = async (req, res) => {
+    const { email } = req.body;
+
+    const user = await prisma.user.findUnique({ where: { email } });
+    if (!user) {
+        return res.status(404).json({ error: "No user found with that email" });
+    }
+
+    const resetToken = crypto.randomBytes(32).toString("hex");
+    const tokenExpiry = new Date(Date.now() + 900000); // 15 minutes from now
+
+    await prisma.user.update({
+        where: { email },
+        data: {
+        passwordResetToken: resetToken,
+        passwordResetTokenExpiry: tokenExpiry,
+        },
+    });
+
+    const resetLink = `http://localhost:3000/auth/reset-password?token=${resetToken}`;
+
+    // Send the email
+    const mailOptions = {
+        from: '"Codifica Support" <codificaftl@gmail.com>', // sender address
+        to: email,
+        subject: "Password Reset Request",
+        html: `
+        <p>You requested a password reset.</p>
+        <p>Click this link to reset your password. The link is valid for 15 minutes:</p>
+        <a href="${resetLink}">${resetLink}</a>
+        `,
+    };
+
+    try {
+        await transporter.sendMail(mailOptions);
+        res.json({ message: "Reset link sent. It will expire in 15 minutes." });
+    } catch (error) {
+        console.error("Error sending reset email:", error);
+        res.status(500).json({ error: "Failed to send reset email." });
+    }
+};
+
+
+exports.resetPassword = async (req, res) => {
+    exports.resetPassword = async (req, res) => {
+    const { token, newPassword } = req.body;
+
+    if (!token || !newPassword) {
+        return res.status(400).json({ error: "Token and new password are required." });
+    }
+
+    // Find user with this reset token and valid expiry
+    const user = await prisma.user.findFirst({
+        where: {
+        passwordResetToken: token,
+        passwordResetTokenExpiry: { gt: new Date() }, // expiry in future
+        },
+    });
+
+    if (!user) {
+        return res.status(400).json({ error: "Invalid or expired reset token." });
+    }
+
+    if (newPassword.length < 8) {
+        return res.status(400).json({ error: "Password must be at least 8 characters long." });
+    }
+
+    // Hash new password and update user
+    const hashedPassword = await bcrypt.hash(newPassword, 10);
+
+    await prisma.user.update({
+        where: { id: user.id },
+        data: {
+        passwordHash: hashedPassword,
+        passwordResetToken: null,
+        passwordResetTokenExpiry: null,
+        },
+    });
+
+    res.json({ message: "Password reset successful." });
+    };
+
+}
+
+
 
 exports.me = async (req, res) => {
-    const user = req.user; // SET from middleware
+    const user = req.user;
     res.json({ user });
 };

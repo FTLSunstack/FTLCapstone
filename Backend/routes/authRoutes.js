@@ -1,9 +1,10 @@
 const express = require("express");
+const passport = require("passport");
+const jwt = require("jsonwebtoken");
+const rateLimit = require("express-rate-limit");
 require('dotenv').config()
 const router = express.Router();
 const controller = require("../controllers/authController");
-const jwt = require("jsonwebtoken");
-const rateLimit = require("express-rate-limit");
 
 const authenticateToken= (req, res, next) => {
     const authHeader =req.headers['authorization']
@@ -29,12 +30,26 @@ const loginLimiter = rateLimit({
     message: { error: "Too many failed login attempts. Try again later." },
 });
 
+// this route calls passport.js and takes you to the google sign in page
+router.get("/google", passport.authenticate("google", { scope: ["profile", "email"] }));
 
+
+// this route is google coming back from their own stuff and into our own server
+router.get("/google/callback", 
+    passport.authenticate("google", { session: false }), 
+    controller.googleCallback
+);
+
+// -> /auth/signup
 router.post("/signup", controller.signup);
+// -> /auth/login
 router.post("/login", loginLimiter,  controller.login);
-router.post("/logout", controller.logout);
+// -> /auth/logout
+router.post("/logout", authenticateToken, controller.logout);
+// -> /auth/refresh
 router.post("/refresh", controller.refresh);
 
+//this returns info about the user only if they are authenticated
 router.get("/me", authenticateToken, controller.me);
 
 
