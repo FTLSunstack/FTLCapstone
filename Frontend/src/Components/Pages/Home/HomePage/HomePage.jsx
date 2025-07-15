@@ -8,8 +8,6 @@ import Features from "../Features/Features.jsx";
 import GetStarted from "../GetStarted/GetStarted.jsx";
 
 function HomePage() {
-  const [count, setCount] = useState(0);
-
   return (
     <>
       <HomeNavBar />
