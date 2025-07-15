@@ -6,6 +6,7 @@ import Intro from "../Intro/Intro.jsx";
 import Mission from "../Mission/Mission.jsx";
 import Features from "../Features/Features.jsx";
 import GetStarted from "../GetStarted/GetStarted.jsx";
+import AboutUs from "../AboutUs/AboutUs.jsx";
 
 function HomePage() {
   return (
@@ -14,6 +15,7 @@ function HomePage() {
       <Intro />
       <Mission />
       <Features />
+      <AboutUs />
       <GetStarted />
       <Footer />
     </>
