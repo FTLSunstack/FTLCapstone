@@ -5,7 +5,7 @@ import CodeEditor from "../CodeEditor/CodeEditor";
 import CodeOutput from "../CodeOutput/CodeOutput";
 import ExplanationBox from "../ExplanationBox/ExplanationBox";
 
-export default function IDEPage() {
+function IDEPage() {
   return (
     <>
       <NavBar />
@@ -21,3 +21,5 @@ export default function IDEPage() {
     </>
   );
 }
+
+export default IDEPage;
