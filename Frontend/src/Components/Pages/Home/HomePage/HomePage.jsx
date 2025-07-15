@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "../../../../tailwind.css";
-import NavBar from "../../../Common/NavBar/NavBar.jsx";
+import HomeNavBar from "../HomeNavBar/HomeNavBar.jsx";
 import Footer from "../../../Common/Footer/Footer.jsx";
 import Intro from "../Intro/Intro.jsx";
 import Mission from "../Mission/Mission.jsx";
@@ -12,12 +12,12 @@ function HomePage() {
 
   return (
     <>
-      <NavBar />
-      <Intro />
+      <HomeNavBar />
+      {/* <Intro />
       <Mission />
       <Features />
       <GetStarted />
-      <Footer />
+      <Footer /> */}
     </>
   );
 }

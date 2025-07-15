@@ -5,7 +5,13 @@ function NavBar() {
   return (
     <>
       <div>
-        <h1 className="text-red-500">NavBar</h1>
+        <div className="">
+          <h1 className="text-purple-500">Codifica</h1>
+          <a></a>
+          <a></a>
+          <a></a>
+          <a></a>
+        </div>
       </div>
     </>
   );
