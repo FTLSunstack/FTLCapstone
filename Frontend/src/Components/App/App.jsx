@@ -10,15 +10,6 @@ import GlossaryPage from "../Pages/Glossary/GlossaryPage/GlossaryPage.jsx";
 
 function App() {
   return (
-<<<<<<< HEAD
-    <>
-      <div>
-        {/* <IDEPage /> */}
-        <HomePage />
-        {/* <GlossaryPage /> */}
-      </div>
-    </>
-=======
     <BrowserRouter>
       <Routes>
         <Route path="/login" element={<LoginPage />} />
@@ -28,7 +19,6 @@ function App() {
         <Route path="/ide" element={<IDEPage />} />
       </Routes>
     </BrowserRouter>
->>>>>>> 48bf0a49d6a9bb77cca14ba6c5d3e7b9b0d7393e
   );
 }
 
