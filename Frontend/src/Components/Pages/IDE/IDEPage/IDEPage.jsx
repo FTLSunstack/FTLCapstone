@@ -1,16 +1,23 @@
 import React from "react";
-import "../../../../index.css";
-import AdditionalResources from "../AdditionalResources/AdditionalResources.jsx";
-import IDEContainer from "../IDEContainer/IDEContainer.jsx";
-import ExplanationBox from "../ExplanationBox/ExplanationBox.jsx";
+import "../../../../tailwind.css";
+import NavBar from "../../../Common/NavBar/NavBar";
+import CodeEditor from "../CodeEditor/CodeEditor";
+import CodeOutput from "../CodeOutput/CodeOutput";
+import ExplanationBox from "../ExplanationBox/ExplanationBox";
 
 function IDEPage() {
   return (
     <>
-      <div className="text-red-400">IDEPage</div>
-      <IDEContainer />
-      <ExplanationBox />
-      <AdditionalResources />
+      <NavBar />
+      <div className="flex flex-row justify-between">
+        <div className="flex flex-col">
+          <CodeEditor />
+          <CodeOutput />
+        </div>
+        <div className="m-8">
+          <ExplanationBox />
+        </div>
+      </div>
     </>
   );
 }
