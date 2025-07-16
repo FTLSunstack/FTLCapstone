@@ -8,16 +8,18 @@ import GetStarted from "../GetStarted/GetStarted.jsx";
 import AboutUs from "../AboutUs/AboutUs.jsx";
 
 function HomePage() {
+  const [language, setLanguage] = useState("Español");
+
   return (
     <>
-      <HomeNavBar />
+      <HomeNavBar language={language} setLanguage={setLanguage} />
       <div className="flex flex-col items-center justify-center min-w-screen">
-        <Intro />
-        <Features />
-        <AboutUs />
-        <GetStarted />
+        <Intro language={language} />
+        <Features language={language} />
+        <AboutUs language={language} />
+        <GetStarted language={language} />
       </div>
-      <Footer />
+      <Footer language={language} />
     </>
   );
 }
