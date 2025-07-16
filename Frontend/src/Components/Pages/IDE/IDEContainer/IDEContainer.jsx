@@ -3,13 +3,12 @@ import "../../../../tailwind.css";
 import CodeEditor from "../CodeEditor/CodeEditor.jsx";
 import CodeOutput from "../CodeOutput/CodeOutput.jsx";
 
-function IDEContainer() {
+function IDEContainer({ language }) {
   return (
     <>
-      <div>
-        <h1 className="text-purple-500">IDE Container</h1>
-        <CodeEditor />
-        <CodeOutput />
+      <div className="flex flex-col">
+        <CodeEditor language={language} />
+        <CodeOutput language={language} />
       </div>
     </>
   );

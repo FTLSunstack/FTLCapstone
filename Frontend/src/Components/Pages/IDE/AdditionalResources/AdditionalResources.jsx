@@ -5,7 +5,16 @@ function AdditionalResources() {
   return (
     <>
       <div>
-        <h1 className="text-purple-500">Additional Resources</h1>
+        <div className="flex flex-col items-center">
+          <div className="flex flex-row justify-between m-10 p-5 text-lg w-3/4 border-b-2">
+            <h1 className="hover:cursor-pointer">Additional Resources</h1>
+            <span className="hover:cursor-pointer">&gt;</span>
+          </div>
+          <div className="flex flex-row justify-between m-10 p-5 text-lg w-3/4 border-b-2">
+            <h1 className="hover:cursor-pointer">Complaints? Reach out to us here</h1>
+            <span className="hover:cursor-pointer">&gt;</span>
+          </div>
+        </div>
       </div>
     </>
   );
