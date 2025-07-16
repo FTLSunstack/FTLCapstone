@@ -12,6 +12,7 @@ import axios from "axios";
 export default function CodeEditor({
   initialCode = "print('Hello world')",
   onChange,
+  language,
 }) {
   const editorRef = useRef(null);
   const viewRef = useRef(null);
@@ -128,16 +129,29 @@ export default function CodeEditor({
 
   return (
     <div>
-      <div className="relative w-[800px] h-[600px] m-8">
-        <div
-          ref={editorRef}
-          className="w-full h-full"
-          style={{ outline: "none" }}
-        />
-        <button className="absolute bottom-2 right-2 bg-violet-400 text-white px-4 py-2 rounded hover:bg-violet-500 hover:cursor-pointer transition">
-          Run Code
-        </button>
-      </div>
+      {language === "English" ? (
+        <div className="relative w-[800px] h-[600px] m-8">
+          <div
+            ref={editorRef}
+            className="w-full h-full"
+            style={{ outline: "none" }}
+          />
+          <button className="absolute bottom-2 right-2 bg-violet-400 text-white px-4 py-2 rounded hover:bg-violet-500 hover:cursor-pointer transition">
+            Run Code
+          </button>
+        </div>
+      ) : (
+        <div className="relative w-[800px] h-[600px] m-8">
+          <div
+            ref={editorRef}
+            className="w-full h-full"
+            style={{ outline: "none" }}
+          />
+          <button className="absolute bottom-2 right-2 bg-violet-400 text-white px-4 py-2 rounded hover:bg-violet-500 hover:cursor-pointer transition">
+            Ejecutar código
+          </button>
+        </div>
+      )}
     </div>
   );
 }
