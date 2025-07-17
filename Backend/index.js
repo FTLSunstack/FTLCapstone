@@ -12,6 +12,7 @@ const PORT = 3000;
 
 const corsOption = {
   origin: "http://localhost:5173",
+  credentials:true
 };
 
 app.use(express.json());
@@ -29,14 +30,6 @@ app.get("/", (req, res) => {
   res.send("This is Codifica!");
 });
 
-app.use(
-  cors({
-    // front end port
-    origin: "http://localhost:5173",
-    // this allows the cookies to be sent/used
-    credentials: true,
-  })
-);
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);

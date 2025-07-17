@@ -41,16 +41,17 @@ exports.googleCallback = async (req, res) => {
         maxAge: 2 * 24 * 60 * 60 * 1000
     });
 
-    res.redirect(`http://localhost:3000?accessToken=${accessToken}`);
+    res.redirect(`http://localhost:5173?accessToken=${accessToken}`);
 };
 
 // sign up
 // -> /auth/signup
 exports.signup = async (req, res) => {
     try {
-        const { username, email, password } = req.body;
+        const { username, email, name, password } = req.body;
+        console.log("SIGNUP BODY:", req.body);
         // if either one was not typed send error
-        if (!username || !password) {
+        if (!username || !email || !password) {
             return res.status(400).json({ error: "Username and password are required." });
         }
         // if password not min 8 characters
@@ -78,7 +79,7 @@ exports.signup = async (req, res) => {
 
         // create the user using the hashed password and the proposed username
         const newUser = await prisma.user.create({
-            data: { username, email, passwordHash: hashedPassword }
+            data: { username, email, name, passwordHash: hashedPassword }
         });
 
         const token = generateToken(newUser);
@@ -95,10 +96,11 @@ exports.signup = async (req, res) => {
 
 //login
 exports.login = async (req,res) => {
+    console.log("LOGIN BODY:", req.body);
     const { username, password } = req.body;
 
     // if either one was not typed send error
-    if (!username || !email || !password) {
+    if (!username || !password) {
         return res.status(400).json({ error: "Username and password are required." });
     }
 
