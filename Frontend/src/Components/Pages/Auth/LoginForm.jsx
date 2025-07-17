@@ -11,15 +11,21 @@ function LoginForm() {
     const handleSignUp = ()=> {
         navigate("/signup");
     };
-    const userLogin = async () => {
+    const userLogin = async (e) => {
         // need to prevent the page from reloading
         e.preventDefault();
         try {
+            console.log({ username, password })
+            
             const response = await axios.post("http://localhost:3000/auth/login", { username, password }, { withCredentials: true });
-            console.log("Login successful!", res.data);
+            console.log("Login successful!", response.data);
             navigate("/ide");
             } catch (err) {
-                alert("Login Failed");
+                alert(
+                    err.response?.data?.error ||
+                    err.response?.data?.message ||
+                    "Signup Failed"
+                );
             }
     }
     const handleGoogleLogin = () => {

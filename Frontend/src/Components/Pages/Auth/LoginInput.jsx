@@ -9,7 +9,7 @@ function LoginInput({username, setUsername,password,setPassword}) {
         <form className="Input flex flex-col items-center w-full">
             <div className="px-10 mb-3 w-full">
                 <div className="Heading mb-1 text-left text-black font-bold text-sm">Username:</div>
-                <input value={username} onChange={(e) => setUsername(e.target.value)} id="username" className="p-1 w-full border-2 border-solid border-gray-300 rounded-md" type="email" placeholder="Enter your email" required/>
+                <input value={username} onChange={(e) => setUsername(e.target.value)} id="username" className="p-1 w-full border-2 border-solid border-gray-300 rounded-md" type="text" placeholder="Enter your username" required/>
             </div>
             <div className="px-10 mb-3 w-full">
                 <div className="Heading mb-1 text-left text-black font-bold text-sm">Password:</div>
