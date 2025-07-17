@@ -13,6 +13,10 @@ export default function CodeEditor({
   initialCode = "print('Hello world')",
   onChange,
   language,
+  onLoading,
+  onOutput,
+  onResult,
+  onError,
 }) {
   const editorRef = useRef(null);
   const viewRef = useRef(null);
@@ -20,6 +24,59 @@ export default function CodeEditor({
   const [loading, setLoading] = useState(false);
   const [output, setOutput] = useState("");
   const [result, setResult] = useState("");
+
+  const handleSubmit = async () => {
+    if (viewRef.current) {
+      const currentCode = viewRef.current.state.doc.toString();
+      const formattedCode = currentCode.replace(/\n/g, "\n");
+
+      setLoading(true);
+      if (onLoading) onLoading(true);
+
+      try {
+        const response = await axios.post(
+          "http://localhost:3000/api/run-code",
+          {
+            source_code: formattedCode, // Changed from 'code' to 'source_code'
+            language_name: "python", // Changed from 'language' to 'language_name'
+            stdin: "", // Added stdin field
+            timeout: 10000,
+          }
+        );
+        console.log("Response is", response.data);
+        setResult(response.data);
+        if (response.data.stderr) {
+          setError(response.data.stderr);
+          if (onError) onError(response.data.stderr);
+          setOutput("");
+        } else if (response.data.compile_output) {
+          setError(response.data.compile_output);
+          if (onError) onError(response.data.compile_output);
+          setOutput("");
+        } else {
+          // No errors, even if output is empty
+          setOutput(
+            response.data.stdout || "✅ Code ran successfully with no output."
+          );
+          if (onOutput)
+            onOutput(
+              response.data.stdout || "✅ Code ran successfully with no output."
+            );
+          setError("");
+          if (onError) onError("");
+        }
+      } catch (error) {
+        console.log("The error is: ", error);
+      }
+      setLoading(false);
+      if (onLoading) onLoading(false);
+
+      if (onChange) {
+        onChange(currentCode);
+      }
+    }
+    console.log("Submit Code was ran");
+  };
 
   useEffect(() => {
     if (editorRef.current && !viewRef.current) {
@@ -136,7 +193,10 @@ export default function CodeEditor({
             className="w-full h-full"
             style={{ outline: "none" }}
           />
-          <button className="absolute bottom-2 right-2 bg-violet-400 text-white px-4 py-2 rounded hover:bg-violet-500 hover:cursor-pointer transition">
+          <button
+            className="absolute bottom-2 right-2 bg-violet-400 text-white px-4 py-2 rounded hover:bg-violet-500 hover:cursor-pointer transition"
+            onClick={handleSubmit}
+          >
             Run Code
           </button>
         </div>
@@ -147,7 +207,10 @@ export default function CodeEditor({
             className="w-full h-full"
             style={{ outline: "none" }}
           />
-          <button className="absolute bottom-2 right-2 bg-violet-400 text-white px-4 py-2 rounded hover:bg-violet-500 hover:cursor-pointer transition">
+          <button
+            className="absolute bottom-2 right-2 bg-violet-400 text-white px-4 py-2 rounded hover:bg-violet-500 hover:cursor-pointer transition"
+            onClick={handleSubmit}
+          >
             Ejecutar código
           </button>
         </div>

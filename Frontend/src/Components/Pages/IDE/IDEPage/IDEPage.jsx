@@ -35,7 +35,7 @@ function IDEPage({ language }) {
         </div>
       </div>
       <div>
-        <AdditionalResources />
+        <AdditionalResources language={languageOption} />
       </div>
     </>
   );
