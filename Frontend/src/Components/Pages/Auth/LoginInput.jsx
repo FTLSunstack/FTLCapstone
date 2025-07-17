@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../../tailwind.css";
 
-
 function LoginInput({username, setUsername,password,setPassword}) {   
     
 

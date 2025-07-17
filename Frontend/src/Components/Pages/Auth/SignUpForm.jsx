@@ -5,7 +5,6 @@ import "../../../tailwind.css";
 import SignUpInput from "./SignUpInput";
 import GoogleAuthSignin from "./googleAuthSignIn";
 
-
 function SignUpForm() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");

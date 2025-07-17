@@ -2,15 +2,12 @@ import { useState } from "react";
 import "../../../tailwind.css";
 import { useNavigate } from "react-router-dom";
 import SignUpForm from "./SignUpForm";
-
-
-
 function SignUpPage() {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    const handleBack = () => {
-        navigate("/");
-    };
+  const handleBack = () => {
+    navigate("/");
+  };
 
     return (
         <div className="opacity-90 min-h-screen h-14 bg-gradient-to-r from-violet-600 to-blue-800">
