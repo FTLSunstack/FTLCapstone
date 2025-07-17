@@ -3,7 +3,13 @@ import { useNavigate } from "react-router-dom";
 
 import React from "react";
 
-export default function HomeNavBar({ language, setLanguage }) {
+export default function HomeNavBar({
+  language,
+  setLanguage,
+  onScrollToFeatures,
+  onScrollToAboutUs,
+  onScrollToGetStarted,
+}) {
   const navigate = useNavigate();
 
   const handleLogin = () => {
@@ -31,21 +37,24 @@ export default function HomeNavBar({ language, setLanguage }) {
           </h1>
 
           <div className="flex flex-row gap-10">
-            <a href="#" className="text-gray-500 hover:text-black">
+            <button
+              onClick={onScrollToFeatures}
+              className="text-gray-500 hover:text-black"
+            >
               Características
-            </a>
-            <a
-              href="#"
+            </button>
+            <button
+              onClick={onScrollToAboutUs}
               className="text-gray-500 hover:text-black transition ease-in-out"
             >
               Sobre Nosotros
-            </a>
-            <a
-              href="#"
+            </button>
+            <button
+              onClick={onScrollToGetStarted}
               className="text-gray-500 hover:text-black transition ease-in-out"
             >
               Comenzar
-            </a>
+            </button>
           </div>
           <div className="flex flex-row space-x-5">
             <button
@@ -75,21 +84,24 @@ export default function HomeNavBar({ language, setLanguage }) {
           </h1>
 
           <div className="flex flex-row gap-10">
-            <a href="#" className="text-gray-500 hover:text-black">
+            <button
+              onClick={onScrollToFeatures}
+              className="text-gray-500 hover:text-black"
+            >
               Features
-            </a>
-            <a
-              href="#"
+            </button>
+            <button
+              onClick={onScrollToAboutUs}
               className="text-gray-500 hover:text-black transition ease-in-out"
             >
               About Us
-            </a>
-            <a
-              href="#"
+            </button>
+            <button
+              onClick={onScrollToGetStarted}
               className="text-gray-500 hover:text-black transition ease-in-out"
             >
               Get Started
-            </a>
+            </button>
           </div>
           <div className="flex flex-row space-x-5">
             <button

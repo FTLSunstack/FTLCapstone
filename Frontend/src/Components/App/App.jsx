@@ -10,14 +10,27 @@ import GlossaryPage from "../Pages/Glossary/GlossaryPage/GlossaryPage.jsx";
 import SignUpPage from "../Pages/Auth/SignUpPage.jsx";
 
 function App() {
+  const [language, setLanguage] = useState("Español");
+
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/signup" element={<SignUpPage />} />
-        <Route path="/" element={<HomePage />} />
-        <Route path="/glossary" element={<GlossaryPage />} />
-        <Route path="/ide" element={<IDEPage />} />
+        <Route path="/login" element={<LoginPage language={language} />} />
+        <Route path="/signup" element={<SignUpPage language={language} />} />
+        <Route
+          path="/"
+          element={<HomePage language={language} setLanguage={setLanguage} />}
+        />
+        <Route
+          path="/glossary"
+          element={
+            <GlossaryPage language={language} setLanguage={setLanguage} />
+          }
+        />
+        <Route
+          path="/ide"
+          element={<IDEPage language={language} setLanguage={setLanguage} />}
+        />
       </Routes>
     </BrowserRouter>
   );
