@@ -41,7 +41,7 @@ exports.googleCallback = async (req, res) => {
         maxAge: 2 * 24 * 60 * 60 * 1000
     });
 
-    res.redirect(`http://localhost:3000?accessToken=${accessToken}`);
+    res.redirect(`http://localhost:5173?accessToken=${accessToken}`);
 };
 
 // sign up
@@ -50,7 +50,7 @@ exports.signup = async (req, res) => {
     try {
         const { username, email, password } = req.body;
         // if either one was not typed send error
-        if (!username || !password) {
+        if (!username || !email || !password) {
             return res.status(400).json({ error: "Username and password are required." });
         }
         // if password not min 8 characters
@@ -98,7 +98,7 @@ exports.login = async (req,res) => {
     const { username, password } = req.body;
 
     // if either one was not typed send error
-    if (!username || !email || !password) {
+    if (!username || !password) {
         return res.status(400).json({ error: "Username and password are required." });
     }
 
