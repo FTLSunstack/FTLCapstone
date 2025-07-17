@@ -1,7 +1,14 @@
 import { useState } from "react";
 import "../../../tailwind.css";
 
-function NavBar({ onLanguageChange, language }) {
+function NavBar({ language, setLanguage }) {
+  const handleChangeLanguage = () => {
+    if (language === "English") {
+      setLanguage("Español");
+    } else {
+      setLanguage("English");
+    }
+  };
   return (
     <>
       {language === "English" ? (
@@ -34,7 +41,7 @@ function NavBar({ onLanguageChange, language }) {
 
             <div>
               <button
-                onClick={onLanguageChange}
+                onClick={handleChangeLanguage}
                 className="bg-violet-500 px-5 py-2 rounded-md hover:cursor-pointer w-24 text-white hover:bg-violet-700 transition ease-in-out"
               >
                 {language}
@@ -72,7 +79,7 @@ function NavBar({ onLanguageChange, language }) {
 
             <div>
               <button
-                onClick={onLanguageChange}
+                onClick={handleChangeLanguage}
                 className="bg-violet-500 px-5 py-2 rounded-md hover:cursor-pointer w-24 text-white hover:bg-violet-700 transition ease-in-out"
               >
                 {language}
