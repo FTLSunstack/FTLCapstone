@@ -195,6 +195,7 @@ exports.refresh = (req, res) => {
 };
 
 exports.requestResetPassword = async (req, res) => {
+    console.log("Received reset request", req.body);
     const { email } = req.body;
 
     const user = await prisma.user.findUnique({ where: { email } });
@@ -217,7 +218,7 @@ exports.requestResetPassword = async (req, res) => {
 
     // link that will be sent to the user’s email.
     // points to the front end reset password form
-    const resetLink = `http://localhost:3000/auth/reset-password?token=${resetToken}`;
+    const resetLink = `http://localhost:5173/auth/reset-password?token=${resetToken}`;
 
     // Send the email and its content
     const mailOptions = {

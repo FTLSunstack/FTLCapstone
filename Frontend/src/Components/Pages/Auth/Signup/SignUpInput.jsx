@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../../../tailwind.css";
+import "../../../../tailwind.css";
 
 function SignUpInput({username, setUsername,password,setPassword, email, setEmail, name, setName}) {   
     

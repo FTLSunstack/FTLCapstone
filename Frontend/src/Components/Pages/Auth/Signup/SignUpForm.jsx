@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import "../../../tailwind.css";
+import "../../../../tailwind.css";
 import SignUpInput from "./SignUpInput";
-import GoogleAuthSignin from "./googleAuthSignIn";
+import GoogleAuthSignin from "../googleAuthSignIn";
 
 function SignUpForm() {
     const [username, setUsername] = useState("");
