@@ -5,15 +5,36 @@ import Footer from "../../../Common/Footer/Footer.jsx";
 import Description from "../Description/GlossaryDescription.jsx";
 import SearchBar from "../SearchBar/SearchBar.jsx";
 import TermsList from "../TermsList/TermsList.jsx";
+import TermModal from "../TermModal/TermModal.jsx";
 
-function GlossaryPage() {
+function GlossaryPage({ language, setLanguage }) {
+  const [show, setShow] = useState(false);
+  const [modalTerm, setModalTerm] = useState(null);
+  const onClick = () => {
+    setShow(!show);
+    if (modalTerm) {
+      setModalTerm(null);
+    }
+  };
+
   return (
     <>
-      <NavBar />
-      <Description />
-      <SearchBar />
-      <TermsList />
-      <Footer />
+      <div className="flex flex-col bg-gray-100 min-h-screen">
+        <NavBar language={language} setLanguage={setLanguage} />
+        <div className="flex flex-col flex-grow items-center min-w-screen">
+          <Description language={language} />
+          <SearchBar language={language} />
+          <TermsList
+            language={language}
+            onClick={onClick}
+            setModalTerm={setModalTerm}
+          />
+        </div>
+        <Footer language={language} />
+      </div>
+      {show && modalTerm && (
+        <TermModal language={language} onClose={onClick} term={modalTerm} />
+      )}
     </>
   );
 }
