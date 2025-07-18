@@ -7,18 +7,21 @@ function NavBar({ language, setLanguage }) {
   const navigate = useNavigate();
   const handleUserLogout = async () => {
     try {
-      const response = await axios.post("http://localhost:3000/auth/logout", {}, { withCredentials: true });
+      const response = await axios.post(
+        "http://localhost:3000/auth/logout",
+        {},
+        { withCredentials: true }
+      );
       console.log("LogOUT successful!", response.data);
       navigate("/");
-    } 
-    catch (err) {
+    } catch (err) {
       alert(
-          err.response?.data?.error ||
+        err.response?.data?.error ||
           err.response?.data?.message ||
           "Logout Failed"
       );
     }
-  }
+  };
 
   const handleChangeLanguage = () => {
     if (language === "English") {
@@ -26,6 +29,10 @@ function NavBar({ language, setLanguage }) {
     } else {
       setLanguage("English");
     }
+  };
+
+  const handleGlossaryClick = () => {
+    navigate("/glossary");
   };
 
   return (
@@ -45,7 +52,7 @@ function NavBar({ language, setLanguage }) {
                 IDE
               </a>
               <a
-                href="#"
+                onClick={handleGlossaryClick}
                 className="text-lg text-gray-500 hover:text-black transition ease-in-out"
               >
                 Glossary

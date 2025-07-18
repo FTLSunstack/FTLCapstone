@@ -21,20 +21,20 @@ function Features({ language }) {
               description="Nuestro IDE integrado te permite escribir, ejecutar y probar 
             código directamente desde tu navegador. Compatible con varios lenguajes de 
             programación, es ideal para aprender de forma interactiva y practicar en tiempo real."
-              img=""
+              logo="🧠"
             />
             <FeatureCard
               title="Explicaciones en Español"
               description="Aprende de forma clara y sin barreras. Con el apoyo de 
             inteligencia artificial, ofrecemos explicaciones en español o en inglés 
             que te guían paso a paso para entender conceptos clave de programación."
-              img=""
+              logo="👩‍🏫"
             />
             <FeatureCard
               title="Glosario de Términos Clave"
               description="Explora definiciones y ejemplos de los términos más importantes en programación. 
             Nuestro glosario bilingüe te ayuda a entender cada concepto en inglés y español."
-              img=""
+              logo="📖"
             />
           </div>
         </div>

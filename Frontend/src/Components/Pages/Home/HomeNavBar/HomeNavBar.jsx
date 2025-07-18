@@ -36,7 +36,7 @@ export default function HomeNavBar({
             Codifica
           </h1>
 
-          <div className="flex flex-row gap-10">
+          <div className="flex flex-row gap-10 ml-60">
             <button
               onClick={onScrollToFeatures}
               className="text-gray-500 hover:text-black"
