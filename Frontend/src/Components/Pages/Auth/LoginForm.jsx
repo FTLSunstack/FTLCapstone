@@ -49,7 +49,7 @@ function LoginForm() {
                 <p className="text-xs text-gray-500"> Don't have an account? </p>
                 <p onClick={handleSignUp} className="ml-3 text-xs text-gray-500 underline hover:text-indigo-500 hover:cursor-pointer"> Sign up for free</p>
             </container>
-            <button onClick={handleGoogleLogin} className="mt-4 px-4 py-2 font-semibold rounded-md shadow-md bg-red-300 text-white hover:bg-red-600 transition"> Sign in with Google </button>
+            {/* <button onClick={handleGoogleLogin} className="mt-4 px-4 py-2 font-semibold rounded-md shadow-md bg-red-300 text-white hover:bg-red-600 transition"> Sign in with Google </button> */}
         </div>
     );
 }

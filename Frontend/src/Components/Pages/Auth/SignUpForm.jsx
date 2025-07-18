@@ -11,6 +11,7 @@ function SignUpForm() {
     const [email, setEmail] = useState("");
     const [name, setName] = useState("");
     const navigate = useNavigate();
+    
     const handleBack = () => {
         navigate("/");
     };
@@ -49,7 +50,7 @@ function SignUpForm() {
                 <p className="text-xs text-gray-500"> Already have an account? </p>
                 <p onClick={goToLogin} className="ml-3 text-xs text-gray-500 underline hover:text-indigo-500 hover:cursor-pointer"> Login Here</p>
             </div>
-            <GoogleAuthSignin></GoogleAuthSignin>
+            {/* <GoogleAuthSignin></GoogleAuthSignin> */}
         </div>
     );
 }

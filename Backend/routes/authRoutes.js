@@ -7,10 +7,9 @@ const router = express.Router();
 const controller = require("../controllers/authController");
 
 const authenticateToken= (req, res, next) => {
-    const authHeader =req.headers['authorization']
-    const token = authHeader && authHeader.split(' ')[1]
-    if (token==null) {
-        return res.status(401).json({ error: "Access denied. No token provided." })
+    const token = req.cookies.accessToken;
+    if (!token) {
+        return res.status(401).send('No token found');
     }
 
     jwt.verify(token,process.env.ACCESS_TOKEN_SECRET, (err,user) => {
@@ -18,8 +17,8 @@ const authenticateToken= (req, res, next) => {
             return res.status(403).json({ error: "Invalid or expired token." });
         }
         else {
-            req.user =user
-            next()
+            req.user=user
+            next();
         }
     })
 }
