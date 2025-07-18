@@ -3,7 +3,15 @@ import "../../../../tailwind.css";
 import CreatorCard from "../CreatorCard/CreatorCard.jsx";
 import Mission from "../Mission/Mission.jsx";
 
+import luispicture from "../../../../assets/luis-picture.jpg";
+import joannapicture from "../../../../assets/joanna-picture.jpg";
+import heirynpicture from "../../../../assets/heiryn-picture.jpg";
+
 function AboutUs({ language }) {
+  const luisLink = "https://www.linkedin.com/in/luisanm/";
+  const heirynLink = "https://www.linkedin.com/in/heirynhr/";
+  const joannaLink = "https://www.linkedin.com/in/joanna-ep/";
+
   return (
     <>
       {language === "Español" ? (
@@ -24,17 +32,20 @@ function AboutUs({ language }) {
               <CreatorCard
                 name="Joanna Echeverri Porras"
                 description="Desarrolladora Full Stack"
-                img=""
+                img={joannapicture}
+                linkedin={joannaLink}
               />
               <CreatorCard
                 name="Luis-Angel Moreno"
                 description="Desarrollador Full Stack"
-                img=""
+                img={luispicture}
+                linkedin={luisLink}
               />
               <CreatorCard
                 name="Heiryn Hernandez Rojas"
                 description="Desarrolladora Full Stack"
-                img=""
+                img={heirynpicture}
+                linkedin={heirynLink}
               />
             </div>
           </div>
@@ -56,17 +67,20 @@ function AboutUs({ language }) {
               <CreatorCard
                 name="Joanna Echeverri Porras"
                 description="Full Stack Developer"
-                img=""
+                img={joannapicture}
+                linkedin={joannaLink}
               />
               <CreatorCard
                 name="Luis-Angel Moreno"
                 description="Full Stack Developer"
-                img=""
+                img={luispicture}
+                linkedin={luisLink}
               />
               <CreatorCard
                 name="Heiryn Hernandez Rojas"
                 description="Full Stack Developer"
-                img=""
+                img={heirynpicture}
+                linkedin={heirynLink}
               />
             </div>
           </div>
