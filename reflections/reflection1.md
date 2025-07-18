@@ -1,6 +1,6 @@
 # Reflection #1
 
-Pod Members: **Add Pod Members Names**
+Pod Members: **Heiryn Hernandez Rojas, Luis-Angel Moreno, Joanna Echeverri Porras**
 
 ## Reflection Questions
 
