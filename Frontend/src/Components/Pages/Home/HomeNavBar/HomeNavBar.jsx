@@ -31,7 +31,7 @@ export default function HomeNavBar({
   return (
     <>
       {language === "Español" ? (
-        <div className="bg-white p-5 flex flex-row justify-between items-center shadow-lg">
+        <div className="bg-white p-5 flex flex-row justify-between items-center shadow-2xl/50">
           <h1 className="text-violet-600 font-bold text-3xl hover:cursor-pointer hover:opacity-70 transition ease-in-out">
             Codifica
           </h1>
