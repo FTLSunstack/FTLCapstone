@@ -8,6 +8,7 @@ import TermsList from "../TermsList/TermsList.jsx";
 import TermModal from "../TermModal/TermModal.jsx";
 
 function GlossaryPage({ language, setLanguage }) {
+  const [search, setSearch] = useState("");
   const [show, setShow] = useState(false);
   const [modalTerm, setModalTerm] = useState(null);
   const onClick = () => {
@@ -23,11 +24,16 @@ function GlossaryPage({ language, setLanguage }) {
         <NavBar language={language} setLanguage={setLanguage} />
         <div className="flex flex-col flex-grow items-center min-w-screen">
           <Description language={language} />
-          <SearchBar language={language} />
+          <SearchBar
+            language={language}
+            search={search}
+            setSearch={setSearch}
+          />
           <TermsList
             language={language}
             onClick={onClick}
             setModalTerm={setModalTerm}
+            search={search}
           />
         </div>
         <Footer language={language} />
