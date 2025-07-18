@@ -30,6 +30,8 @@ app.get("/", (req, res) => {
   res.send("This is Codifica!");
 });
 
+const testRoutes = require("./routes/test-routes");
+app.use("/test", testRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);

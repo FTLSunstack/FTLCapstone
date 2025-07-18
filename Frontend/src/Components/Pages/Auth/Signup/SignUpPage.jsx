@@ -1,8 +1,8 @@
 import { useState } from "react";
-import "../../../tailwind.css";
+import "../../../../tailwind.css";
 import { useNavigate } from "react-router-dom";
 import SignUpForm from "./SignUpForm";
-import Footer from "../../Common/Footer/Footer";
+import Footer from "../../../Common/Footer/Footer";
 
 function SignUpPage() {
     const navigate = useNavigate();

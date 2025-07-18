@@ -47,6 +47,10 @@ router.post("/login", loginLimiter,  controller.login);
 router.post("/logout", authenticateToken, controller.logout);
 // -> /auth/refresh
 router.post("/refresh", controller.refresh);
+// -> /auth/req-reset-password
+router.post("/req-reset-password", controller.requestResetPassword);
+// -> /auth/reset-password
+router.post("/reset-password", controller.resetPassword);
 
 //this returns info about the user only if they are authenticated
 router.get("/me", authenticateToken, controller.me);

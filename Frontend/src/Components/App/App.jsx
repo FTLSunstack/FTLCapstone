@@ -5,11 +5,12 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "../../tailwind.css";
 import HomePage from "../Pages/Home/HomePage/HomePage.jsx";
 import IDEPage from "../Pages/IDE/IDEPage/IDEPage";
-import LoginPage from "../Pages/Auth/LoginPage.jsx";
+import LoginPage from "../Pages/Auth/LogIn/LoginPage.jsx";
 import GlossaryPage from "../Pages/Glossary/GlossaryPage/GlossaryPage.jsx";
-import SignUpPage from "../Pages/Auth/SignUpPage.jsx";
+import SignUpPage from "../Pages/Auth/Signup/SignUpPage.jsx";
 import PrivateRoutes from "../Pages/Auth/PrivateRoutes.jsx";
 import { AuthProvider } from "../../Context/AuthContext.jsx";
+import ResetPasswordPage from "../Pages/Auth/ResetPasswordPage.jsx";
 
 function App() {
   const [language, setLanguage] = useState("Español");
@@ -30,6 +31,7 @@ function App() {
           </Route>
           <Route path="/login" element={<LoginPage language={language} />} />
           <Route path="/signup" element={<SignUpPage language={language} />} />
+          <Route path="/reset-password" element={<ResetPasswordPage/>} />
           <Route
             path="/"
             element={<HomePage language={language} setLanguage={setLanguage} />}
