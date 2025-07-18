@@ -2,7 +2,7 @@ import { use, useState, useEffect } from "react";
 import Term from "../Term/Term.jsx";
 import "../../../../tailwind.css";
 
-function TermsList({ language, onClick, setModalTerm }) {
+function TermsList({ language, onClick, setModalTerm, search }) {
   const [terms, setTerms] = useState([]);
   const temp = [
     {
@@ -111,10 +111,16 @@ function TermsList({ language, onClick, setModalTerm }) {
     setTerms(temp);
   }, []);
 
+  const filteredTerms = terms.filter((t) =>
+    language === "Español"
+      ? t.translation.toLowerCase().includes(search.toLowerCase())
+      : t.term.toLowerCase().includes(search.toLowerCase())
+  );
+
   return (
     <>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-10 p-10 max-w-4/5">
-        {terms.map((t) => (
+        {filteredTerms.map((t) => (
           <Term
             key={t.term}
             term={t}

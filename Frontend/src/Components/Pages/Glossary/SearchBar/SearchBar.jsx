@@ -1,12 +1,19 @@
 import { useState } from "react";
 import "../../../../tailwind.css";
 
-function SearchBar({ language }) {
-  const [search, setSearch] = useState("");
+function SearchBar({ language, search, setSearch }) {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Searching for:", search);
+  };
   return (
     <>
       <div className="flex flex-col items-center -justify-center p-10 border-1 border-black bg-white shadow-lg rounded-lg m-10 w-4/5 max-w-[1150px]">
-        <div id="search-bar" className="flex flex-row w-2/3 gap-2">
+        <form
+          id="search-bar"
+          onSubmit={handleSubmit}
+          className="flex flex-row w-2/3 gap-2"
+        >
           <input
             type="text"
             placeholder="Search..."
@@ -24,7 +31,7 @@ function SearchBar({ language }) {
               Search
             </button>
           )}
-        </div>
+        </form>
         {language === "Español" ? (
           <div className="flex flex-row gap-4 mt-4">
             <button className="p-2 bg-blue-500 rounded-lg hover:bg-purple-700 text-white">
