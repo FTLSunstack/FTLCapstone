@@ -53,19 +53,19 @@ function Features({ language }) {
               title="Integrated IDE"
               description="Our integrated IDE allows you to write, run, and test code directly from your browser. 
                 Compatible with multiple programming languages, it is ideal for interactive learning and real-time practice."
-              img=""
+              logo="🧠"
             />
             <FeatureCard
               title="Explanations in Spanish"
               description="Learn clearly and without barriers. With the support of artificial intelligence, 
                 we provide explanations in Spanish or English that guide you step by step to understand key programming concepts."
-              img=""
+              logo="👩‍🏫"
             />
             <FeatureCard
               title="Glossary of Key Terms"
               description="Explore definitions and examples of the most important programming terms. 
                 Our bilingual glossary helps you understand each concept in both English and Spanish."
-              img=""
+              logo="📖"
             />
           </div>
         </div>

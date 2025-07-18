@@ -35,25 +35,36 @@ function NavBar({ language, setLanguage }) {
     navigate("/glossary");
   };
 
+  const handleIdeClick = () => {
+    navigate("/ide");
+  };
+
+  const handleBackToHomePage = () => {
+    navigate("/");
+  };
+
   return (
     <>
       {language === "English" ? (
         <div>
           <div className="bg-white p-5 flex flex-row justify-between items-center shadow-2xl/30">
-            <h1 className="text-violet-600 font-bold text-3xl hover:cursor-pointer hover:opacity-70 transition ease-in-out">
+            <h1
+              className="text-violet-600 font-bold text-3xl hover:cursor-pointer hover:opacity-70 transition ease-in-out"
+              onClick={handleBackToHomePage}
+            >
               Codifica
             </h1>
 
             <div className="flex flex-row gap-10">
               <a
-                href="#"
-                className="text-lg text-gray-500 hover:text-black transition ease-in-out"
+                onClick={handleIdeClick}
+                className="text-lg text-gray-500 hover:text-black transition ease-in-out cursor-pointer"
               >
                 IDE
               </a>
               <a
                 onClick={handleGlossaryClick}
-                className="text-lg text-gray-500 hover:text-black transition ease-in-out"
+                className="text-lg text-gray-500 hover:text-black transition ease-in-out cursor-pointer"
               >
                 Glossary
               </a>
@@ -84,20 +95,23 @@ function NavBar({ language, setLanguage }) {
       ) : (
         <div>
           <div className="bg-white p-5 flex flex-row justify-between items-center shadow-2xl/30">
-            <h1 className="text-violet-600 font-bold text-3xl hover:cursor-pointer hover:opacity-70 transition ease-in-out">
+            <h1
+              className="text-violet-600 font-bold text-3xl hover:cursor-pointer hover:opacity-70 transition ease-in-out"
+              onClick={handleBackToHomePage}
+            >
               Codifica
             </h1>
 
             <div className="flex flex-row gap-10">
               <a
-                href="#"
-                className="text-lg text-gray-500 hover:text-black transition ease-in-out"
+                onClick={handleIdeClick}
+                className="text-lg text-gray-500 hover:text-black transition ease-in-out cursor-pointer"
               >
                 IDE
               </a>
               <a
-                href="#"
-                className="text-lg text-gray-500 hover:text-black transition ease-in-out"
+                onClick={handleGlossaryClick}
+                className="text-lg text-gray-500 hover:text-black transition ease-in-out cursor-pointer"
               >
                 Glosario
               </a>
