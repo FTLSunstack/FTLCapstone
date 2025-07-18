@@ -121,6 +121,17 @@ exports.login = async (req,res) => {
 
     const accessToken = generateToken(user);
     const refreshToken = generateRefreshToken(user);
+    res.cookie("accessToken", accessToken, {
+        // this means that it cannot be accessed using javascript
+        httpOnly: true,      
+         // allows http
+        secure: false,     
+        // you MUST be on the website to get a token
+        // other websites cannot make requests
+        sameSite: "Strict",   
+        // lifetime of the cookie in milliseconds
+        maxAge: 1 * 60 * 60 * 1000 
+    });
 
     res.cookie("refreshToken", refreshToken, {
         // this means that it cannot be accessed using javascript
@@ -154,6 +165,11 @@ exports.logout = async (req,res) =>{
 
     // need to undo the token
     res.clearCookie("refreshToken", {
+        httpOnly: true,
+        secure: false,
+        sameSite: "Strict"
+    });
+    res.clearCookie("accessToken", {
         httpOnly: true,
         secure: false,
         sameSite: "Strict"
@@ -226,7 +242,6 @@ exports.requestResetPassword = async (req, res) => {
 
 
 exports.resetPassword = async (req, res) => {
-    exports.resetPassword = async (req, res) => {
     const { token, newPassword } = req.body;
 
     if (!token || !newPassword) {
@@ -262,8 +277,6 @@ exports.resetPassword = async (req, res) => {
     });
 
     res.json({ message: "Password reset successful." });
-    };
-
 }
 
 
