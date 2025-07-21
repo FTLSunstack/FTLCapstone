@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate, useLocation} from "react-router-dom";
 import "../../../tailwind.css";
+import axios from "axios";
 import Footer from "../../Common/Footer/Footer";
 import ResetPasswordInput from "./ResetPasswordInput";
 
@@ -19,7 +20,8 @@ function ResetPasswordPage() {
     const handleUpdateForgottenPassword = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post("http://localhost:3000/auth/reset-password", { token, newPassword: password }, { withCredentials: true });
+            console.log("Reset token:", token);
+            const response = await axios.post("http://localhost:3000/auth/reset-password", { token, newPassword: password });
             console.log("Reset Password successful!", response.data);
             navigate("/login");
         } catch(err){
@@ -42,19 +44,18 @@ function ResetPasswordPage() {
                                 <div className="Title mt-10 mb-4 text-center text-violet-600 font-bold text-5xl">Codifica</div>
                                 <div className="Caption mb-6 text-center text-black font-bold text-xl">Please reset your password here.</div>
                             </div>
-                            <ResetPasswordInput password={password} setPassword={setPassword} ></ResetPasswordInput>
-                            <container className= "flex flex-col items-left">
-                                <button onClick={handleUpdateForgottenPassword} className="mt-2 mb-4 py-2 px-15 text-center font-semibold rounded-lg shadow-md text-white bg-indigo-700 hover:bg-blue-800 cursor-pointer"> Update Password</button>
-                            </container>
-                            <container className= "flex flex-row">
+                            <form onSubmit={handleUpdateForgottenPassword} className="Input flex flex-col items-center w-full" >
+                                <ResetPasswordInput password={password} setPassword={setPassword} ></ResetPasswordInput>
+                                <div className= "flex flex-col items-left">
+                                    <button type="submit" className="mt-2 mb-4 py-2 px-15 text-center font-semibold rounded-lg shadow-md text-white bg-indigo-700 hover:bg-blue-800 cursor-pointer"> Update Password</button>
+                                </div>
+                            </form>
+                            <div className= "flex flex-row">
                                 <p className="text-xs text-gray-500"> Didn't get an email? </p>
                                 <p  className="ml-3 text-xs text-gray-500 underline hover:text-indigo-500 hover:cursor-pointer"> Resend Email</p>
-                            </container>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div className="mt-auto w-full">
-                    <Footer />
                 </div>
             </div>
         </>
