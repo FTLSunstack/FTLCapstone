@@ -15,7 +15,7 @@ function PasswordModal({ email, setEmail, closePasswordModal }) {
         { email }
       );
       console.log("Reset Password Request successful!", response.data);
-      navigate("/login");
+      navigate("/");
     } catch (err) {
       alert(
         err.response?.data?.error ||
@@ -43,7 +43,7 @@ function PasswordModal({ email, setEmail, closePasswordModal }) {
             </div>
           </div>
           <div className="ResetInput flex flex-col items-center align-center items-center justify-center pb-10">
-            <form className="Input flex flex-col items-center align-center w-full mb-1">
+            <form onSubmit={handleForgotPassword} className="Input flex flex-col items-center align-center w-full mb-1">
               <div className="px-10 mb-4 w-full">
                 <div className="Heading mb-1 text-left text-black font-bold text-sm">
                   Email:
@@ -59,7 +59,7 @@ function PasswordModal({ email, setEmail, closePasswordModal }) {
                 />
               </div>
               <button
-              onSubmit={handleForgotPassword}
+              type="submit"
               className="mb-4 py-2 px-10 text-center align-center items-center justify-center font-semibold rounded-lg shadow-md text-white bg-indigo-700 hover:bg-blue-800 cursor-pointer"
               >
                 {" "}
