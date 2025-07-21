@@ -27,6 +27,10 @@ export default function HomeNavBar({
     navigate("/signup");
   };
 
+  const handleIDE = () => {
+    navigate("/ide");
+  };
+
   const handleChangeLanguage = () => {
     if (language === "English") {
       setLanguage("Español");
@@ -58,10 +62,10 @@ export default function HomeNavBar({
                 Sobre Nosotros
               </button>
               <button
-                onClick={onScrollToGetStarted}
                 className="text-gray-500 hover:text-black transition ease-in-out cursor-pointer"
+                onClick={handleIDE}
               >
-                Comenzar
+                IDE
               </button>
             </div>
           ) : (
