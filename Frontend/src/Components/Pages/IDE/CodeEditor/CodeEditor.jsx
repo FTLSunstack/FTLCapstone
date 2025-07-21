@@ -17,6 +17,7 @@ export default function CodeEditor({
   onOutput,
   onResult,
   onError,
+  onRun,
 }) {
   const editorRef = useRef(null);
   const viewRef = useRef(null);
@@ -29,6 +30,8 @@ export default function CodeEditor({
     if (viewRef.current) {
       const currentCode = viewRef.current.state.doc.toString();
       const formattedCode = currentCode.replace(/\n/g, "\n");
+
+      if (onRun) onRun(currentCode);
 
       setLoading(true);
       if (onLoading) onLoading(true);
@@ -75,7 +78,7 @@ export default function CodeEditor({
         onChange(currentCode);
       }
     }
-    console.log("Submit Code was ran");
+    // console.log("Submit Code was ran");
   };
 
   useEffect(() => {
