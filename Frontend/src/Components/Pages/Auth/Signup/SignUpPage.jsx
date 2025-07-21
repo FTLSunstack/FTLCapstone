@@ -20,9 +20,6 @@ function SignUpPage() {
                         <SignUpForm></SignUpForm>
                     </div>
                 </div>
-                <div className="mt-auto w-full">
-                    <Footer />
-                </div>
             </div>
         </>
     );

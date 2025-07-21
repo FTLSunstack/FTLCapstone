@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "../../../tailwind.css";
 
 function PasswordModal({ email, setEmail, closePasswordModal }) {
+  const [emailSent, setEmailState] = useState(false);
   const navigate = useNavigate();
 
   const handleForgotPassword = async (e) => {
@@ -41,9 +42,9 @@ function PasswordModal({ email, setEmail, closePasswordModal }) {
               Forgot your password? No worries!
             </div>
           </div>
-          <div className="ResetInput flex flex-col items-center align-center items-center justify-center p-6">
-            <form className="Input flex flex-col items-center align-center w-full mb-3">
-              <div className="px-10 mb-3 w-full">
+          <div className="ResetInput flex flex-col items-center align-center items-center justify-center pb-10">
+            <form className="Input flex flex-col items-center align-center w-full mb-1">
+              <div className="px-10 mb-4 w-full">
                 <div className="Heading mb-1 text-left text-black font-bold text-sm">
                   Email:
                 </div>
@@ -51,20 +52,20 @@ function PasswordModal({ email, setEmail, closePasswordModal }) {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   id="email"
-                  className="px-15 py-1.5 w-full border-2 border-solid border-gray-300 rounded-md"
+                  className="px-15 w-full border-2 border-solid border-gray-300 rounded-md"
                   type="email"
                   placeholder="Enter your Email"
                   required
                 />
               </div>
+              <button
+              onSubmit={handleForgotPassword}
+              className="mb-4 py-2 px-10 text-center align-center items-center justify-center font-semibold rounded-lg shadow-md text-white bg-indigo-700 hover:bg-blue-800 cursor-pointer"
+              >
+                {" "}
+                Get Reset Email
+              </button>
             </form>
-            <button
-              onClick={handleForgotPassword}
-              className="mt-2 mb-4 py-2 px-10 text-center align-center items-center justify-center font-semibold rounded-lg shadow-md text-white bg-indigo-700 hover:bg-blue-800 cursor-pointer"
-            >
-              {" "}
-              Get Reset Email
-            </button>
           </div>
           <div>
             <p
