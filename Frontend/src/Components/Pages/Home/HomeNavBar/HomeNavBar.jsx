@@ -12,11 +12,11 @@ export default function HomeNavBar({
   onScrollToGetStarted,
 }) {
   const navigate = useNavigate();
-  const { user, loguout } = useAuth();
+  const { user, logout } = useAuth();
 
   useEffect(() => {
     console.log(user);
-    console.log(loguout);
+    console.log(logout);
   });
 
   const handleLogin = () => {

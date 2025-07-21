@@ -2,9 +2,11 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../../../tailwind.css";
+import { useAuth } from "../../../Context/AuthContext";
 
 function NavBar({ language, setLanguage }) {
   const navigate = useNavigate();
+  const { setUser } = useAuth();
   const handleUserLogout = async () => {
     try {
       const response = await axios.post(
@@ -14,6 +16,7 @@ function NavBar({ language, setLanguage }) {
       );
       console.log("LogOUT successful!", response.data);
       navigate("/");
+      setUser(null);
     } catch (err) {
       alert(
         err.response?.data?.error ||

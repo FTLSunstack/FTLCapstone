@@ -42,7 +42,8 @@ router.get("/google/callback",
 // -> /auth/signup
 router.post("/signup", controller.signup);
 // -> /auth/login
-router.post("/login", loginLimiter,  controller.login);
+//router.post("/login", loginLimiter,  controller.login);
+router.post("/login", controller.login);
 // -> /auth/logout
 router.post("/logout", authenticateToken, controller.logout);
 // -> /auth/refresh
