@@ -12,7 +12,7 @@ const PORT = 3000;
 
 const corsOption = {
   origin: "http://localhost:5173",
-  credentials:true
+  credentials: true,
 };
 
 app.use(express.json());
@@ -22,9 +22,11 @@ app.use(cors(corsOption));
 
 const authRouter = require("./routes/authRoutes");
 const JudgeRoutes = require("./routes/JudgeRoute");
-app.use("/auth", authRouter);
+const geminiRoutes = require("./routes/geminiRoutes");
 
+app.use("/auth", authRouter);
 app.use("/api", JudgeRoutes);
+app.use("/explainer", geminiRoutes);
 
 app.get("/", (req, res) => {
   res.send("This is Codifica!");

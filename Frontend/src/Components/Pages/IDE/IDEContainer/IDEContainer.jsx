@@ -3,11 +3,15 @@ import "../../../../tailwind.css";
 import CodeEditor from "../CodeEditor/CodeEditor.jsx";
 import CodeOutput from "../CodeOutput/CodeOutput.jsx";
 
-function IDEContainer({ language }) {
+function IDEContainer({ language, onCodeExplanation }) {
   const [isLoading, setIsLoading] = useState(false);
   const [output, setOutput] = useState("");
   const [error, setError] = useState("");
   const [result, setResult] = useState(null);
+
+  const handleExplanation = (code) => {
+    if (onCodeExplanation) onCodeExplanation(code);
+  };
 
   return (
     <>
@@ -18,6 +22,7 @@ function IDEContainer({ language }) {
           onOutput={setOutput}
           onError={setError}
           onResult={setResult}
+          onRun={handleExplanation}
         />
         <CodeOutput
           language={language}
