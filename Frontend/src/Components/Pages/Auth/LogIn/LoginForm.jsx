@@ -5,6 +5,8 @@ import "../../../../tailwind.css";
 import LoginInput from "./LoginInput";
 import PasswordModal from "../PasswordModal";
 import { useAuth } from "../../../../Context/AuthContext";
+import {toast, Bounce} from 'react-toastify';
+import {NotifSuccess, NotifError} from "../../../Common/ToastNotifs/ToastNotifs";
 
 function LoginForm() {
     const [username, setUsername] = useState("");
@@ -23,6 +25,7 @@ function LoginForm() {
         setModal(true);
     }
     const closePasswordModal = () => {
+        setEmail("");
         setModal(false);
     }
     const userLogin = async (e) => {
@@ -33,10 +36,14 @@ function LoginForm() {
             
             const response = await axios.post("http://localhost:3000/auth/login", { username, password }, { withCredentials: true });
             console.log("Login successful!", response.data);
+            NotifSuccess("login");
             setUser(response.data.user);
-            navigate("/ide");
+            // wait a little bit before navigating
+            setTimeout(() => {
+                navigate("/ide");
+            }, 500);
             } catch (err) {
-                alert(
+                NotifError("login",
                     err.response?.data?.error ||
                     err.response?.data?.message ||
                     "Login Failed"

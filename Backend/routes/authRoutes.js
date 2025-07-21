@@ -53,6 +53,7 @@ router.post("/req-reset-password", controller.requestResetPassword);
 // -> /auth/reset-password
 router.post("/reset-password", controller.resetPassword);
 
+// -> /auth/reset-password
 //this returns info about the user only if they are authenticated
 router.get("/me", authenticateToken, controller.me);
 

@@ -4,6 +4,7 @@ import axios from "axios";
 import "../../../../tailwind.css";
 import SignUpInput from "./SignUpInput";
 import GoogleAuthSignin from "../googleAuthSignIn";
+import {NotifSuccess, NotifError} from "../../../Common/ToastNotifs/ToastNotifs";
 
 function SignUpForm() {
     const [username, setUsername] = useState("");
@@ -24,18 +25,22 @@ function SignUpForm() {
         e.preventDefault();
         try {
             const response = await axios.post("http://localhost:3000/auth/signup", { username, password, email, name }, { withCredentials: true });
-            console.log("Login successful!", response.data);
-            navigate("/ide");
+            console.log("SignUp successful!", response.data);
+            NotifSuccess("SignUp");
+            // wait a little bit before navigating
+            setTimeout(() => {
+                navigate("/ide");
+            }, 500);
             } catch (err) {
-                alert(
+                NotifError("SignUp",
                     err.response?.data?.error ||
                     err.response?.data?.message ||
-                    "Signup Failed"
+                    "SignUp Failed"
                 );
             }
     }
     return (
-        <div className="Sign Up Form bg-white bg-center flex flex-col items-center w-110 h-160 rounded-md "> 
+        <div className="Sign Up Form bg-white bg-center flex flex-col items-center w-110 h-150 rounded-md"> 
             <div className="Title Header align-center">
                 <div className="Title mt-10 mb-4 text-center text-violet-600 font-bold text-5xl">Codifica</div>
                 <div className="Caption mb-6 text-center text-black font-bold text-xl">Welcome!</div>
