@@ -11,6 +11,7 @@ import SignUpPage from "../Pages/Auth/Signup/SignUpPage.jsx";
 import PrivateRoutes from "../Pages/Auth/PrivateRoutes.jsx";
 import { AuthProvider } from "../../Context/AuthContext.jsx";
 import ResetPasswordPage from "../Pages/Auth/ResetPasswordPage.jsx";
+import ProfilePage from "../Pages/Profile/ProfilePage/ProfilePage.jsx";
 
 function App() {
   const [language, setLanguage] = useState("Español");
@@ -19,23 +20,28 @@ function App() {
     <AuthProvider>
       <BrowserRouter>
         <Routes>
-          <Route element ={<PrivateRoutes/>}>
+          <Route element={<PrivateRoutes />}>
             <Route
               path="/glossary"
-              element={<GlossaryPage language={language} setLanguage={setLanguage} />}
+              element={
+                <GlossaryPage language={language} setLanguage={setLanguage} />
+              }
             />
             <Route
               path="/ide"
-              element={<IDEPage language={language} setLanguage={setLanguage} />}
+              element={
+                <IDEPage language={language} setLanguage={setLanguage} />
+              }
             />
           </Route>
           <Route path="/login" element={<LoginPage language={language} />} />
           <Route path="/signup" element={<SignUpPage language={language} />} />
-          <Route path="/reset-password" element={<ResetPasswordPage/>} />
+          <Route path="/reset-password" element={<ResetPasswordPage />} />
           <Route
             path="/"
             element={<HomePage language={language} setLanguage={setLanguage} />}
           />
+          <Route path="/profile" element={<ProfilePage />} />
         </Routes>
       </BrowserRouter>
     </AuthProvider>
