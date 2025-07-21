@@ -21,7 +21,7 @@ function LoginPage() {
           {" "}
           Back Home
         </button>
-        <div className="flex flex-col opacity-100 h-screen h-14 items-center">
+        <div className="flex flex-col opacity-100 items-center">
           <div className="mt-10">
             <div className="flex flex-col items-center justify-center w-screen mb-15">
               <LoginForm></LoginForm>

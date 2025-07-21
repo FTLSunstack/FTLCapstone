@@ -3,10 +3,22 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../../../tailwind.css";
 import { useAuth } from "../../../Context/AuthContext";
+import {toast, Bounce} from 'react-toastify';
 
 function NavBar({ language, setLanguage }) {
   const navigate = useNavigate();
   const { setUser } = useAuth();
+  const logOutNotifSuccess= () => toast.warning('You have logged out', {
+        position: "top-center",
+        autoClose: 1500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+  });
   const handleUserLogout = async () => {
     try {
       const response = await axios.post(
@@ -15,7 +27,10 @@ function NavBar({ language, setLanguage }) {
         { withCredentials: true }
       );
       console.log("LogOUT successful!", response.data);
-      navigate("/");
+      logOutNotifSuccess();
+      setTimeout(() => {
+        navigate("/");
+      }, 100);
       setUser(null);
     } catch (err) {
       alert(
