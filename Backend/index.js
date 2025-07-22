@@ -38,3 +38,6 @@ app.use("/test", testRoutes);
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
+
+const glossaryRoutes = require("./routes/glossaryRoutes");
+app.use("/glossary", glossaryRoutes);
