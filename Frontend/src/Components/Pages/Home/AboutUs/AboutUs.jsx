@@ -3,8 +3,8 @@ import "../../../../tailwind.css";
 import CreatorCard from "../CreatorCard/CreatorCard.jsx";
 import Mission from "../Mission/Mission.jsx";
 
-import luispicture from "../../../../assets/luis-picture.jpg";
-import joannapicture from "../../../../assets/joanna-picture.jpg";
+import luispicture from "../../../../assets/luis-picture.JPG";
+import joannapicture from "../../../../assets/joanna-picture.JPG";
 import heirynpicture from "../../../../assets/heiryn-picture.jpg";
 
 function AboutUs({ language }) {
