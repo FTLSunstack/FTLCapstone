@@ -14,7 +14,7 @@ const explainCode = async (req, res) => {
       });
     }
 
-    const prompt = `Given the following ${language} code: ${codeSnippet}, provide a comprehensive explanation in Spanish.
+    const prompt = `Given the following ${language} code: ${codeSnippet}, provide a comprehensive analysis in Spanish.
 
 Create a JSON object with the following properties:
 1. "code": The ORIGINAL and EXACT code from the input, without any modifications.
@@ -25,7 +25,12 @@ Create a JSON object with the following properties:
    - The flow of execution
    - Any important details about the implementation
 
-The explanation should be thorough but accessible, written in clear Spanish.
+3. "liveFeedback": A brief and concise analysis in Spanish (maximum 3-4 sentences) that includes:
+   - Quick assessment if code is correct or has issues
+   - One main suggestion for improvement
+   - One practical tip for better coding
+
+Keep the feedback short, direct, and actionable. Use simple language and focus on the most important points only.
 
 Return ONLY the JSON object. Do not include any introductory or concluding remarks, or any other text.
 
@@ -33,21 +38,26 @@ Here is an example of the desired JSON format:
 
 {
   "code": "print(\\"Hello, World!\\")\\nx = 10 + 5\\nprint(x)",
-  "explanation": "Este programa demuestra conceptos básicos de Python. Primero imprime el mensaje 'Hello, World!' en la consola, que es una tradición en programación para mostrar el primer programa funcional. Luego crea una variable llamada 'x' y le asigna el resultado de sumar 10 y 5, que es 15. Finalmente imprime el valor de esta variable. El programa ilustra la salida de texto, operaciones aritméticas básicas, asignación de variables y cómo mostrar el contenido de una variable."
+  "explanation": "Este programa demuestra conceptos básicos de Python. Primero imprime el mensaje 'Hello, World!' en la consola, que es una tradición en programación para mostrar el primer programa funcional. Luego crea una variable llamada 'x' y le asigna el resultado de sumar 10 y 5, que es 15. Finalmente imprime el valor de esta variable. El programa ilustra la salida de texto, operaciones aritméticas básicas, asignación de variables y cómo mostrar el contenido de una variable.",
+  "liveFeedback": "El código está correcto y funciona perfectamente. Considera usar nombres de variables más descriptivos como 'suma' en lugar de 'x'. Para el futuro, puedes usar f-strings para mejor formato: print(f'Resultado: {suma}')."
 }`;
+
     const response = await ai.models.generateContent({
       model: "gemini-2.0-flash",
       contents: prompt,
       config: {
         responseMimeType: "application/json",
         responseSchema: {
-          type: Type.OBJECT, 
+          type: Type.OBJECT,
           properties: {
             code: {
               // Changed from codeline to code
               type: Type.STRING,
             },
             explanation: {
+              type: Type.STRING,
+            },
+            liveFeedback: {
               type: Type.STRING,
             },
           },
