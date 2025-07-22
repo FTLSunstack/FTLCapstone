@@ -197,10 +197,11 @@ export default function CodeEditor({
             style={{ outline: "none" }}
           />
           <button
-            className="absolute bottom-2 right-2 bg-violet-400 text-white px-4 py-2 rounded hover:bg-violet-500 hover:cursor-pointer transition"
+            className="absolute bottom-2 right-2 bg-violet-400 text-white px-4 py-2 rounded hover:bg-violet-500 hover:cursor-pointer transition flex flex-row justify-center"
             onClick={handleSubmit}
           >
-            Run Code
+            <span className="material-icons">play_arrow</span>
+            Run
           </button>
         </div>
       ) : (
@@ -211,10 +212,11 @@ export default function CodeEditor({
             style={{ outline: "none" }}
           />
           <button
-            className="absolute bottom-2 right-2 bg-violet-400 text-white px-4 py-2 rounded hover:bg-violet-500 hover:cursor-pointer transition"
+            className="absolute bottom-2 right-2 bg-violet-400 text-white px-4 py-2 rounded hover:bg-violet-500 hover:cursor-pointer transition flex flex-row justify-center"
             onClick={handleSubmit}
           >
-            Ejecutar código
+            <span className="material-icons">play_arrow</span>
+            Ejecutar
           </button>
         </div>
       )}
