@@ -12,7 +12,7 @@ const PORT = 3000;
 
 const corsOption = {
   origin: "http://localhost:5173",
-  credentials:true
+  credentials: true,
 };
 
 app.use(express.json());
@@ -36,3 +36,6 @@ app.use("/test", testRoutes);
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
+
+const glossaryRoutes = require("./routes/glossaryRoutes");
+app.use("/glossary", glossaryRoutes);
