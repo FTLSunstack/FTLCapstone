@@ -31,6 +31,10 @@ export default function HomeNavBar({
     navigate("/ide");
   };
 
+  const handleProfilePage = () => {
+    navigate("/profile");
+  };
+
   const handleChangeLanguage = () => {
     if (language === "English") {
       setLanguage("Español");
@@ -104,6 +108,7 @@ export default function HomeNavBar({
                   src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/1024px-Default_pfp.svg.png"
                   alt="pfp"
                   className="w-10 cursor-pointer"
+                  onClick={handleProfilePage}
                 />
               </span>
             ) : (
@@ -134,21 +139,21 @@ export default function HomeNavBar({
             <div className="flex flex-row gap-10">
               <button
                 onClick={onScrollToFeatures}
-                className="text-gray-500 hover:text-black"
+                className="text-gray-500 hover:text-black cursor-pointer"
               >
                 Features
               </button>
               <button
                 onClick={onScrollToAboutUs}
-                className="text-gray-500 hover:text-black transition ease-in-out"
+                className="text-gray-500 hover:text-black transition ease-in-out cursor-pointer"
               >
                 About Us
               </button>
               <button
-                onClick={onScrollToGetStarted}
-                className="text-gray-500 hover:text-black transition ease-in-out"
+                onClick={handleIDE}
+                className="text-gray-500 hover:text-black transition ease-in-out cursor-pointer"
               >
-                Get Started
+                IDE
               </button>
             </div>
           ) : (
@@ -186,6 +191,7 @@ export default function HomeNavBar({
                   src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/1024px-Default_pfp.svg.png"
                   alt="pfp"
                   className="w-10 cursor-pointer"
+                  onClick={handleProfilePage}
                 />
               </span>
             ) : (
