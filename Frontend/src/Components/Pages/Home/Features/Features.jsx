@@ -8,7 +8,7 @@ function Features({ language }) {
       {language === "Español" ? (
         <div className="flex flex-col items-center justify-center w-screen bg-gray-50 p-20">
           <h1 className="text-black text-4xl font-bold pb-8 text-center">
-            Porque Codifica?
+            ¿Por qué Codifica?
           </h1>
           <h2 className="text-gray-500 text-2xl text-center px-20">
             Entendemos que aprender a codificar no debe estar limitado por el

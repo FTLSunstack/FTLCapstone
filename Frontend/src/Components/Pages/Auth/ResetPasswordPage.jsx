@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate, useLocation} from "react-router-dom";
 import "../../../tailwind.css";
+import axios from "axios";
 import Footer from "../../Common/Footer/Footer";
 import ResetPasswordInput from "./ResetPasswordInput";
 
@@ -19,15 +20,19 @@ function ResetPasswordPage() {
     const handleUpdateForgottenPassword = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post("http://localhost:3000/auth/reset-password", { token, newPassword: password }, { withCredentials: true });
+            console.log("Reset token:", token);
+            const response = await axios.post("http://localhost:3000/auth/reset-password", { token, newPassword: password });
             console.log("Reset Password successful!", response.data);
-            navigate("/login");
+            NotifSuccess("Reset Password");
+            setTimeout(() => {
+                navigate("/login");
+            }, 500);
         } catch(err){
-            alert(
-                    err.response?.data?.error ||
-                    err.response?.data?.message ||
-                    "Request failed"
-                );
+            NotifError("Reset Password",
+                err.response?.data?.error ||
+                err.response?.data?.message ||
+                "Reset Password Failed"
+            );
         }
     }
 
@@ -37,24 +42,24 @@ function ResetPasswordPage() {
                 <div>
                     <button onClick={handleBack} className="mt-8 ml-10 mb-8 py-2 px-4 font-semibold rounded-lg shadow-md text-black bg-white hover:bg-black hover:text-white hover:cursor-pointer"> Back to Login</button>
                     <div className="flex flex-col items-center justify-center w-screen mb-35">
-                        <div className="PasswordFrom bg-white bg-center flex flex-col items-center w-100 h-140 rounded-md"> 
+                        <div className="PasswordFrom bg-white bg-center flex flex-col items-center justify-around w-100 h-140 rounded-md"> 
                             <div className="Title Header align-center">
                                 <div className="Title mt-10 mb-4 text-center text-violet-600 font-bold text-5xl">Codifica</div>
                                 <div className="Caption mb-6 text-center text-black font-bold text-xl">Please reset your password here.</div>
                             </div>
-                            <ResetPasswordInput password={password} setPassword={setPassword} ></ResetPasswordInput>
-                            <container className= "flex flex-col items-left">
-                                <button onClick={handleUpdateForgottenPassword} className="mt-2 mb-4 py-2 px-15 text-center font-semibold rounded-lg shadow-md text-white bg-indigo-700 hover:bg-blue-800 cursor-pointer"> Update Password</button>
-                            </container>
-                            <container className= "flex flex-row">
+                    
+                            <form onSubmit={handleUpdateForgottenPassword} className="Input flex flex-col items-center pb-30 px-10 w-full" >
+                                <ResetPasswordInput password={password} setPassword={setPassword} ></ResetPasswordInput>
+                                <div className= "flex flex-col items-left">
+                                    <button type="submit" className="mt-2 mb-4 py-2 px-15 text-center font-semibold rounded-lg shadow-md text-white bg-indigo-700 hover:bg-blue-800 cursor-pointer"> Update Password</button>
+                                </div>
+                            </form>
+                            {/* <div className= "flex flex-row">
                                 <p className="text-xs text-gray-500"> Didn't get an email? </p>
                                 <p  className="ml-3 text-xs text-gray-500 underline hover:text-indigo-500 hover:cursor-pointer"> Resend Email</p>
-                            </container>
+                            </div> */}
                         </div>
                     </div>
-                </div>
-                <div className="mt-auto w-full">
-                    <Footer />
                 </div>
             </div>
         </>

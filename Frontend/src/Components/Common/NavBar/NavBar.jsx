@@ -2,9 +2,23 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../../../tailwind.css";
+import { useAuth } from "../../../Context/AuthContext";
+import {toast, Bounce} from 'react-toastify';
 
 function NavBar({ language, setLanguage }) {
   const navigate = useNavigate();
+  const { setUser } = useAuth();
+  const logOutNotifSuccess= () => toast.warning('You have logged out', {
+        position: "top-center",
+        autoClose: 1500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+  });
   const handleUserLogout = async () => {
     try {
       const response = await axios.post(
@@ -13,7 +27,11 @@ function NavBar({ language, setLanguage }) {
         { withCredentials: true }
       );
       console.log("LogOUT successful!", response.data);
-      navigate("/");
+      logOutNotifSuccess();
+      setTimeout(() => {
+        navigate("/");
+      }, 100);
+      setUser(null);
     } catch (err) {
       alert(
         err.response?.data?.error ||
@@ -47,7 +65,7 @@ function NavBar({ language, setLanguage }) {
     <>
       {language === "English" ? (
         <div>
-          <div className="bg-white p-5 flex flex-row justify-between items-center shadow-2xl/30">
+          <div className="bg-white p-5 flex flex-row justify-between items-center border-b border-black shadow-md">
             <h1
               className="text-violet-600 font-bold text-3xl hover:cursor-pointer hover:opacity-70 transition ease-in-out"
               onClick={handleBackToHomePage}
@@ -94,7 +112,7 @@ function NavBar({ language, setLanguage }) {
         </div>
       ) : (
         <div>
-          <div className="bg-white p-5 flex flex-row justify-between items-center shadow-2xl/30">
+          <div className="bg-white p-5 flex flex-row justify-between items-center border-b border-black shadow-md">
             <h1
               className="text-violet-600 font-bold text-3xl hover:cursor-pointer hover:opacity-70 transition ease-in-out"
               onClick={handleBackToHomePage}

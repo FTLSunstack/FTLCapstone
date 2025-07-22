@@ -13,7 +13,7 @@ function LoginPage() {
 
   return (
     <>
-      <div className="bg-gradient-to-r from-violet-600 to-blue-800">
+      <div className="min-h-screen h-14 bg-gradient-to-r from-violet-600 to-blue-800">
         <button
           onClick={handleBack}
           className="mt-8 ml-10 mb-8 py-2 px-4 font-semibold rounded-lg shadow-md text-black bg-white hover:bg-black hover:text-white hover:cursor-pointer transition ease-in-out"
@@ -21,9 +21,9 @@ function LoginPage() {
           {" "}
           Back Home
         </button>
-        <div className="flex flex-col opacity-100 min-h-screen h-14 justify-center items-center">
-          <div>
-            <div className="flex flex-col items-center justify-center w-screen mb-35">
+        <div className="flex flex-col opacity-100 items-center">
+          <div className="mt-10">
+            <div className="flex flex-col items-center justify-center w-screen mb-15">
               <LoginForm></LoginForm>
             </div>
           </div>

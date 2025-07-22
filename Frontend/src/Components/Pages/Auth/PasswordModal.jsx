@@ -2,8 +2,10 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "../../../tailwind.css";
+import {NotifSuccess, NotifError} from "../../Common/ToastNotifs/ToastNotifs";
 
 function PasswordModal({ email, setEmail, closePasswordModal }) {
+  const [emailSent, setEmailState] = useState(false);
   const navigate = useNavigate();
 
   const handleForgotPassword = async (e) => {
@@ -14,14 +16,18 @@ function PasswordModal({ email, setEmail, closePasswordModal }) {
         { email }
       );
       console.log("Reset Password Request successful!", response.data);
-      navigate("/login");
-    } catch (err) {
-      alert(
-        err.response?.data?.error ||
-          err.response?.data?.message ||
-          "Request failed"
-      );
-    }
+      NotifSuccess("Reset Password Request");
+      // wait a little bit before navigating
+      setTimeout(() => {
+          navigate("/");
+      }, 500);
+      } catch (err) {
+          NotifError("Reset Password Request",
+              err.response?.data?.error ||
+              err.response?.data?.message ||
+              "Reset Password Request Failed"
+          );
+      }
   };
   return (
     <>
@@ -41,30 +47,30 @@ function PasswordModal({ email, setEmail, closePasswordModal }) {
               Forgot your password? No worries!
             </div>
           </div>
-          <div className="ResetInput flex flex-col items-center align-center items-center justify-center p-6">
-            <form className="Input flex flex-col items-center align-center w-full mb-3">
-              <div className="px-10 mb-3 w-full">
-                <div className="Heading mb-1 text-left text-black font-bold text-sm">
+          <div className="ResetInput flex flex-col items-center align-center items-center justify-center pb-10">
+            <form onSubmit={handleForgotPassword} className="Input flex flex-col items-center align-center w-full mb-1">
+              <div className="px-10 mb-4 w-full">
+                <div className="Heading w-full mb-1 text-left text-black font-bold text-sm">
                   Email:
                 </div>
                 <input
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   id="email"
-                  className="px-15 py-1.5 w-full border-2 border-solid border-gray-300 rounded-md"
+                  className="p-1 w-80 border-content border-2 border-solid border-gray-300 rounded-md"
                   type="email"
                   placeholder="Enter your Email"
                   required
                 />
               </div>
+              <button
+              type="submit"
+              className="mb-4 py-2 px-8 text-center align-center items-center justify-center font-semibold rounded-lg shadow-md text-white bg-indigo-700 hover:bg-blue-800 cursor-pointer"
+              >
+                {" "}
+                Get Reset Email
+              </button>
             </form>
-            <button
-              onClick={handleForgotPassword}
-              className="mt-2 mb-4 py-2 px-10 text-center align-center items-center justify-center font-semibold rounded-lg shadow-md text-white bg-indigo-700 hover:bg-blue-800 cursor-pointer"
-            >
-              {" "}
-              Get Reset Email
-            </button>
           </div>
           <div>
             <p

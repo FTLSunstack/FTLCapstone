@@ -11,7 +11,7 @@ const transporter = require("../nodemailer");
 const generateToken = (user) => {
     return jwt.sign(
         // only give these fiels
-        { id: user.id, username: user.username }, 
+        { userId: user.userId, username: user.username }, 
         process.env.ACCESS_TOKEN_SECRET, 
         { expiresIn: "1h" }
     );
@@ -19,7 +19,7 @@ const generateToken = (user) => {
 function generateRefreshToken(user) {
     //  frontend can ask for a new access token without the user logging in again
     return jwt.sign(
-        { id: user.id, username: user.username},
+        { userId: user.userId, username: user.username},
         process.env.REFRESH_TOKEN_SECRET,
         { expiresIn: "2d" }
     );
@@ -84,7 +84,7 @@ exports.signup = async (req, res) => {
 
         const token = generateToken(newUser);
 
-        res.status(201).json({ user: { id: newUser.id, username: newUser.username }, token, message: "User created successfully!" });
+        res.status(201).json({ user: { userId: newUser.userId, username: newUser.username }, token, message: "User created successfully!" });
     }
     catch(error) {
         console.error(error)
@@ -146,7 +146,7 @@ exports.login = async (req,res) => {
         maxAge: 2 * 24 * 60 * 60 * 1000 
     });
 
-    res.json({user: { id: user.id, username: user.username }, accessToken, message: "Login successful!" });
+    res.json({user: { userId: user.userId, username: user.username }, accessToken, message: "Login successful!" });
 
     
 
@@ -218,7 +218,7 @@ exports.requestResetPassword = async (req, res) => {
 
     // link that will be sent to the user’s email.
     // points to the front end reset password form
-    const resetLink = `http://localhost:5173/auth/reset-password?token=${resetToken}`;
+    const resetLink = `http://localhost:5173/reset-password?token=${resetToken}`;
 
     // Send the email and its content
     const mailOptions = {
@@ -243,41 +243,52 @@ exports.requestResetPassword = async (req, res) => {
 
 
 exports.resetPassword = async (req, res) => {
-    const { token, newPassword } = req.body;
+    try {
+        const { token, newPassword } = req.body;
+        console.log("Reset request received:", { token, newPassword });
 
-    if (!token || !newPassword) {
-        return res.status(400).json({ error: "Token and new password are required." });
+        if (!token || !newPassword) {
+            return res.status(400).json({ error: "Token and new password are required." });
+        }
+
+        // Find user with this reset token and valid expiry
+        const user = await prisma.user.findFirst({
+            where: {
+            passwordResetToken: token,
+            //not expired
+            passwordResetTokenExpiry: { gt: new Date() }, 
+            },
+        });
+
+        console.log("User found for reset:", user);
+
+        if (!user) {
+            return res.status(400).json({ error: "Invalid or expired reset token." });
+        }
+
+        if (newPassword.length < 8) {
+            return res.status(400).json({ error: "Password must be at least 8 characters long." });
+        }
+
+        // Hash new password and update user
+        const hashedPassword = await bcrypt.hash(newPassword, 10);
+
+        await prisma.user.update({
+            where: { userId: user.userId },
+            data: {
+            passwordHash: hashedPassword,
+            passwordResetToken: null,
+            passwordResetTokenExpiry: null,
+            },
+        });
+
+        res.json({ message: "Password reset successful." });
     }
-
-    // Find user with this reset token and valid expiry
-    const user = await prisma.user.findFirst({
-        where: {
-        passwordResetToken: token,
-        passwordResetTokenExpiry: { gt: new Date() }, // expiry in future
-        },
-    });
-
-    if (!user) {
-        return res.status(400).json({ error: "Invalid or expired reset token." });
+    catch(error){
+        console.error("Error in resetPassword:", error);
+        res.status(500).json({ error: "Something went wrong during password reset." });
     }
-
-    if (newPassword.length < 8) {
-        return res.status(400).json({ error: "Password must be at least 8 characters long." });
-    }
-
-    // Hash new password and update user
-    const hashedPassword = await bcrypt.hash(newPassword, 10);
-
-    await prisma.user.update({
-        where: { id: user.id },
-        data: {
-        passwordHash: hashedPassword,
-        passwordResetToken: null,
-        passwordResetTokenExpiry: null,
-        },
-    });
-
-    res.json({ message: "Password reset successful." });
+    
 }
 
 

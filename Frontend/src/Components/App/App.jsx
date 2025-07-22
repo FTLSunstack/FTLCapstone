@@ -11,34 +11,57 @@ import SignUpPage from "../Pages/Auth/Signup/SignUpPage.jsx";
 import PrivateRoutes from "../Pages/Auth/PrivateRoutes.jsx";
 import { AuthProvider } from "../../Context/AuthContext.jsx";
 import ResetPasswordPage from "../Pages/Auth/ResetPasswordPage.jsx";
+import ProfilePage from "../Pages/Profile/ProfilePage/ProfilePage.jsx";
+import { ToastContainer, Bounce } from 'react-toastify';
+import "react-toastify/ReactToastify.css";
 
 function App() {
   const [language, setLanguage] = useState("Español");
 
   return (
-    <AuthProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route element ={<PrivateRoutes/>}>
+    <>
+      <AuthProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route element={<PrivateRoutes />}>
+              <Route
+                path="/glossary"
+                element={
+                  <GlossaryPage language={language} setLanguage={setLanguage} />
+                }
+              />
+              <Route
+                path="/ide"
+                element={
+                  <IDEPage language={language} setLanguage={setLanguage} />
+                }
+              />
+            </Route>
+            <Route path="/login" element={<LoginPage language={language} />} />
+            <Route path="/signup" element={<SignUpPage language={language} />} />
+            <Route path="/reset-password" element={<ResetPasswordPage />} />
             <Route
-              path="/glossary"
-              element={<GlossaryPage language={language} setLanguage={setLanguage} />}
+              path="/"
+              element={<HomePage language={language} setLanguage={setLanguage} />}
             />
-            <Route
-              path="/ide"
-              element={<IDEPage language={language} setLanguage={setLanguage} />}
-            />
-          </Route>
-          <Route path="/login" element={<LoginPage language={language} />} />
-          <Route path="/signup" element={<SignUpPage language={language} />} />
-          <Route path="/reset-password" element={<ResetPasswordPage/>} />
-          <Route
-            path="/"
-            element={<HomePage language={language} setLanguage={setLanguage} />}
-          />
-        </Routes>
-      </BrowserRouter>
-    </AuthProvider>
+            <Route path="/profile" element={<ProfilePage />} />
+          </Routes>
+        </BrowserRouter>
+      </AuthProvider>
+      <ToastContainer
+        position="top-center"
+        autoClose={200}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        transition={Bounce}
+      />
+    </>
   );
 }
 
