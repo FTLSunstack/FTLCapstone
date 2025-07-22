@@ -30,9 +30,9 @@ function TermsList({ language, onClick, setModalTerm, search }) {
   return (
     <>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-10 p-10 max-w-4/5">
-        {terms.map((t) => (
+        {Object.entries(terms).map(([key, t]) => (
           <Term
-            key={slug}
+            key={key}
             term={t}
             language={language}
             onClick={onClick}

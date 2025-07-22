@@ -11,19 +11,32 @@ function TermModal({ language, onClose, term }) {
         >
           <div
             onClick={(e) => e.stopPropagation()}
-            className="bg-white flex flex-col items-center justify-center text-center rounded-lg p-16 shadow-lg"
+            className="bg-white flex flex-col items-center justify-center text-center rounded-lg p-16 shadow-lg max-w-3/5"
           >
-            <h1 className="text-black font-bold text-2xl">
-              {term.translation}
-            </h1>
-            <h2 className="text-xl my-4">Traducción: {term.term}</h2>
-            <p className="text-gray-700 text-lg my-4">{term.definition_es}</p>
-            <div className="text-black text-lg bg-gray-300 p-4 rounded-lg my-4 min-w-100">
-              <p className="font-bold text-purple-700">Ejemplo en Python:</p>
-              <p className="bg-gray-100 p-2 rounded-lg mt-4">
-                {term.example_es}
-              </p>
-            </div>
+            {term.es == null ? (
+              <div>
+                <h1 className="text-xl text-black font-bold">{term.en.term}</h1>
+                <p className="text-gray-700 text-lg mt-4">
+                  Sorry this term is not available in Spanish yet.
+                </p>
+              </div>
+            ) : (
+              <div>
+                <h1 className="text-black font-bold text-2xl">
+                  {term.es.term}
+                </h1>
+                <h2 className="text-xl my-4">Traducción: {term.es.term}</h2>
+                <p className="text-gray-700 text-lg my-4">{term.es.def}</p>
+                <div className="text-black text-lg bg-gray-300 p-4 rounded-lg my-4 min-w-100">
+                  <p className="font-bold text-purple-700">
+                    Ejemplo en Python:
+                  </p>
+                  <p className="bg-gray-100 p-2 rounded-lg mt-4">
+                    {term.example_es}
+                  </p>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       ) : (
@@ -33,11 +46,17 @@ function TermModal({ language, onClose, term }) {
         >
           <div
             onClick={(e) => e.stopPropagation()}
-            className="bg-white flex flex-col items-center justify-center text-center rounded-lg p-16 shadow-lg"
+            className="bg-white flex flex-col items-center justify-center text-center rounded-lg p-16 shadow-lg max-w-3/5"
           >
-            <h1 className="text-black font-bold text-2xl">{term.term}</h1>
-            <h2 className="text-xl my-4">Translation: {term.translation}</h2>
-            <p className="text-gray-700 text-lg my-4">{term.definition_en}</p>
+            <h1 className="text-black font-bold text-2xl">{term.en.term}</h1>
+            {term.es == null ? (
+              <h2 className="text-xl my-4">
+                Sorry this term is not available in Spanish yet.
+              </h2>
+            ) : (
+              <h2 className="text-xl my-4">Translation: {term.es.term}</h2>
+            )}
+            <p className="text-gray-700 text-lg my-4">{term.en.def}</p>
             <div className="text-black text-lg bg-gray-300 p-4 rounded-lg my-4 min-w-100">
               <p className="font-bold text-purple-700">Example in Python:</p>
               <p className="bg-gray-100 p-2 rounded-lg mt-4">

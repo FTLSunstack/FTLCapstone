@@ -1,14 +1,4 @@
 {
-  "68_95_997_rule": {
-    "en": {
-      "term": "68-95-99.7 rule",
-      "def": "Expresses the fact that 68% of values lie within one [standard deviation](#standard_deviation) of the [mean](#mean), 95% lie within two, and 99.7% lie within three. Conversely, about 0.3% of values lie more than three standard deviations above or below the mean in most cases.\n"
-    },
-    "es": {
-      "term": "regla 68-95-99.7",
-      "def": "Expresa el hecho de que el 68% de los valores se encuentran dentro de una [desviación estándar](#standard_deviation) de la [media](#mean), el 95% está dentro de dos y el 99,7% está dentro de tres. Por el contrario, aproximadamente el 0,3% de los valores se encuentran más de tres desviaciones estándar por encima o por debajo de la media en la mayoría de los casos.\n"
-    }
-  },
   "abandonware": {
     "en": {
       "term": "abandonware",
