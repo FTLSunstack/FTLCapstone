@@ -111,7 +111,7 @@ exports.signup = async (req, res) => {
             maxAge: 2 * 24 * 60 * 60 * 1000 
         });
 
-        res.status(201).json({ user: { userId: newUser.userId, username: newUser.username }, token, message: "User created successfully!" });
+        res.status(201).json({ user: { userId: newUser.userId, username: newUser.username }, accessToken, message: "User created successfully!" });
     }
     catch(error) {
         console.error(error)
