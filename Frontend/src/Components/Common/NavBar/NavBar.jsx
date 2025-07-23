@@ -22,7 +22,7 @@ function NavBar({ language, setLanguage }) {
   const handleUserLogout = async () => {
     try {
       const response = await axios.post(
-        `${process.env.VITE_BACKEND_URL}/auth/logout`,
+        `${import.meta.env.VITE_BACKEND_URL}/auth/logout`,
         {},
         { withCredentials: true }
       );
