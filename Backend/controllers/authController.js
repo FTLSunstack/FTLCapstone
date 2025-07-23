@@ -84,8 +84,9 @@ exports.signup = async (req, res) => {
             data: { username, email, name, passwordHash: hashedPassword }
         });
 
-        const token = generateToken(newUser);
-            res.cookie("accessToken", accessToken, {
+        const accessToken = generateToken(user);
+        const refreshToken = generateRefreshToken(user);
+        res.cookie("accessToken", accessToken, {
             // this means that it cannot be accessed using javascript
             httpOnly: true,      
             // allows http
