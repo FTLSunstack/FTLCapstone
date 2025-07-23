@@ -85,6 +85,30 @@ exports.signup = async (req, res) => {
         });
 
         const token = generateToken(newUser);
+            res.cookie("accessToken", accessToken, {
+            // this means that it cannot be accessed using javascript
+            httpOnly: true,      
+            // allows http
+            secure: true,     
+            // you MUST be on the website to get a token
+            // other websites cannot make requests
+            sameSite: "None",   
+            // lifetime of the cookie in milliseconds
+            maxAge: 1 * 60 * 60 * 1000 
+        });
+
+        res.cookie("refreshToken", refreshToken, {
+            // this means that it cannot be accessed using javascript
+            httpOnly: true,      
+            // allows http
+            secure: true,     
+            // you MUST be on the website to get a token
+            // other websites cannot make requests
+            sameSite: "None",   
+            // 2 days!!! 
+            // lifetime of the cookie in milliseconds
+            maxAge: 2 * 24 * 60 * 60 * 1000 
+        });
 
         res.status(201).json({ user: { userId: newUser.userId, username: newUser.username }, token, message: "User created successfully!" });
     }
