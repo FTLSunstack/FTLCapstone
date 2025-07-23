@@ -5,6 +5,8 @@ import "../../../../tailwind.css";
 import SignUpInput from "./SignUpInput";
 import GoogleAuthSignin from "../googleAuthSignIn";
 import {NotifSuccess, NotifError} from "../../../Common/ToastNotifs/ToastNotifs";
+import { useAuth } from "../../../../Context/AuthContext";
+
 
 function SignUpForm() {
     const [username, setUsername] = useState("");
@@ -12,6 +14,8 @@ function SignUpForm() {
     const [email, setEmail] = useState("");
     const [name, setName] = useState("");
     const navigate = useNavigate();
+    const { setUser } = useAuth();
+
     
     const handleBack = () => {
         navigate("/");
@@ -24,9 +28,10 @@ function SignUpForm() {
         // need to prevent the page from reloading
         e.preventDefault();
         try {
-            const response = await axios.post("http://localhost:3000/auth/signup", { username, password, email, name }, { withCredentials: true });
+            const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/auth/signup`, { username, password, email, name }, { withCredentials: true });
             console.log("SignUp successful!", response.data);
             NotifSuccess("SignUp");
+            setUser(response.data.user);
             // wait a little bit before navigating
             setTimeout(() => {
                 navigate("/ide");

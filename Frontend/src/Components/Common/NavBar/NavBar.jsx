@@ -22,7 +22,7 @@ function NavBar({ language, setLanguage }) {
   const handleUserLogout = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:3000/auth/logout",
+        `${import.meta.env.VITE_BACKEND_URL}/auth/logout`,
         {},
         { withCredentials: true }
       );

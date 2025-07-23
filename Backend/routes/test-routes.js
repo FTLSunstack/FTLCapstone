@@ -9,7 +9,9 @@ router.post("/send-test-email", async (req, res) => {
   const { to } = req.body;
 
   if (!to) {
-    return res.status(400).json({ error: "Recipient email address is required." });
+    return res
+      .status(400)
+      .json({ error: "Recipient email address is required." });
   }
 
   const mailOptions = {
@@ -24,7 +26,9 @@ router.post("/send-test-email", async (req, res) => {
     res.json({ message: "Email sent", info });
   } catch (error) {
     console.error("Error sending email:", error);
-    res.status(500).json({ error: "Failed to send email", details: error.message });
+    res
+      .status(500)
+      .json({ error: "Failed to send email", details: error.message });
   }
 });
 
