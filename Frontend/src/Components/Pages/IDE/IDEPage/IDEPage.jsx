@@ -18,7 +18,7 @@ function IDEPage({ language, setLanguage }) {
   return (
     <>
       <NavBar language={language} setLanguage={setLanguage} />
-      <div className="flex flex-row justify-between">
+      <div className="flex flex-row justify-between ml-10 mr-10">
         <div className="flex flex-col">
           <IDEContainer
             language={language}
