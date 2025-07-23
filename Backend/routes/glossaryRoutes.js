@@ -4,6 +4,7 @@ const controller = require("../controllers/glossaryController");
 
 // GET
 router.get("/", controller.getAllTerms);
-router.get("/:search", controller.getTermBySearch);
+router.get("/en/:search", controller.getTermByEngSearch);
+router.get("/es/:search", controller.getTermByEspSearch);
 
 module.exports = router;
