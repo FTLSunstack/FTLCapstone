@@ -8,10 +8,10 @@ const passport = require("passport");
 require("./passport");
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 const corsOption = {
-  origin: "http://localhost:5173",
+  origin: process.env.FRONTEND_URL,
   credentials: true,
 };
 
@@ -36,7 +36,7 @@ const testRoutes = require("./routes/test-routes");
 app.use("/test", testRoutes);
 
 app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+  console.log(`Server is running on port: ${PORT}`);
 });
 
 const glossaryRoutes = require("./routes/glossaryRoutes");

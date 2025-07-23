@@ -24,7 +24,7 @@ function SignUpForm() {
         // need to prevent the page from reloading
         e.preventDefault();
         try {
-            const response = await axios.post("http://localhost:3000/auth/signup", { username, password, email, name }, { withCredentials: true });
+            const response = await axios.post(`${VITE_BACKEND_URL}/auth/signup`, { username, password, email, name }, { withCredentials: true });
             console.log("SignUp successful!", response.data);
             NotifSuccess("SignUp");
             // wait a little bit before navigating
