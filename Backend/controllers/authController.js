@@ -4,6 +4,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken")
 const crypto = require("crypto");
 const transporter = require("../nodemailer");
+const resend = require('../resend');
 
 
 
@@ -40,8 +41,9 @@ exports.googleCallback = async (req, res) => {
         secure: false,
         maxAge: 2 * 24 * 60 * 60 * 1000
     });
+    const frontendUrl = process.env.FRONTEND_URL
 
-    res.redirect(`http://localhost:5173?accessToken=${accessToken}`);
+    res.redirect(`${frontendUrl}?accessToken=${accessToken}`);
 };
 
 // sign up
@@ -125,10 +127,10 @@ exports.login = async (req,res) => {
         // this means that it cannot be accessed using javascript
         httpOnly: true,      
          // allows http
-        secure: false,     
+        secure: true,     
         // you MUST be on the website to get a token
         // other websites cannot make requests
-        sameSite: "Strict",   
+        sameSite: "None",   
         // lifetime of the cookie in milliseconds
         maxAge: 1 * 60 * 60 * 1000 
     });
@@ -137,10 +139,10 @@ exports.login = async (req,res) => {
         // this means that it cannot be accessed using javascript
         httpOnly: true,      
          // allows http
-        secure: false,     
+        secure: true,     
         // you MUST be on the website to get a token
         // other websites cannot make requests
-        sameSite: "Strict",   
+        sameSite: "None",   
         // 2 days!!! 
         // lifetime of the cookie in milliseconds
         maxAge: 2 * 24 * 60 * 60 * 1000 
@@ -166,13 +168,13 @@ exports.logout = async (req,res) =>{
     // need to undo the token
     res.clearCookie("refreshToken", {
         httpOnly: true,
-        secure: false,
-        sameSite: "Strict"
+        secure: true,
+        sameSite: "None"
     });
     res.clearCookie("accessToken", {
         httpOnly: true,
-        secure: false,
-        sameSite: "Strict"
+        secure: true,
+        sameSite: "None"
     });
 
     res.json({ message: "Logged out successfully." });
@@ -218,7 +220,8 @@ exports.requestResetPassword = async (req, res) => {
 
     // link that will be sent to the user’s email.
     // points to the front end reset password form
-    const resetLink = `http://localhost:5173/reset-password?token=${resetToken}`;
+    const frontendUrl = process.env.FRONTEND_URL
+    const resetLink = `${frontendUrl}/reset-password?token=${resetToken}`;
 
     // Send the email and its content
     const mailOptions = {
@@ -233,7 +236,18 @@ exports.requestResetPassword = async (req, res) => {
     };
 
     try {
-        await transporter.sendMail(mailOptions);
+        await resend.emails.send({
+            from: 'noreply@codifica.it.com',
+            to: email,
+            subject: "Password Reset Request",
+            html: `
+            <h2>Password Reset Request</h2>
+            <p>You requested a password reset for your Codifica account.</p>
+            <p>Click the button below to reset your password. This link will expire in 15 minutes:</p>
+            <a href="${resetLink}">Reset Password</a>
+            <p>If you didn’t request this, you can safely ignore this email.</p>
+            `,
+        })
         res.json({ message: "Reset link sent. It will expire in 15 minutes." });
     } catch (error) {
         console.error("Error sending reset email:", error);
