@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../../../../tailwind.css";
 import mailIcon from "../../../../assets/mail.png";
 import axios from "axios";
-export default function ProfileSection() {
+export default function ProfileSection(props) {
   const [userData, setUserData] = useState(null);
 
   useEffect(() => {});
@@ -18,8 +18,8 @@ export default function ProfileSection() {
               className="w-20 size-fit hover:opacity-40 transition ease-in-out cursor-pointer"
             />
             <div className="items-center flex flex-col mt-5">
-              <h1 className="font-bold text-xl">NAME</h1>
-              <h2 className="font-semibold text-lg">USERNAME</h2>
+              <h1 className="font-bold text-xl">{props.name}</h1>
+              <h2 className="font-semibold text-lg">{props.userName}</h2>
             </div>
           </div>
         </div>

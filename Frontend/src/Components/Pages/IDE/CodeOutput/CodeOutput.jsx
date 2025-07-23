@@ -2,13 +2,20 @@ import React from "react";
 import "../../../../tailwind.css";
 import { useState } from "react";
 
-export default function CodeOutput({ language, output, error, loading }) {
-  console.log("Language", language);
-  console.log("Output", output);
-  console.log("Error", error);
-  console.log("loading", loading);
+export default function CodeOutput({
+  language,
+  output,
+  error,
+  loading,
+  onInputChange,
+}) {
+  // console.log("Language", language);
+  // console.log("Output", output);
+  // console.log("Error", error);
+  // console.log("loading", loading);
 
   const [activeButton, setActiveButton] = useState("button1");
+  const [input, setInput] = useState("");
 
   const handleButton1 = () => {
     setActiveButton("button1");
@@ -16,6 +23,11 @@ export default function CodeOutput({ language, output, error, loading }) {
 
   const handleButton2 = () => {
     setActiveButton("button2");
+  };
+
+  const handleInputChange = (e) => {
+    setInput(e.target.value);
+    onInputChange(e.target.value);
   };
 
   return (
@@ -42,7 +54,7 @@ export default function CodeOutput({ language, output, error, loading }) {
                   : "text-white bg-zinc-800"
               }`}
             >
-              <span class="material-icons">input</span>
+              <span className="material-icons">input</span>
               Input
             </button>
           </div>
@@ -100,7 +112,7 @@ export default function CodeOutput({ language, output, error, loading }) {
                   : "bg-zinc-800 text-white"
               }`}
             >
-              <span class="material-icons">code</span>
+              <span className="material-icons">code</span>
               Producción
             </button>
             <button
@@ -111,7 +123,7 @@ export default function CodeOutput({ language, output, error, loading }) {
                   : "text-white bg-zinc-800"
               }`}
             >
-              <span class="material-icons">input</span>
+              <span className="material-icons">input</span>
               Aporte
             </button>
           </div>
@@ -153,8 +165,10 @@ export default function CodeOutput({ language, output, error, loading }) {
           ) : (
             <div className="flex flex-col h-full">
               <textarea
+                value={input}
                 placeholder="Enter your code here..."
                 className="bg-zinc-900 text-white placeholder-gray-400 w-full h-88 rounded-b-lg p-4 border-0 outline-none resize-none rounded-none font-mono leading-relaxed"
+                onChange={handleInputChange}
               />
             </div>
           )}
