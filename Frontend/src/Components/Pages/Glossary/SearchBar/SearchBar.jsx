@@ -6,32 +6,53 @@ function SearchBar({ language, search, setSearch }) {
     e.preventDefault();
     console.log("Searching for:", search);
   };
+
+  const handleClear = (e) => {
+    e.preventDefault();
+    console.log("Clearing");
+    setSearch("");
+  };
+
   return (
     <>
       <div className="flex flex-col items-center -justify-center p-10 border-1 border-black bg-white shadow-lg rounded-lg m-10 w-4/5 max-w-[1150px]">
-        <form
-          id="search-bar"
-          onSubmit={handleSubmit}
-          className="flex flex-row w-2/3 gap-2"
-        >
-          <input
-            type="text"
-            placeholder="Search..."
-            onChange={(e) => setSearch(e.target.value)}
-            value={search}
-            name="Search"
-            className="border-1 border-black p-2 rounded-lg flex-1"
-          />
-          {language === "Español" ? (
+        <div className="flex flex-row w-2/3 gap-2">
+          <form
+            id="search-bar"
+            onSubmit={handleSubmit}
+            className="flex flex-row gap-2 flex-1"
+          >
+            <input
+              type="text"
+              placeholder="Search..."
+              onChange={(e) => setSearch(e.target.value)}
+              value={search}
+              name="Search"
+              className="border-1 border-black p-2 rounded-lg flex-1"
+            />
+            {language === "Español" ? (
+              <button className="p-2 bg-purple-500 text-white rounded-lg hover:bg-purple-700">
+                Buscar
+              </button>
+            ) : (
+              <button className="p-2 bg-purple-500 text-white rounded-lg hover:bg-purple-700">
+                Search
+              </button>
+            )}
+          </form>
+          {language === "Espanol" ? (
             <button className="p-2 bg-purple-500 text-white rounded-lg hover:bg-purple-700">
-              Buscar
+              Borrar
             </button>
           ) : (
-            <button className="p-2 bg-purple-500 text-white rounded-lg hover:bg-purple-700">
-              Search
+            <button
+              onClick={handleClear}
+              className="p-2 bg-purple-500 text-white rounded-lg hover:bg-purple-700"
+            >
+              Clear
             </button>
           )}
-        </form>
+        </div>
         {language === "Español" ? (
           <div className="flex flex-row gap-4 mt-4">
             <button className="p-2 bg-blue-500 rounded-lg hover:bg-purple-700 text-white">
