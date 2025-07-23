@@ -15,8 +15,8 @@ export default function HomeNavBar({
   const { user, logout } = useAuth();
 
   useEffect(() => {
-    console.log(user);
-    console.log(logout);
+    // console.log(user);
+    // console.log(logout);
   });
 
   const handleLogin = () => {

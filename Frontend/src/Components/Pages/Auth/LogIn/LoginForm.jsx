@@ -5,17 +5,20 @@ import "../../../../tailwind.css";
 import LoginInput from "./LoginInput";
 import PasswordModal from "../PasswordModal";
 import { useAuth } from "../../../../Context/AuthContext";
-import {toast, Bounce} from 'react-toastify';
-import {NotifSuccess, NotifError} from "../../../Common/ToastNotifs/ToastNotifs";
+import { toast, Bounce } from "react-toastify";
+import {
+  NotifSuccess,
+  NotifError,
+} from "../../../Common/ToastNotifs/ToastNotifs";
 
 function LoginForm() {
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
-    const [email, setEmail] = useState("");
-    const [modalOpen, setModal] = useState(false);
-    const { setUser } = useAuth();
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [modalOpen, setModal] = useState(false);
+  const { setUser } = useAuth();
 
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
     const handleSignUp = ()=> {
         navigate("/signup");

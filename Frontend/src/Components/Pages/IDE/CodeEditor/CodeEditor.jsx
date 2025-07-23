@@ -18,6 +18,7 @@ export default function CodeEditor({
   onResult,
   onError,
   onRun,
+  onInput,
 }) {
   const editorRef = useRef(null);
   const viewRef = useRef(null);
@@ -42,7 +43,7 @@ export default function CodeEditor({
           {
             source_code: formattedCode, // Changed from 'code' to 'source_code'
             language_name: "python", // Changed from 'language' to 'language_name'
-            stdin: "", // Added stdin field
+            stdin: onInput, // Added stdin field
             timeout: 10000,
           }
         );
