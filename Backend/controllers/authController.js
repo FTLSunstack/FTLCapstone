@@ -84,8 +84,9 @@ exports.signup = async (req, res) => {
             data: { username, email, name, passwordHash: hashedPassword }
         });
 
-        const token = generateToken(newUser);
-            res.cookie("accessToken", accessToken, {
+        const accessToken = generateToken(user);
+        const refreshToken = generateRefreshToken(user);
+        res.cookie("accessToken", accessToken, {
             // this means that it cannot be accessed using javascript
             httpOnly: true,      
             // allows http
@@ -110,7 +111,7 @@ exports.signup = async (req, res) => {
             maxAge: 2 * 24 * 60 * 60 * 1000 
         });
 
-        res.status(201).json({ user: { userId: newUser.userId, username: newUser.username }, token, message: "User created successfully!" });
+        res.status(201).json({ user: { userId: newUser.userId, username: newUser.username }, accessToken, message: "User created successfully!" });
     }
     catch(error) {
         console.error(error)
