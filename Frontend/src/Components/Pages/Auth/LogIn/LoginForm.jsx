@@ -34,7 +34,7 @@ function LoginForm() {
         try {
             console.log({ username, password })
             
-            const response = await axios.post(`${VITE_BACKEND_URL}/auth/login`, { username, password }, { withCredentials: true });
+            const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/auth/login`, { username, password }, { withCredentials: true });
             console.log("Login successful!", response.data);
             NotifSuccess("login");
             setUser(response.data.user);

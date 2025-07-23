@@ -21,7 +21,7 @@ function ResetPasswordPage() {
         e.preventDefault();
         try {
             console.log("Reset token:", token);
-            const response = await axios.post(`${VITE_BACKEND_URL}/auth/reset-password`, { token, newPassword: password });
+            const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/auth/reset-password`, { token, newPassword: password });
             console.log("Reset Password successful!", response.data);
             NotifSuccess("Reset Password");
             setTimeout(() => {

@@ -38,7 +38,7 @@ export default function CodeEditor({
 
       try {
         const response = await axios.post(
-          `${process.env.VITE_BACKEND_URL}/api/run-code`,
+          `${import.meta.env.VITE_BACKEND_URL}/api/run-code`,
           {
             source_code: formattedCode, // Changed from 'code' to 'source_code'
             language_name: "python", // Changed from 'language' to 'language_name'

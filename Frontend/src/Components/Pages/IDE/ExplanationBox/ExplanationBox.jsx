@@ -24,7 +24,7 @@ export default function ExplanationBox({ language, codeExplanation }) {
       setLoading(true);
 
       const response = await axios.post(
-        `${process.env.VITE_BACKEND_URL}/explainer/explain-code`,
+        `${import.meta.env.VITE_BACKEND_URL}/explainer/explain-code`,
         {
           codeSnippet: code,
           language: "python",

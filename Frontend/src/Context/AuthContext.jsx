@@ -12,7 +12,7 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const res = await axios.get(`${process.env.VITE_BACKEND_URL}/auth/me`, {
+        const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/auth/me`, {
           withCredentials: true,
         });
         // get the user info
@@ -29,7 +29,7 @@ export const AuthProvider = ({ children }) => {
   const logout = async () => {
     try {
       await axios.post(
-        `${process.env.VITE_BACKEND_URL}/auth/logout`,
+        `${import.meta.env.VITE_BACKEND_URL}/auth/logout`,
         {},
         { withCredentials: true }
       );
