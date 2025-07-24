@@ -13,15 +13,14 @@ function LoginPage() {
 
   return (
     <>
-      <div className="min-h-screen h-14 bg-gradient-to-r from-violet-600 to-blue-800">
+      <div className="min-h-screen bg-gradient-to-tl from-purple-700 via-violet-600 to-blue-600">
         <button
           onClick={handleBack}
-          className="mt-8 ml-10 mb-8 py-2 px-4 font-semibold rounded-lg shadow-md text-black bg-white hover:bg-black hover:text-white hover:cursor-pointer transition ease-in-out"
+          className="px-5 py-2 border border-white/40 text-white rounded-md hover:bg-white/20 backdrop-blur-md hover:cursor-pointer transition ease-in-out drop-shadow-lg m-10"
         >
-          {" "}
           Back Home
         </button>
-        <div className="flex flex-col opacity-100 items-center">
+        <div className="flex flex-col opacity-100 items-center min-h-[calc(100vh-140px)] justify-center">
           <div className="mt-10">
             <div className="flex flex-col items-center justify-center w-screen mb-15">
               <LoginForm></LoginForm>
