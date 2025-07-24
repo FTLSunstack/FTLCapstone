@@ -8,6 +8,7 @@ function IDEContainer({ language, onCodeExplanation }) {
   const [output, setOutput] = useState("");
   const [error, setError] = useState("");
   const [result, setResult] = useState(null);
+  const [userInput, setUserInput] = useState("");
 
   const handleExplanation = (code) => {
     if (onCodeExplanation) onCodeExplanation(code);
@@ -23,6 +24,7 @@ function IDEContainer({ language, onCodeExplanation }) {
           onError={setError}
           onResult={setResult}
           onRun={handleExplanation}
+          onInput={userInput}
         />
         <CodeOutput
           language={language}
@@ -30,6 +32,7 @@ function IDEContainer({ language, onCodeExplanation }) {
           output={output}
           error={error}
           result={result}
+          onInputChange={setUserInput}
         />
       </div>
     </>

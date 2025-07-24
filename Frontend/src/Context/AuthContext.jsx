@@ -17,6 +17,7 @@ export const AuthProvider = ({ children }) => {
         });
         // get the user info
         setUser(res.data.user);
+        console.log(res.data);
       } catch (err) {
         // not logged in
         setUser(null);
