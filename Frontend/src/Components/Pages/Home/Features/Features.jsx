@@ -48,7 +48,7 @@ function Features({ language }) {
             language. Our platform makes programming accessible for everyone,
             regardless of their proficiency in English.
           </h2>
-          <div className="flex flex-row justify-center my-10">
+          <div className="flex flex-wrap sm:flex-nowrap justify-center my-10">
             <FeatureCard
               title="Integrated IDE"
               description="Our integrated IDE allows you to write, run, and test code directly from your browser. 
