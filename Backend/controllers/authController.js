@@ -1,12 +1,17 @@
-require('dotenv').config()
+const FormData = require("form-data");
+const Mailgun = require("mailgun.js");
+require('dotenv').config();
 const prisma = require("../db");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken")
 const crypto = require("crypto");
-const transporter = require("../nodemailer");
-const resend = require('../resend');
 
-
+const mailgun = new Mailgun(FormData);
+const mg = mailgun.client({
+  username: "api",
+  key: process.env.MAILGUN_API_KEY,
+  // url: "https://api.eu.mailgun.net"  // only if EU domain
+});
 
 // create the jwt token
 const generateToken = (user) => {
@@ -250,29 +255,33 @@ exports.requestResetPassword = async (req, res) => {
 
     // Send the email and its content
     const mailOptions = {
-        from: '"Codifica Support" <codificaftl@gmail.com>', // sender address
+        from: '"Codifica Support" <support@codifica.it.com>', // sender address
         to: email,
-        subject: "Password Reset Request",
+        subject: "Reset your Codifica password securely",
         html: `
-        <p>You requested a password reset.</p>
-        <p>Click this link to reset your password. The link is valid for 15 minutes:</p>
-        <a href="${resetLink}">${resetLink}</a>
+        <div style="font-family: Arial, sans-serif; color: #333; line-height: 1.6; padding: 20px;">
+        <h2 style="color: #4f46e5;">Codifica Password Reset</h2>
+        <p>Hi there,</p>
+        <p>We received a request to reset your password for your Codifica account.</p>
+        <p>To reset your password, please click the button below. This link is valid for 15 minutes:</p>
+        <p>
+            <a href="${resetLink}" style="display: inline-block; background-color: #4f46e5; color: #fff; padding: 10px 20px; text-decoration: none; border-radius: 4px;">
+            Reset Password
+            </a>
+        </p>
+        <p>Or copy and paste this link into your browser:</p>
+        <p style="word-break: break-all;">${resetLink}</p>
+        <p>If you didn’t request a password reset, please ignore this email. Your password will remain unchanged.</p>
+        'h:List-Unsubscribe': '<mailto:unsubscribe@codifica.it.com?subject=unsubscribe>'
+        <hr style="margin: 30px 0;" />
+        <p style="font-size: 12px; color: #999;">This message was sent from Codifica. If you have any questions, reply to this email. Please pls pls dont send to spam i am making a project and sending them to myself pls </p>
+        </div>
         `,
     };
 
     try {
-        await resend.emails.send({
-            from: 'noreply@codifica.it.com',
-            to: email,
-            subject: "Password Reset Request",
-            html: `
-            <h2>Password Reset Request</h2>
-            <p>You requested a password reset for your Codifica account.</p>
-            <p>Click the button below to reset your password. This link will expire in 15 minutes:</p>
-            <a href="${resetLink}">Reset Password</a>
-            <p>If you didn’t request this, you can safely ignore this email.</p>
-            `,
-        })
+        const data = await mg.messages.create(process.env.MAILGUN_DOMAIN, mailOptions);
+        console.log("Mailgun response:", data);
         res.json({ message: "Reset link sent. It will expire in 15 minutes." });
     } catch (error) {
         console.error("Error sending reset email:", error);

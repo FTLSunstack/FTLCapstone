@@ -4,6 +4,7 @@ import "../../../tailwind.css";
 import axios from "axios";
 import Footer from "../../Common/Footer/Footer";
 import ResetPasswordInput from "./ResetPasswordInput";
+import { NotifError, NotifSuccess } from "../../Common/ToastNotifs/ToastNotifs";
 
 function ResetPasswordPage() {
     const [password, setPassword] = useState("");
