@@ -26,7 +26,10 @@ function HomePage({ language, setLanguage }) {
         onScrollToGetStarted={() => scrollTo(getStartedRef)}
       />
       <div className="flex flex-col items-center justify-center min-w-screen">
-        <Intro language={language} />
+        <Intro
+          language={language}
+          scrollToFeatures={() => scrollTo(featuresRef)}
+        />
         <div ref={featuresRef}>
           <Features language={language} />
         </div>

@@ -5,7 +5,7 @@ function Mission({ language }) {
   return (
     <>
       {language === "Español" ? (
-        <div className="flex flex-col items-center justify-center w-screen bg-[#011939] p-20">
+        <div className="flex flex-col items-center justify-center w-screen bg-gradient-to-tl from-purple-700 via-violet-600 to-blue-600 p-20">
           <h1 className="text-white text-4xl font-bold pb-8 text-center">
             Nuestra Misión
           </h1>
@@ -20,7 +20,7 @@ function Mission({ language }) {
           </h2>
         </div>
       ) : (
-        <div className="flex flex-col items-center justify-center w-screen bg-[#011939] p-20">
+        <div className="flex flex-col items-center justify-center w-screen bg-gradient-to-tl from-purple-700 via-violet-600 to-blue-600 p-20">
           <h1 className="text-white text-4xl font-bold pb-8 text-center">
             Our Mission
           </h1>
