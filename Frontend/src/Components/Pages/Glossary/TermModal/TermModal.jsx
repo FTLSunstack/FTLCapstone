@@ -30,14 +30,14 @@ function TermModal({ language, onClose, term }) {
                 <div className="text-gray-700 text-lg my-4">
                   <ReactMarkdown>{term.es.def}</ReactMarkdown>
                 </div>
-                <div className="text-black text-lg bg-gray-300 p-4 rounded-lg my-4 min-w-100">
+                {/* <div className="text-black text-lg bg-gray-300 p-4 rounded-lg my-4">
                   <p className="font-bold text-purple-700">
                     Ejemplo en Python:
                   </p>
                   <p className="bg-gray-100 p-2 rounded-lg mt-4">
                     {term.example_es}
                   </p>
-                </div>
+                </div> */}
               </div>
             )}
           </div>
@@ -62,12 +62,12 @@ function TermModal({ language, onClose, term }) {
             <div className="text-gray-700 text-lg my-4">
               <ReactMarkdown>{term.en.def}</ReactMarkdown>
             </div>
-            <div className="text-black text-lg bg-gray-300 p-4 rounded-lg my-4 min-w-100">
+            {/* <div className="text-black text-lg bg-gray-300 p-4 rounded-lg my-4">
               <p className="font-bold text-purple-700">Example in Python:</p>
               <p className="bg-gray-100 p-2 rounded-lg mt-4">
                 {term.example_en}
               </p>
-            </div>
+            </div> */}
           </div>
         </div>
       )}

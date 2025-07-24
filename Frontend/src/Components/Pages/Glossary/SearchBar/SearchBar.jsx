@@ -16,7 +16,7 @@ function SearchBar({ language, search, setSearch }) {
   return (
     <>
       <div className="flex flex-col items-center -justify-center p-10 border-1 border-black bg-white shadow-lg rounded-lg m-10 w-4/5 max-w-[1150px]">
-        <div className="flex flex-row w-2/3 gap-2">
+        <div className="flex flex-row w-full sm:w-2/3 gap-2">
           <form
             id="search-bar"
             onSubmit={handleSubmit}
@@ -40,8 +40,11 @@ function SearchBar({ language, search, setSearch }) {
               </button>
             )}
           </form>
-          {language === "Espanol" ? (
-            <button className="p-2 bg-purple-500 text-white rounded-lg hover:bg-purple-700">
+          {language === "Español" ? (
+            <button
+              onClick={handleClear}
+              className="p-2 bg-purple-500 text-white rounded-lg hover:bg-purple-700"
+            >
               Borrar
             </button>
           ) : (
@@ -53,7 +56,7 @@ function SearchBar({ language, search, setSearch }) {
             </button>
           )}
         </div>
-        {language === "Español" ? (
+        {/* {language === "Español" ? (
           <div className="flex flex-row gap-4 mt-4">
             <button className="p-2 bg-blue-500 rounded-lg hover:bg-purple-700 text-white">
               Filtro 1
@@ -89,7 +92,7 @@ function SearchBar({ language, search, setSearch }) {
               Filter 5
             </button>
           </div>
-        )}
+        )} */}
       </div>
     </>
   );
