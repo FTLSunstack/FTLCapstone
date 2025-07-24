@@ -28,7 +28,7 @@ function AboutUs({ language }) {
               importancia de eliminar las barreras lingüísticas en la educación
               tecnológica.
             </h2>
-            <div className="flex flex-row justify-center mt-10">
+            <div className="flex flex-wrap justify-center mt-10">
               <CreatorCard
                 name="Joanna Echeverri Porras"
                 description="Desarrolladora Full Stack"
@@ -63,7 +63,7 @@ function AboutUs({ language }) {
               power of inclusive learning and the importance of breaking down
               language barriers in tech education.
             </h2>
-            <div className="flex flex-row justify-center mt-10">
+            <div className="flex flex-wrap justify-center mt-10">
               <CreatorCard
                 name="Joanna Echeverri Porras"
                 description="Full Stack Developer"
