@@ -1,4 +1,5 @@
 import { useState } from "react";
+import ReactMarkdown from "react-markdown";
 import "../../../../tailwind.css";
 
 function TermModal({ language, onClose, term }) {
@@ -25,8 +26,10 @@ function TermModal({ language, onClose, term }) {
                 <h1 className="text-black font-bold text-2xl">
                   {term.es.term}
                 </h1>
-                <h2 className="text-xl my-4">Traducción: {term.es.term}</h2>
-                <p className="text-gray-700 text-lg my-4">{term.es.def}</p>
+                <h2 className="text-xl my-4">Traducción: {term.en.term}</h2>
+                <div className="text-gray-700 text-lg my-4">
+                  <ReactMarkdown>{term.es.def}</ReactMarkdown>
+                </div>
                 <div className="text-black text-lg bg-gray-300 p-4 rounded-lg my-4 min-w-100">
                   <p className="font-bold text-purple-700">
                     Ejemplo en Python:
@@ -56,7 +59,9 @@ function TermModal({ language, onClose, term }) {
             ) : (
               <h2 className="text-xl my-4">Translation: {term.es.term}</h2>
             )}
-            <p className="text-gray-700 text-lg my-4">{term.en.def}</p>
+            <div className="text-gray-700 text-lg my-4">
+              <ReactMarkdown>{term.en.def}</ReactMarkdown>
+            </div>
             <div className="text-black text-lg bg-gray-300 p-4 rounded-lg my-4 min-w-100">
               <p className="font-bold text-purple-700">Example in Python:</p>
               <p className="bg-gray-100 p-2 rounded-lg mt-4">
