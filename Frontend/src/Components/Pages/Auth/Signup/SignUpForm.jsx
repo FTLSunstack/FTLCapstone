@@ -16,6 +16,7 @@ function SignUpForm() {
     const navigate = useNavigate();
     const { setUser } = useAuth();
 
+
     
     const handleBack = () => {
         navigate("/");
