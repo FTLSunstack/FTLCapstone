@@ -48,6 +48,7 @@ function NavBar({ language, setLanguage }) {
   const handleChangeLanguage = () => {
     if (language === "English") {
       setLanguage("Español");
+      
     } else {
       setLanguage("English");
     }
