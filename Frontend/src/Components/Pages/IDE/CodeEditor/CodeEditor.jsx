@@ -2,6 +2,8 @@ import React from "react";
 import "../../../../tailwind.css";
 
 import { EditorView, basicSetup } from "codemirror";
+
+import { barf } from "thememirror";
 import { python } from "@codemirror/lang-python";
 import { useEffect, useRef, useState } from "react";
 import { autocompletion, completionKeymap } from "@codemirror/autocomplete";
@@ -103,53 +105,6 @@ export default function CodeEditor({
         { label: "None", type: "keyword", info: "None value" },
       ];
 
-      const customTheme = EditorView.theme({
-        "&": {
-          color: "#e5e5e5",
-          backgroundColor: "#1a1a1a",
-          borderRadius: "0.5rem",
-          height: "600px",
-          overflow: "hidden",
-        },
-        ".cm-content": {
-          padding: "10px",
-          color: "#e5e5e5",
-        },
-        ".cm-focused": {
-          outline: "none",
-        },
-        ".cm-editor": {
-          fontSize: "12px",
-        },
-        ".cm-scroller": {
-          fontFamily: "'Fira Code', 'JetBrains Mono', 'Consolas', monospace",
-        },
-        ".cm-lineNumbers": {
-          color: "#888888",
-          backgroundColor: "#2a2a2a",
-          borderTopLeftRadius: "0.5rem", // Add this for top-left corner
-          borderBottomLeftRadius: "0.5rem", // Add this for bottom-left corner
-        },
-        ".cm-lineNumbers .cm-gutterElement": {
-          color: "white",
-        },
-        ".cm-activeLine": {
-          backgroundColor: "rgba(255, 255, 255, 0.05)",
-        },
-        ".cm-activeLineGutter": {
-          backgroundColor: "rgba(52, 52, 52, 0.08)",
-        },
-        ".cm-gutters": {
-          backgroundColor: "#2a2a2a",
-          borderRight: "1px solid #3a3a3a",
-          borderTopLeftRadius: "0.5rem", // Add this for top-left corner
-          borderBottomLeftRadius: "0.5rem", // Add this for bottom-left corner
-        },
-        ".cm-gutter .cm-foldGutter": {
-          backgroundColor: "black",
-        },
-        // ... rest of your theme remains the same
-      });
       // Custom autocompletion
       const pythonAutocompletion = autocompletion({
         override: [
@@ -168,13 +123,34 @@ export default function CodeEditor({
         ],
       });
 
+      const editorLayoutTheme = EditorView.theme({
+        "&": {
+          height: "100%", // Make the editor take 100% height of its parent
+          overflow: "hidden", // Crucial for rounded corners to hide overflowing content
+
+          borderRadius: "0.5rem",
+        },
+        ".cm-scroller": {
+          overflow: "auto", // Ensure scrolling works within the fixed height
+        },
+        // If the line numbers or gutters are not rounded correctly, you might need these
+        ".cm-gutters": {
+          borderTopLeftRadius: "0.5rem",
+          borderBottomLeftRadius: "0.5rem",
+        },
+        ".cm-content": {
+          fontSize: "15px",
+        },
+      });
+
       viewRef.current = new EditorView({
         doc: initialCode,
         extensions: [
           basicSetup, // This automatically adds line numbers, syntax highlighting, etc.
           python(),
           pythonAutocompletion,
-          customTheme,
+          barf,
+          editorLayoutTheme,
           keymap.of([indentWithTab, ...completionKeymap]), // Tab for indent, Enter/Tab for completions
         ],
         parent: editorRef.current,
