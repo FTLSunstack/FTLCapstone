@@ -113,7 +113,7 @@ const AnimatedBackground = ({ language = "English", goDown }) => {
                 mientras codificas!
               </h2>
             </>
-            <div className="flex flex-col justify-end items-center h-full">
+            <div className="flex flex-col justify-end items-center h-full max-h-60">
               <div
                 className="bg-white opacity-70 p-5 size-20 flex flex-row justify-center items-center rounded-full animate-bounce cursor-pointer hover:bg-violet-300 transition ease-in-out [animation-duration:1.5s]"
                 onClick={goDown}
@@ -133,7 +133,7 @@ const AnimatedBackground = ({ language = "English", goDown }) => {
                 translations, and AI assistance in real-time as you code!
               </h2>
             </>
-            <div className="flex flex-col justify-end items-center h-full">
+            <div className="flex flex-col justify-end items-center h-full max-h-60">
               <div
                 className="bg-white opacity-70 p-5 size-20 flex flex-row justify-center items-center rounded-full animate-bounce cursor-pointer hover:bg-violet-300 transition ease-in-out [animation-duration:1.5s]"
                 onClick={goDown}
