@@ -11,7 +11,7 @@ function GetStarted({ language }) {
     <>
       {language === "Español" ? (
         <div className="flex flex-col items-center justify-center w-screen bg-gradient-to-r from-blue-500 to-purple-500 px-8 py-20 sm:p-20 overflow-x-hidden">
-          <h1 className="text-white text-4xl font-bold pb-8 text-center">
+          <h1 className="text-white text-4xl font-bold pb-8 text-center px-10">
             ¿Listo para programar?
           </h1>
           <h2 className="text-white text-2xl text-center">
@@ -27,7 +27,7 @@ function GetStarted({ language }) {
         </div>
       ) : (
         <div className="flex flex-col items-center justify-center w-screen bg-gradient-to-r from-blue-500 to-purple-500 px-8 py-20 sm:p-20 overflow-x-hidden">
-          <h1 className="text-white text-4xl font-bold pb-8 text-center">
+          <h1 className="text-white text-4xl font-bold pb-8 text-center px-10">
             Ready to Code?
           </h1>
           <h2 className="text-white text-2xl text-center">

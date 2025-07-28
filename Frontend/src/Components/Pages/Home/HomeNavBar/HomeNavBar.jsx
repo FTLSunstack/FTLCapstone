@@ -47,41 +47,43 @@ export default function HomeNavBar({
     <>
       {language === "Español" ? (
         <div>
-          <div className="absolute top-0 left-0 right-0 z-50 p-5 flex flex-row justify-between items-center bg-transparent backdrop-blur-sm">
-            <h1 className="text-white font-bold text-3xl hover:cursor-pointer hover:opacity-70 transition ease-in-out drop-shadow-lg">
-              Codifica
-            </h1>
+          <div className="absolute top-0 left-0 right-0 z-50 p-5 xl:grid xl:grid-cols-3 items-center bg-transparent backdrop-blur-sm">
+            <div className="flex flex-row justify-between">
+              <h1 className="text-white font-bold text-3xl hover:cursor-pointer hover:opacity-70 transition ease-in-out drop-shadow-lg">
+                Codifica
+              </h1>
 
-            <div className="flex flex-row gap-8">
-              <button
-                onClick={handleChangeLanguage}
-                className="xl:hidden bg-white/20 backdrop-blur-md px-5 py-2 rounded-md hover:cursor-pointer w-24 text-white hover:bg-white/30 transition ease-in-out border border-white/30 drop-shadow-lg"
-              >
-                {language === "Español" ? "English" : "Español"}
-              </button>
-              {/* Hamburger Icon (visible only on mobile) */}
-              <button
-                onClick={() => setIsOpen(!isOpen)}
-                className="xl:hidden block focus:outline-none"
-              >
-                <svg
-                  className="w-6 h-6 text-violet-600"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
+              <div className="flex flex-row gap-8">
+                <button
+                  onClick={handleChangeLanguage}
+                  className="xl:hidden bg-white/20 backdrop-blur-md px-5 py-2 rounded-md hover:cursor-pointer w-24 text-white hover:bg-white/30 transition ease-in-out border border-white/30 drop-shadow-lg"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                </svg>
-              </button>
+                  {language === "Español" ? "English" : "Español"}
+                </button>
+                {/* Hamburger Icon (visible only on mobile) */}
+                <button
+                  onClick={() => setIsOpen(!isOpen)}
+                  className="xl:hidden block focus:outline-none"
+                >
+                  <svg
+                    className="w-6 h-6 text-violet-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M4 6h16M4 12h16M4 18h16"
+                    />
+                  </svg>
+                </button>
+              </div>
             </div>
 
             {user ? (
-              <div className="hidden xl:flex flex-row gap-10">
+              <div className="hidden xl:flex flex-row gap-10 justify-center">
                 <button
                   onClick={onScrollToFeatures}
                   className="text-lg text-white hover:opacity-50 transition ease-in-out cursor-pointer drop-shadow-md"
@@ -102,7 +104,7 @@ export default function HomeNavBar({
                 </button>
               </div>
             ) : (
-              <div className="hidden xl:flex flex-row gap-10 ml-60">
+              <div className="hidden xl:flex flex-row gap-10 justify-center">
                 <button
                   onClick={onScrollToFeatures}
                   className="text-lg text-white hover:opacity-70 transition ease-in-out cursor-pointer drop-shadow-md"
@@ -123,7 +125,7 @@ export default function HomeNavBar({
                 </button>
               </div>
             )}
-            <div className="hidden xl:flex flex-row space-x-5">
+            <div className="hidden xl:flex flex-row space-x-5 justify-self-end">
               <button
                 onClick={handleChangeLanguage}
                 className="bg-white/20 backdrop-blur-md px-5 py-2 rounded-md hover:cursor-pointer w-24 text-white hover:bg-white/30 transition ease-in-out border border-white/30 drop-shadow-lg"
@@ -161,7 +163,7 @@ export default function HomeNavBar({
 
           {/* Dropdown Menu for Mobile */}
           {isOpen && (
-            <div className="xl:hidden flex flex-col gap-4 px-5 py-4 bg-white/10 backdrop-blur-md text-white absolute top-[80px] left-0 right-0 z-40 shadow-lg">
+            <div className="xl:hidden flex flex-col items-center gap-4 px-5 py-4 bg-white/10 backdrop-blur-md text-white absolute top-[80px] left-0 right-0 z-40 shadow-lg">
               {user ? (
                 <>
                   <button onClick={onScrollToFeatures}>Características</button>
@@ -188,41 +190,43 @@ export default function HomeNavBar({
         </div>
       ) : (
         <div>
-          <div className="absolute top-0 left-0 right-0 z-50 p-5 flex flex-row justify-between items-center bg-transparent backdrop-blur-sm">
-            <h1 className="text-white font-bold text-3xl hover:cursor-pointer hover:opacity-70 transition ease-in-out drop-shadow-lg">
-              Codifica
-            </h1>
+          <div className="absolute top-0 left-0 right-0 z-50 p-5 xl:grid xl:grid-cols-3 items-center bg-transparent backdrop-blur-sm">
+            <div className="flex flex-row justify-between">
+              <h1 className="text-white font-bold text-3xl hover:cursor-pointer hover:opacity-70 transition ease-in-out drop-shadow-lg">
+                Codifica
+              </h1>
 
-            <div className="flex flex-row gap-8">
-              <button
-                onClick={handleChangeLanguage}
-                className="xl:hidden bg-white/20 backdrop-blur-md px-5 py-2 rounded-md hover:cursor-pointer w-24 text-white hover:bg-white/30 transition ease-in-out border border-white/30 drop-shadow-lg"
-              >
-                {language === "Español" ? "English" : "Español"}
-              </button>
-              {/* Hamburger Icon (visible only on mobile) */}
-              <button
-                onClick={() => setIsOpen(!isOpen)}
-                className="xl:hidden block focus:outline-none"
-              >
-                <svg
-                  className="w-6 h-6 text-violet-600"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
+              <div className="flex flex-row gap-8">
+                <button
+                  onClick={handleChangeLanguage}
+                  className="xl:hidden bg-white/20 backdrop-blur-md px-5 py-2 rounded-md hover:cursor-pointer w-24 text-white hover:bg-white/30 transition ease-in-out border border-white/30 drop-shadow-lg"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                </svg>
-              </button>
+                  {language === "Español" ? "English" : "Español"}
+                </button>
+                {/* Hamburger Icon (visible only on mobile) */}
+                <button
+                  onClick={() => setIsOpen(!isOpen)}
+                  className="xl:hidden block focus:outline-none"
+                >
+                  <svg
+                    className="w-6 h-6 text-violet-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M4 6h16M4 12h16M4 18h16"
+                    />
+                  </svg>
+                </button>
+              </div>
             </div>
 
             {user ? (
-              <div className="hidden xl:flex flex-row gap-10">
+              <div className="hidden xl:flex flex-row gap-10 justify-center">
                 <button
                   onClick={onScrollToFeatures}
                   className="text-lg text-white hover:opacity-70 cursor-pointer drop-shadow-md cursor-pointer"
@@ -243,7 +247,7 @@ export default function HomeNavBar({
                 </button>
               </div>
             ) : (
-              <div className="hidden xl:flex flex-row gap-10 ml-50">
+              <div className="hidden xl:flex flex-row gap-10 justify-center">
                 <button
                   onClick={onScrollToFeatures}
                   className="text-lg text-white hover:opacity-70 drop-shadow-md cursor-pointer"
@@ -264,7 +268,7 @@ export default function HomeNavBar({
                 </button>
               </div>
             )}
-            <div className="hidden xl:flex flex-row space-x-5">
+            <div className="hidden xl:flex flex-row space-x-5 justify-self-end">
               <button
                 onClick={handleChangeLanguage}
                 className="bg-white/20 backdrop-blur-md px-5 py-2 rounded-md hover:cursor-pointer w-24 text-white hover:bg-white/30 transition ease-in-out border border-white/30 drop-shadow-lg"
@@ -301,7 +305,7 @@ export default function HomeNavBar({
 
           {/* Dropdown Menu for Mobile */}
           {isOpen && (
-            <div className="xl:hidden flex flex-col gap-4 px-5 py-4 bg-white/10 backdrop-blur-md text-white absolute top-[80px] left-0 right-0 z-40 shadow-lg">
+            <div className="xl:hidden flex flex-col items-center gap-4 px-5 py-4 bg-white/10 backdrop-blur-md text-white absolute top-[80px] left-0 right-0 z-40 shadow-lg">
               {user ? (
                 <>
                   <button onClick={onScrollToFeatures}>Features</button>
