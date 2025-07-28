@@ -9,6 +9,10 @@ export default function ExplanationBox({ language, codeExplanation }) {
   const [liveFeedback, setLiveFeedback] = useState("");
   const [emptyCode, setEmptyCode] = useState(null);
 
+  useEffect(() => {
+    console.log(language);
+  });
+
   const handleCodeExplanation = async (code) => {
     // console.log("Code being sent:", code);
     // console.log("Type of code:", typeof code);
@@ -28,6 +32,7 @@ export default function ExplanationBox({ language, codeExplanation }) {
         {
           codeSnippet: code,
           language: "python",
+          humanLanguage: language,
         }
       );
       setExplanation(response.data.explanation.explanation);

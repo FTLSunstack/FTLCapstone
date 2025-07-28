@@ -17,7 +17,7 @@ function AboutUs({ language }) {
       {language === "Español" ? (
         <div>
           <Mission language={language} />
-          <div className="flex flex-col items-center justify-center w-screen bg-gray-50 p-20">
+          <div className="flex flex-col items-center justify-center w-full bg-gray-50 p-20">
             <h1 className="text-black text-4xl font-bold pb-8 text-center">
               Conoce a Nuestro Equipo
             </h1>
@@ -53,7 +53,7 @@ function AboutUs({ language }) {
       ) : (
         <div>
           <Mission language={language} />
-          <div className="flex flex-col items-center justify-center w-screen bg-gray-50 p-20">
+          <div className="flex flex-col items-center justify-center w-full bg-gray-50 p-20">
             <h1 className="text-black text-4xl font-bold pb-8 text-center">
               Meet Our Team
             </h1>

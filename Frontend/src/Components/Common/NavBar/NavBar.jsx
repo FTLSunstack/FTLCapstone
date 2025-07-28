@@ -48,6 +48,7 @@ function NavBar({ language, setLanguage }) {
   const handleChangeLanguage = () => {
     if (language === "English") {
       setLanguage("Español");
+      
     } else {
       setLanguage("English");
     }
@@ -105,7 +106,7 @@ function NavBar({ language, setLanguage }) {
               </button>
             </div>
 
-            <div className="hidden sm:flex flex-row gap-10">
+            <div className="hidden sm:flex flex-row gap-10 ml-20">
               <a
                 onClick={handleIdeClick}
                 className="text-lg text-gray-500 hover:text-black transition ease-in-out cursor-pointer text-center"
@@ -198,7 +199,7 @@ function NavBar({ language, setLanguage }) {
               </button>
             </div>
 
-            <div className="hidden sm:flex flex-row gap-10">
+            <div className="hidden sm:flex flex-row gap-10 ml-35">
               <a
                 onClick={handleIdeClick}
                 className="flex items-center justify-center text-lg text-gray-500 hover:text-black transition ease-in-out cursor-pointer text-center"

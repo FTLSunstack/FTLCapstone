@@ -6,7 +6,7 @@ function Features({ language }) {
   return (
     <>
       {language === "Español" ? (
-        <div className="flex flex-col items-center justify-center w-screen bg-gray-50 px-8 py-20 sm:p-20">
+        <div className="flex flex-col items-center justify-center w-full bg-gray-50 px-8 py-20 sm:p-20">
           <h1 className="text-black text-4xl font-bold pb-8 text-center px-10">
             ¿Por qué Codifica?
           </h1>
@@ -39,7 +39,7 @@ function Features({ language }) {
           </div>
         </div>
       ) : (
-        <div className="flex flex-col items-center justify-center w-screen bg-gray-50 px-8 py-20 sm:p-20">
+        <div className="flex flex-col items-center justify-center w-full bg-gray-50 px-8 py-20 sm:p-20">
           <h1 className="text-black text-4xl font-bold pb-8 text-center px-10">
             Why Codifica?
           </h1>
