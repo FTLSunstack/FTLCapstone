@@ -17,7 +17,7 @@ export default function ProfilePage() {
   }
 
   return (
-    <div>
+    <div className="min-h-screen pb-5">
       <ProfileNavBar />
       <ProfileSection name={user.name} userName={user.username} />
     </div>
