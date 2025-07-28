@@ -17,7 +17,7 @@ function HomePage({ language, setLanguage }) {
   };
 
   return (
-    <>
+    <div className="min-h-screen w-full overflow-x-hidden">
       <HomeNavBar
         language={language}
         setLanguage={setLanguage}
@@ -25,23 +25,28 @@ function HomePage({ language, setLanguage }) {
         onScrollToAboutUs={() => scrollTo(aboutUsRef)}
         onScrollToGetStarted={() => scrollTo(getStartedRef)}
       />
-      <div className="flex flex-col items-center justify-center min-w-screen">
+
+      <main className="w-full">
         <Intro
           language={language}
           scrollToFeatures={() => scrollTo(featuresRef)}
         />
-        <div ref={featuresRef}>
+
+        <section ref={featuresRef} className="w-full">
           <Features language={language} />
-        </div>
-        <div ref={aboutUsRef}>
+        </section>
+
+        <section ref={aboutUsRef} className="w-full">
           <AboutUs language={language} />
-        </div>
-        <div ref={getStartedRef}>
+        </section>
+
+        <section ref={getStartedRef} className="w-full">
           <GetStarted language={language} />
-        </div>
-      </div>
+        </section>
+      </main>
+
       <Footer language={language} />
-    </>
+    </div>
   );
 }
 
