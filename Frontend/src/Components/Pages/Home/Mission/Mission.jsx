@@ -9,7 +9,7 @@ function Mission({ language }) {
           <h1 className="text-white text-4xl font-bold pb-8 text-center">
             Nuestra Misión
           </h1>
-          <h2 className="text-gray-300 text-xl text-center px-20">
+          <h2 className="text-gray-300 text-xl text-center max-w-5xl">
             En Codifica, nuestra misión es hacer que la programación sea
             accesible para todos, sin importar el idioma. Creemos que el
             aprendizaje de la programación no debe estar limitado por barreras
@@ -24,7 +24,7 @@ function Mission({ language }) {
           <h1 className="text-white text-4xl font-bold pb-8 text-center">
             Our Mission
           </h1>
-          <h2 className="text-gray-300 text-xl text-center px-20">
+          <h2 className="text-gray-300 text-xl text-center max-w-5xl">
             At Codifica, our mission is to make programming accessible for
             everyone, regardless of language. We believe that learning to code
             should not be limited by language barriers. That's why we provide a

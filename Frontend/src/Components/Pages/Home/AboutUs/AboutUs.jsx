@@ -21,7 +21,7 @@ function AboutUs({ language }) {
             <h1 className="text-black text-4xl font-bold pb-8 text-center">
               Conoce a Nuestro Equipo
             </h1>
-            <h2 className="text-gray-500 text-xl text-center px-20">
+            <h2 className="text-gray-500 text-xl text-center max-w-5xl">
               Somos un equipo apasionado de desarrolladores y educadores
               comprometidos con hacer que la programación sea accesible para
               todos. Creemos en el poder del aprendizaje inclusivo y en la
@@ -57,7 +57,7 @@ function AboutUs({ language }) {
             <h1 className="text-black text-4xl font-bold pb-8 text-center">
               Meet Our Team
             </h1>
-            <h2 className="text-gray-500 text-xl text-center px-20">
+            <h2 className="text-gray-500 text-xl text-center max-w-5xl">
               We are a passionate team of developers and educators committed to
               making programming accessible for everyone. We believe in the
               power of inclusive learning and the importance of breaking down

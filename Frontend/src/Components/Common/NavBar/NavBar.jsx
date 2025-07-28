@@ -77,25 +77,33 @@ function NavBar({ language, setLanguage }) {
               Codifica
             </h1>
 
-            {/* Hamburger Icon (visible only on mobile) */}
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="sm:hidden block focus:outline-none"
-            >
-              <svg
-                className="w-6 h-6 text-violet-600"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
+            <div className="flex flex-row gap-8">
+              <button
+                onClick={handleChangeLanguage}
+                className="sm:hidden bg-violet-500 px-5 py-2 rounded-md hover:cursor-pointer w-24 text-white hover:bg-violet-700 transition ease-in-out"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              </svg>
-            </button>
+                {language}
+              </button>
+              {/* Hamburger Icon (visible only on mobile) */}
+              <button
+                onClick={() => setIsOpen(!isOpen)}
+                className="sm:hidden block focus:outline-none"
+              >
+                <svg
+                  className="w-6 h-6 text-violet-600"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
+                </svg>
+              </button>
+            </div>
 
             <div className="hidden sm:flex flex-row gap-10">
               <a
@@ -130,22 +138,22 @@ function NavBar({ language, setLanguage }) {
 
           {/* Dropdown Menu for Mobile */}
           {isOpen && (
-            <div className="sm:hidden flex flex-col items-start gap-4 px-5 py-4 bg-white shadow">
-              <a onClick={handleIdeClick} className="text-gray-700">
+            <div className="sm:hidden flex flex-col align-center gap-4 px-5 py-4 bg-white/10 backdrop-blur-md text-white absolute top-[80px] left-0 right-0 z-40 shadow-lg">
+              <a
+                onClick={handleIdeClick}
+                className="text-white hover:cursor-pointer text-center"
+              >
                 IDE
               </a>
-              <a onClick={handleGlossaryClick} className="text-gray-700">
+              <a
+                onClick={handleGlossaryClick}
+                className="text-white hover:cursor-pointer text-center"
+              >
                 Glossary
               </a>
               <button
-                onClick={handleChangeLanguage}
-                className="bg-violet-500 px-4 py-2 rounded-md text-white"
-              >
-                {language}
-              </button>
-              <button
                 onClick={handleUserLogout}
-                className="px-4 py-2 outline outline-violet-600 text-violet-600 rounded-md"
+                className="px-4 py-2 rounded-md bg-violet-500 text-white hover:cursor-pointer"
               >
                 Logout
               </button>
@@ -162,25 +170,33 @@ function NavBar({ language, setLanguage }) {
               Codifica
             </h1>
 
-            {/* Hamburger Icon (visible only on mobile) */}
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="sm:hidden block focus:outline-none"
-            >
-              <svg
-                className="w-6 h-6 text-violet-600"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
+            <div className="flex flex-row gap-8">
+              <button
+                onClick={handleChangeLanguage}
+                className="sm:hidden bg-violet-500 px-5 py-2 rounded-md hover:cursor-pointer w-24 text-white hover:bg-violet-700 transition ease-in-out"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              </svg>
-            </button>
+                {language}
+              </button>
+              {/* Hamburger Icon (visible only on mobile) */}
+              <button
+                onClick={() => setIsOpen(!isOpen)}
+                className="sm:hidden block focus:outline-none"
+              >
+                <svg
+                  className="w-6 h-6 text-violet-600"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
+                </svg>
+              </button>
+            </div>
 
             <div className="hidden sm:flex flex-row gap-10">
               <a
@@ -215,24 +231,24 @@ function NavBar({ language, setLanguage }) {
 
           {/* Dropdown Menu for Mobile */}
           {isOpen && (
-            <div className="sm:hidden flex flex-col items-start gap-4 px-5 py-4 bg-white shadow">
-              <a onClick={handleIdeClick} className="text-gray-700">
+            <div className="sm:hidden flex flex-col align-center gap-4 px-5 py-4 bg-white/10 backdrop-blur-md text-white absolute top-[80px] left-0 right-0 z-40 shadow-lg">
+              <a
+                onClick={handleIdeClick}
+                className="text-white hover:cursor-pointer text-center"
+              >
                 IDE
               </a>
-              <a onClick={handleGlossaryClick} className="text-gray-700">
+              <a
+                onClick={handleGlossaryClick}
+                className="text-white hover:cursor-pointer text-center"
+              >
                 Glosario
               </a>
               <button
-                onClick={handleChangeLanguage}
-                className="bg-violet-500 px-4 py-2 rounded-md text-white"
-              >
-                {language}
-              </button>
-              <button
                 onClick={handleUserLogout}
-                className="px-4 py-2 outline outline-violet-600 text-violet-600 rounded-md"
+                className="px-4 py-2 rounded-md bg-violet-500 text-white hover:cursor-pointer"
               >
-                Logout
+                Finalizar Sesión
               </button>
             </div>
           )}

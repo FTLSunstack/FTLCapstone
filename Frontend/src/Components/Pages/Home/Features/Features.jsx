@@ -6,16 +6,16 @@ function Features({ language }) {
   return (
     <>
       {language === "Español" ? (
-        <div className="flex flex-col items-center justify-center w-screen bg-gray-50 p-20">
-          <h1 className="text-black text-4xl font-bold pb-8 text-center">
+        <div className="flex flex-col items-center justify-center w-screen bg-gray-50 px-8 py-20 sm:p-20">
+          <h1 className="text-black text-4xl font-bold pb-8 text-center px-10">
             ¿Por qué Codifica?
           </h1>
-          <h2 className="text-gray-500 text-2xl text-center px-20">
+          <h2 className="text-gray-500 text-2xl text-center max-w-5xl px-10">
             Entendemos que aprender a codificar no debe estar limitado por el
             idioma. Nuestra plataforma hace que la programación sea accesible
             para todos, independientemente de su dominio del inglés.
           </h2>
-          <div className="flex flex-row justify-center my-10">
+          <div className="flex flex-wrap md:flex-nowrap justify-center my-10">
             <FeatureCard
               title="IDE Integrado"
               description="Nuestro IDE integrado te permite escribir, ejecutar y probar 
@@ -39,16 +39,16 @@ function Features({ language }) {
           </div>
         </div>
       ) : (
-        <div className="flex flex-col items-center justify-center w-screen bg-gray-50 p-20">
-          <h1 className="text-black text-4xl font-bold pb-8 text-center">
+        <div className="flex flex-col items-center justify-center w-screen bg-gray-50 px-8 py-20 sm:p-20">
+          <h1 className="text-black text-4xl font-bold pb-8 text-center px-10">
             Why Codifica?
           </h1>
-          <h2 className="text-gray-500 text-2xl text-center px-20">
+          <h2 className="text-gray-500 text-2xl text-center max-w-5xl px-10">
             We understand that learning to code should not be limited by
             language. Our platform makes programming accessible for everyone,
             regardless of their proficiency in English.
           </h2>
-          <div className="flex flex-wrap sm:flex-nowrap justify-center my-10">
+          <div className="flex flex-wrap md:flex-nowrap justify-center my-10">
             <FeatureCard
               title="Integrated IDE"
               description="Our integrated IDE allows you to write, run, and test code directly from your browser. 
