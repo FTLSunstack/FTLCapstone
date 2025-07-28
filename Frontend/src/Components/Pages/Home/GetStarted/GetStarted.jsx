@@ -10,7 +10,7 @@ function GetStarted({ language }) {
   return (
     <>
       {language === "Español" ? (
-        <div className="flex flex-col items-center justify-center w-screen bg-gradient-to-r from-blue-500 to-purple-500 p-20">
+        <div className="flex flex-col items-center justify-center w-screen bg-gradient-to-r from-blue-500 to-purple-500 p-20 overflow-x-hidden ">
           <h1 className="text-white text-4xl font-bold pb-8 text-center">
             ¿Listo para programar?
           </h1>
