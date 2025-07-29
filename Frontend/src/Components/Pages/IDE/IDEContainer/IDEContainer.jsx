@@ -16,7 +16,7 @@ function IDEContainer({ language, onCodeExplanation }) {
 
   return (
     <>
-      <div className="flex flex-col">
+      <div className="flex flex-col gap-5 justify-center">
         <CodeEditor
           language={language}
           onLoading={setIsLoading}

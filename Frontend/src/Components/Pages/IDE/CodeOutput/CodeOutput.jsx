@@ -33,14 +33,14 @@ export default function CodeOutput({
   return (
     <div>
       {language === "English" ? (
-        <div className="bg-zinc-900 h-100 w-[800px] m-8 rounded-lg">
-          <div className="flex flex-row gap-1 bg-zinc-800 rounded-lg p-1">
+        <div className="bg-zinc-900 w-full max-w-[900px] h-[400px] max-h-[500px] rounded-lg mx-auto">
+          <div className="flex gap-1 bg-zinc-800 rounded-lg p-1">
             <button
               onClick={handleButton1}
-              className={`py-2 px-5 cursor-pointer rounded-sm flex flex-row justify-center gap-2 ${
+              className={`py-2 px-5 cursor-pointer rounded-sm flex justify-center gap-2 transition ${
                 activeButton === "button1"
-                  ? "bg-zinc-600 text-green-500 border-b-3"
-                  : "bg-zinc-800 text-white"
+                  ? "bg-zinc-600 text-green-500 border-b-4 border-green-500"
+                  : "bg-zinc-800 text-white hover:bg-zinc-700"
               }`}
             >
               <span class="material-icons">code</span>
@@ -48,19 +48,21 @@ export default function CodeOutput({
             </button>
             <button
               onClick={handleButton2}
-              className={`py-2 px-5 cursor-pointer rounded-sm flex flex-row justify-center gap-2 ${
+              className={`py-2 px-5 cursor-pointer rounded-sm flex justify-center gap-2 transition ${
                 activeButton == "button2"
-                  ? "bg-zinc-600 text-sky-400 border-b-3"
-                  : "text-white bg-zinc-800"
+                  ? "bg-zinc-600 text-sky-400 border-b-4 border-sky-400"
+                  : "text-white bg-zinc-800 hover:bg-zinc-700"
               }`}
             >
               <span className="material-icons">input</span>
               Input
             </button>
           </div>
-          {activeButton === "button1" ? (
-            <div className="p-5">
-              <div className="mt-5">
+
+          {/* Tab Content */}
+          <div className="min-h-[250px] max-h-[400px] overflow-y-auto">
+            {activeButton === "button1" ? (
+              <div>
                 {loading ? (
                   <div className="flex items-center gap-2">
                     <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-yellow-400"></div>
@@ -81,7 +83,7 @@ export default function CodeOutput({
                     </pre>
                   </div>
                 ) : (
-                  <div className="flex flex-col items-center justify-center py-12">
+                  <div className="flex flex-col items-center justify-center py-20">
                     <span className="material-icons text-6xl text-gray-500 mb-4">
                       code_off
                     </span>
@@ -91,25 +93,27 @@ export default function CodeOutput({
                   </div>
                 )}
               </div>
-            </div>
-          ) : (
-            <div className="flex flex-col h-full">
-              <textarea
-                placeholder="Enter your code here..."
-                className="bg-zinc-900 text-white placeholder-gray-400 w-full h-88 rounded-b-lg p-4 border-0 outline-none resize-none rounded-none font-mono leading-relaxed"
-              />
-            </div>
-          )}
+            ) : (
+              <div className="flex flex-col h-full">
+                <textarea
+                  value={input}
+                  placeholder="Enter your code here..."
+                  className="bg-zinc-900 text-white placeholder-gray-400 w-full h-88 rounded-b-lg p-4 border-0 outline-none resize-none rounded-none font-mono leading-relaxed"
+                  onChange={handleInputChange}
+                />
+              </div>
+            )}
+          </div>
         </div>
       ) : (
-        <div className="bg-zinc-900 h-100 w-[800px] m-8 rounded-lg">
-          <div className="flex flex-row gap-1 bg-zinc-800 rounded-lg p-1">
+        <div className="bg-zinc-900 w-full max-w-[900px] h-[400px] max-h-[500px] rounded-lg mx-auto">
+          <div className="flex gap-1 bg-zinc-800 rounded-lg p-1">
             <button
               onClick={handleButton1}
-              className={`py-2 px-5 cursor-pointer rounded-sm flex flex-row justify-center gap-2 ${
+              className={`py-2 px-5 cursor-pointer rounded-sm flex justify-center gap-2 transition ${
                 activeButton === "button1"
-                  ? "bg-zinc-600 text-green-500 border-b-3"
-                  : "bg-zinc-800 text-white"
+                  ? "bg-zinc-600 text-green-500 border-b-4 border-green-500"
+                  : "bg-zinc-800 text-white hover:bg-zinc-700"
               }`}
             >
               <span className="material-icons">code</span>
@@ -119,17 +123,19 @@ export default function CodeOutput({
               onClick={handleButton2}
               className={`py-2 px-5 cursor-pointer rounded-sm flex flex-row justify-center gap-2 ${
                 activeButton == "button2"
-                  ? "bg-zinc-600 text-sky-400 border-b-3"
-                  : "text-white bg-zinc-800"
+                  ? "bg-zinc-600 text-sky-400 border-b-4 border-sky-400"
+                  : "text-white bg-zinc-800 hover:bg-zinc-700"
               }`}
             >
               <span className="material-icons">input</span>
               Aporte
             </button>
           </div>
-          {activeButton === "button1" ? (
-            <div className="p-5">
-              <div className="mt-5">
+
+          {/* Tab Content */}
+          <div className="min-h-[250px] max-h-[400px] overflow-y-auto">
+            {activeButton === "button1" ? (
+              <div>
                 {loading ? (
                   <div className="flex items-center gap-2">
                     <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-yellow-400"></div>
@@ -150,7 +156,7 @@ export default function CodeOutput({
                     </pre>
                   </div>
                 ) : (
-                  <div className="flex flex-col items-center justify-center py-12">
+                  <div className="flex flex-col items-center justify-center py-20">
                     <span className="material-icons text-6xl text-gray-500 mb-4">
                       code_off
                     </span>
@@ -161,17 +167,17 @@ export default function CodeOutput({
                   </div>
                 )}
               </div>
-            </div>
-          ) : (
-            <div className="flex flex-col h-full">
-              <textarea
-                value={input}
-                placeholder="Enter your code here..."
-                className="bg-zinc-900 text-white placeholder-gray-400 w-full h-88 rounded-b-lg p-4 border-0 outline-none resize-none rounded-none font-mono leading-relaxed"
-                onChange={handleInputChange}
-              />
-            </div>
-          )}
+            ) : (
+              <div className="flex flex-col h-full">
+                <textarea
+                  value={input}
+                  placeholder="Enter your code here..."
+                  className="bg-zinc-900 text-white placeholder-gray-400 w-full h-88 rounded-b-lg p-4 border-0 outline-none resize-none rounded-none font-mono leading-relaxed"
+                  onChange={handleInputChange}
+                />
+              </div>
+            )}
+          </div>
         </div>
       )}
     </div>
