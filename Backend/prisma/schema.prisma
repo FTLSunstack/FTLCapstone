@@ -20,6 +20,13 @@ model User {
   email String @unique
   passwordHash String
 
+  aboutMe String?
+  location String?
+  website String?
+
   passwordResetToken          String? 
   passwordResetTokenExpiry    DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
 }

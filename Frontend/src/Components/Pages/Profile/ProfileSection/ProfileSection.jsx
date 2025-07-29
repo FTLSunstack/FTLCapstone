@@ -2,17 +2,39 @@ import React, { useEffect, useState } from "react";
 import "../../../../tailwind.css";
 import mailIcon from "../../../../assets/mail.png";
 import axios from "axios";
-import { Mail, MapPin, Link, Edit3, Calendar, Award } from "lucide-react";
+import {
+  Mail,
+  MapPin,
+  Link,
+  Edit3,
+  Calendar,
+  Award,
+  ArrowLeft,
+  Sparkles,
+} from "lucide-react";
+
+import { useNavigate } from "react-router-dom";
+
 export default function ProfileSection(props) {
   const [userData, setUserData] = useState(null);
+  const navigate = useNavigate();
 
-  useEffect(() => {});
+  const handleEditProfile = () => {
+    // navigate("/edit/profile");
+    if (props.editProfileModal) {
+      props.editProfileModal();
+    }
+  };
 
   return (
-    <div className=" flex flex-row gap-10 m-5 min-h-screen justify-center mt-40">
+    <div className=" flex flex-row gap-10 m-5 h-fit justify-center mt-40">
       {/* THIS IS THE PROFILE INFO SECTION */}
       <div className="bg-red-400 h-[700px] w-1/2 rounded-3xl bg-gradient-to-r from-indigo-600 to-purple-600 flex flex-col justify-center items-center gap-10">
         <div className="relative group">
+          <Sparkles
+            className="w-7 h-7 text-yellow-400 animate-bounce [animation-duration:2.5s]
+"
+          />
           <div className="w-32 h-32 rounded-full border-4 border-white shadow-xl overflow-hidden bg-white">
             <img
               src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/1024px-Default_pfp.svg.png"
@@ -34,7 +56,10 @@ export default function ProfileSection(props) {
             Joined March 2023
           </h2>
         </div>
-        <button className="px-10 py-4 border border-white/40 text-white rounded-md hover:bg-white/20 backdrop-blur-md hover:cursor-pointer transition ease-in-out drop-shadow-lg">
+        <button
+          className="px-10 py-4 border border-white/40 text-white rounded-md hover:bg-white/20 backdrop-blur-md hover:cursor-pointer transition ease-in-out drop-shadow-lg"
+          onClick={handleEditProfile}
+        >
           Edit Profile
         </button>
       </div>
@@ -49,11 +74,7 @@ export default function ProfileSection(props) {
           </div>
           <div className="p-6">
             <p className="text-gray-700 leading-relaxed text-lg">
-              Passionate full-stack developer with 5+ years of experience
-              building scalable web applications. I love creating elegant
-              solutions to complex problems and am always eager to learn new
-              technologies. When I'm not coding, you can find me hiking, reading
-              sci-fi novels, or experimenting with new recipes.
+              {props.about}
             </p>
           </div>
         </div>
@@ -92,7 +113,7 @@ export default function ProfileSection(props) {
                 <Link className="w-5 h-5 text-purple-600" />
               </div>
               <div>
-                <p className="font-medium text-gray-800">Website</p>
+                <p className="font-medium text-gray-800">LinkedIn</p>
                 <a
                   href={props.website || "#"}
                   target="_blank"
