@@ -127,10 +127,12 @@ export default function CodeEditor({
         "&": {
           height: "100%", // Make the editor take 100% height of its parent
           overflow: "hidden", // Crucial for rounded corners to hide overflowing content
-
           borderRadius: "0.5rem",
+          // display: "flex",
+          // flexDirection: "column",
         },
         ".cm-scroller": {
+          // flexGrow: 1,
           overflow: "auto", // Ensure scrolling works within the fixed height
         },
         // If the line numbers or gutters are not rounded correctly, you might need these
@@ -166,37 +168,20 @@ export default function CodeEditor({
 
   return (
     <div>
-      {language === "English" ? (
-        <div className="relative w-[800px] h-[600px] m-8">
-          <div
-            ref={editorRef}
-            className="w-full h-full"
-            style={{ outline: "none" }}
-          />
-          <button
-            className="absolute bottom-2 right-2 bg-violet-400 text-white px-4 py-2 rounded hover:bg-violet-500 hover:cursor-pointer transition flex flex-row justify-center"
-            onClick={handleSubmit}
-          >
-            <span className="material-icons">play_arrow</span>
-            Run
-          </button>
-        </div>
-      ) : (
-        <div className="relative w-[800px] h-[600px] m-8">
-          <div
-            ref={editorRef}
-            className="w-full h-full"
-            style={{ outline: "none" }}
-          />
-          <button
-            className="absolute bottom-2 right-2 bg-violet-400 text-white px-4 py-2 rounded hover:bg-violet-500 hover:cursor-pointer transition flex flex-row justify-center"
-            onClick={handleSubmit}
-          >
-            <span className="material-icons">play_arrow</span>
-            Ejecutar
-          </button>
-        </div>
-      )}
+      <div className="relative w-full max-w-[900px] h-[400px] max-h-[500px] min-h-[300px] mx-auto">
+        <div
+          ref={editorRef}
+          className="w-full h-full"
+          style={{ outline: "none" }}
+        />
+        <button
+          className="absolute bottom-2 right-2 bg-violet-400 text-white px-4 py-2 rounded hover:bg-violet-500 hover:cursor-pointer transition flex items-center gap-1"
+          onClick={handleSubmit}
+        >
+          <span className="material-icons">play_arrow</span>
+          {language === "English" ? "Run" : "Ejecutar"}
+        </button>
+      </div>
     </div>
   );
 }
