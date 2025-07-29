@@ -2,8 +2,11 @@ import { useState } from "react";
 import "../../../../tailwind.css";
 
 function SearchBar({ language, search, setSearch }) {
+  const [input, setInput] = useState("");
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    setSearch(input.replaceAll(" ", "_"));
     console.log("Searching for:", search);
   };
 
@@ -25,14 +28,17 @@ function SearchBar({ language, search, setSearch }) {
             <input
               type="text"
               placeholder="Search..."
-              onChange={(e) => setSearch(e.target.value)}
-              value={search}
+              onChange={(e) => setInput(e.target.value)}
+              value={input}
               name="Search"
               className="border-1 border-black p-2 rounded-lg flex-1"
             />
             {language === "Español" ? (
               <div className="flex flex-row gap-2">
-                <button className="p-2 bg-purple-500 text-white rounded-lg hover:bg-purple-700">
+                <button
+                  type="submit"
+                  className="p-2 bg-purple-500 text-white rounded-lg hover:bg-purple-700"
+                >
                   Buscar
                 </button>
                 <button
