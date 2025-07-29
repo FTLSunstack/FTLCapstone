@@ -18,20 +18,21 @@ function IDEPage({ language, setLanguage }) {
   return (
     <>
       <NavBar language={language} setLanguage={setLanguage} />
-      <div className="flex flex-row justify-between ml-10 mr-10">
-        <div className="flex flex-col">
+      <div className="flex flex-col lg:flex-row gap-5 justify-center p-10">
+        <div className="flex-1">
           <IDEContainer
             language={language}
             onCodeExplanation={handleCodeExplanation}
           />
         </div>
-        <div className="m-8">
+        <div className="flex-1 flex flex-col h-full w-full">
           <ExplanationBox language={language} codeExplanation={codeInstance} />
         </div>
+        {/* <div className="flex-1">
+          <AdditionalResources language={language} />
+        </div> */}
       </div>
-      <div>
-        <AdditionalResources language={language} />
-      </div>
+      <AdditionalResources language={language} />
       <Footer language={language} />
     </>
   );
