@@ -81,4 +81,52 @@ Here is an example of the desired JSON format:
   }
 };
 
-module.exports = { explainCode };
+const refreshTermExample = async (req,res) => {
+  try {
+    const {term} = req.body
+    if (!term) {
+      console.error("Missing 'term' in request body");
+      return res.status(400).json({
+        success: false,
+        error: "Missing term in request",
+      });
+    }
+    const prompt = `Provide a beginner-level, short Python code snippet for the term ${term}. Include a comment within the code indicating its expected output. Return only the code snippet as a plain string, without any additional text or formatting outside the code block.The code must include a comment using '#' to explain the expected output. Use only # comments to explain the code. 
+      Do NOT use Markdown formatting.
+      Do NOT wrap the code in triple backticks.
+      Do NOT use Python docstrings ("""...""").
+      Return only the raw Python code as plain text.`
+    const response = await ai.models.generateContent({
+      model: "gemini-2.0-flash",
+      contents: prompt,
+    });
+
+    let example = response.text;
+
+    // we need to clean it up because it always outputs with backticks for some reasons
+    example = example.trim();
+    const lines = example.split("\n");
+    if (lines[0].startsWith("```")) {
+      lines.shift();
+    }
+    if (lines[lines.length - 1] === "```") {
+      lines.pop();
+    }
+    example = lines.join("\n").trim();
+
+
+    res.json({
+      success: true,
+      example,
+    });
+  }
+  catch(error) {
+    console.error("Error:", error);
+    res.status(500).json({
+      success: false,
+      error: "Failed to Refresh Example",
+    });
+  }
+}
+
+module.exports = { explainCode, refreshTermExample };
