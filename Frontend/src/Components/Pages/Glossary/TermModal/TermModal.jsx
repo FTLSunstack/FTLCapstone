@@ -1,8 +1,52 @@
 import { useState } from "react";
 import ReactMarkdown from "react-markdown";
 import "../../../../tailwind.css";
+import axios from "axios";
 
 function TermModal({ language, onClose, term }) {
+  const [exampleTerm, setExampleTerm]=useState("")
+
+  const refreshExample = async(term) => {
+    console.log(term.en.term)
+    try {
+      const response = await axios.post(
+        `${import.meta.env.VITE_BACKEND_URL}/explainer/refreshExampleTerm`,
+        {
+          term: term.en.term
+        }
+      );
+      console.log(term.en.term)
+      console.log(response.data.example)
+      setExampleTerm(response.data.example);
+    }
+    catch(err){
+      console.log(term.en.term)
+      console.log(response.data.example)
+      console.log("Encountered Error: ", err);
+      console.log("Backend error response:", err.response?.data);
+    }
+  }
+
+  const ShowExample = () => {
+    if(term.formExample){
+      // show example 
+      return(
+        <div className="text-black text-lg bg-gray-300 p-4 rounded-lg my-4">
+          <p className="font-bold text-purple-700">
+            Ejemplo en Python:
+          </p>
+          <div className="flex justify-center bg-gray-100 p-2 rounded-lg mt-4">
+            <pre className="text-left">
+              <code className="text-left">
+                {exampleTerm || term.example}
+              </code>
+            </pre>
+          </div>
+          <button onClick={() => refreshExample(term)} className="rounded-lg border-2 p-1 hover:cursor-pointer">Refresh</button>
+        </div>
+      )
+    }
+  }
   return (
     <>
       {language === "Español" ? (
@@ -30,14 +74,7 @@ function TermModal({ language, onClose, term }) {
                 <div className="text-gray-700 text-lg my-4">
                   <ReactMarkdown>{term.es.def}</ReactMarkdown>
                 </div>
-                {/* <div className="text-black text-lg bg-gray-300 p-4 rounded-lg my-4">
-                  <p className="font-bold text-purple-700">
-                    Ejemplo en Python:
-                  </p>
-                  <p className="bg-gray-100 p-2 rounded-lg mt-4">
-                    {term.example_es}
-                  </p>
-                </div> */}
+                <ShowExample term={term} />
               </div>
             )}
           </div>
@@ -62,12 +99,7 @@ function TermModal({ language, onClose, term }) {
             <div className="text-gray-700 text-lg my-4">
               <ReactMarkdown>{term.en.def}</ReactMarkdown>
             </div>
-            {/* <div className="text-black text-lg bg-gray-300 p-4 rounded-lg my-4">
-              <p className="font-bold text-purple-700">Example in Python:</p>
-              <p className="bg-gray-100 p-2 rounded-lg mt-4">
-                {term.example_en}
-              </p>
-            </div> */}
+             <ShowExample term={term} />
           </div>
         </div>
       )}
