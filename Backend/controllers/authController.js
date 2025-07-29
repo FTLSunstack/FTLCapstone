@@ -1,6 +1,6 @@
 const FormData = require("form-data");
 const Mailgun = require("mailgun.js");
-require('dotenv').config();
+require("dotenv").config();
 const prisma = require("../db");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
@@ -40,15 +40,15 @@ exports.googleCallback = async (req, res) => {
 
   const refreshToken = generateRefreshToken(user);
 
-    res.cookie("refreshToken", refreshToken, {
-        httpOnly: true,
-        sameSite: "Strict",
-        secure: false,
-        maxAge: 2 * 24 * 60 * 60 * 1000
-    });
-    const frontendUrl = process.env.FRONTEND_URL
+  res.cookie("refreshToken", refreshToken, {
+    httpOnly: true,
+    sameSite: "Strict",
+    secure: false,
+    maxAge: 2 * 24 * 60 * 60 * 1000,
+  });
+  const frontendUrl = process.env.FRONTEND_URL;
 
-    res.redirect(`${frontendUrl}?accessToken=${accessToken}`);
+  res.redirect(`${frontendUrl}?accessToken=${accessToken}`);
 };
 
 // sign up
@@ -91,42 +91,45 @@ exports.signup = async (req, res) => {
       data: { username, email, name, passwordHash: hashedPassword },
     });
 
-        const accessToken = generateToken(newUser);
-        const refreshToken = generateRefreshToken(newUser);
-        res.cookie("accessToken", accessToken, {
-            // this means that it cannot be accessed using javascript
-            httpOnly: true,      
-            // allows http
-            secure: true,     
-            // you MUST be on the website to get a token
-            // other websites cannot make requests
-            sameSite: "None",   
-            // lifetime of the cookie in milliseconds
-            maxAge: 1 * 60 * 60 * 1000 
-        });
+    const accessToken = generateToken(newUser);
+    const refreshToken = generateRefreshToken(newUser);
+    res.cookie("accessToken", accessToken, {
+      // this means that it cannot be accessed using javascript
+      httpOnly: true,
+      // allows http
+      secure: true,
+      // you MUST be on the website to get a token
+      // other websites cannot make requests
+      sameSite: "None",
+      // lifetime of the cookie in milliseconds
+      maxAge: 1 * 60 * 60 * 1000,
+    });
 
-        res.cookie("refreshToken", refreshToken, {
-            // this means that it cannot be accessed using javascript
-            httpOnly: true,      
-            // allows http
-            secure: true,     
-            // you MUST be on the website to get a token
-            // other websites cannot make requests
-            sameSite: "None",   
-            // 2 days!!! 
-            // lifetime of the cookie in milliseconds
-            maxAge: 2 * 24 * 60 * 60 * 1000 
-        });
+    res.cookie("refreshToken", refreshToken, {
+      // this means that it cannot be accessed using javascript
+      httpOnly: true,
+      // allows http
+      secure: true,
+      // you MUST be on the website to get a token
+      // other websites cannot make requests
+      sameSite: "None",
+      // 2 days!!!
+      // lifetime of the cookie in milliseconds
+      maxAge: 2 * 24 * 60 * 60 * 1000,
+    });
 
-        res.status(201).json({ user: { userId: newUser.userId, username: newUser.username }, accessToken, message: "User created successfully!" });
-    }
-    catch(error) {
-        console.error(error)
-        res.status(500).json({ message: "Something went wrong during sign up!" });
-    }
-    
-
-}
+    res
+      .status(201)
+      .json({
+        user: { userId: newUser.userId, username: newUser.username },
+        accessToken,
+        message: "User created successfully!",
+      });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Something went wrong during sign up!" });
+  }
+};
 
 //login
 exports.login = async (req, res) => {
@@ -155,32 +158,32 @@ exports.login = async (req, res) => {
     return res.status(400).json({ error: "Invalid username or password." });
   }
 
-    const accessToken = generateToken(user);
-    const refreshToken = generateRefreshToken(user);
-    res.cookie("accessToken", accessToken, {
-        // this means that it cannot be accessed using javascript
-        httpOnly: true,      
-         // allows http
-        secure: true,     
-        // you MUST be on the website to get a token
-        // other websites cannot make requests
-        sameSite: "None",   
-        // lifetime of the cookie in milliseconds
-        maxAge: 1 * 60 * 60 * 1000 
-    });
+  const accessToken = generateToken(user);
+  const refreshToken = generateRefreshToken(user);
+  res.cookie("accessToken", accessToken, {
+    // this means that it cannot be accessed using javascript
+    httpOnly: true,
+    // allows http
+    secure: true,
+    // you MUST be on the website to get a token
+    // other websites cannot make requests
+    sameSite: "None",
+    // lifetime of the cookie in milliseconds
+    maxAge: 1 * 60 * 60 * 1000,
+  });
 
-    res.cookie("refreshToken", refreshToken, {
-        // this means that it cannot be accessed using javascript
-        httpOnly: true,      
-         // allows http
-        secure: true,     
-        // you MUST be on the website to get a token
-        // other websites cannot make requests
-        sameSite: "None",   
-        // 2 days!!! 
-        // lifetime of the cookie in milliseconds
-        maxAge: 2 * 24 * 60 * 60 * 1000 
-    });
+  res.cookie("refreshToken", refreshToken, {
+    // this means that it cannot be accessed using javascript
+    httpOnly: true,
+    // allows http
+    secure: true,
+    // you MUST be on the website to get a token
+    // other websites cannot make requests
+    sameSite: "None",
+    // 2 days!!!
+    // lifetime of the cookie in milliseconds
+    maxAge: 2 * 24 * 60 * 60 * 1000,
+  });
 
   res.json({
     user: { userId: user.userId, username: user.username },
@@ -200,17 +203,17 @@ exports.logout = async (req, res) => {
   //     return res.status(400).json({ error: "No token provided." });
   // }
 
-    // need to undo the token
-    res.clearCookie("refreshToken", {
-        httpOnly: true,
-        secure: true,
-        sameSite: "None"
-    });
-    res.clearCookie("accessToken", {
-        httpOnly: true,
-        secure: true,
-        sameSite: "None"
-    });
+  // need to undo the token
+  res.clearCookie("refreshToken", {
+    httpOnly: true,
+    secure: true,
+    sameSite: "None",
+  });
+  res.clearCookie("accessToken", {
+    httpOnly: true,
+    secure: true,
+    sameSite: "None",
+  });
 
   res.json({ message: "Logged out successfully." });
 };
@@ -253,17 +256,17 @@ exports.requestResetPassword = async (req, res) => {
     },
   });
 
-    // link that will be sent to the user’s email.
-    // points to the front end reset password form
-    const frontendUrl = process.env.FRONTEND_URL
-    const resetLink = `${frontendUrl}/reset-password?token=${resetToken}`;
+  // link that will be sent to the user’s email.
+  // points to the front end reset password form
+  const frontendUrl = process.env.FRONTEND_URL;
+  const resetLink = `${frontendUrl}/reset-password?token=${resetToken}`;
 
-    // Send the email and its content
-    const mailOptions = {
-        from: '"Codifica Support" <support@codifica.it.com>', // sender address
-        to: email,
-        subject: "Reset your Codifica password securely",
-        html: `
+  // Send the email and its content
+  const mailOptions = {
+    from: '"Codifica Support" <support@codifica.it.com>', // sender address
+    to: email,
+    subject: "Reset your Codifica password securely",
+    html: `
         <div style="font-family: Arial, sans-serif; color: #333; line-height: 1.6; padding: 20px;">
         <h2 style="color: #4f46e5;">Codifica Password Reset</h2>
         <p>Hi there,</p>
@@ -284,14 +287,17 @@ exports.requestResetPassword = async (req, res) => {
         `,
   };
 
-    try {
-        const data = await mg.messages.create(process.env.MAILGUN_DOMAIN, mailOptions);
-        console.log("Mailgun response:", data);
-        res.json({ message: "Reset link sent. It will expire in 15 minutes." });
-    } catch (error) {
-        console.error("Error sending reset email:", error);
-        res.status(500).json({ error: "Failed to send reset email." });
-    }
+  try {
+    const data = await mg.messages.create(
+      process.env.MAILGUN_DOMAIN,
+      mailOptions
+    );
+    console.log("Mailgun response:", data);
+    res.json({ message: "Reset link sent. It will expire in 15 minutes." });
+  } catch (error) {
+    console.error("Error sending reset email:", error);
+    res.status(500).json({ error: "Failed to send reset email." });
+  }
 };
 
 exports.resetPassword = async (req, res) => {
@@ -361,6 +367,9 @@ exports.me = async (req, res) => {
         username: true,
         email: true,
         name: true,
+        website: true,
+        location: true,
+        aboutMe: true,
       },
     });
 

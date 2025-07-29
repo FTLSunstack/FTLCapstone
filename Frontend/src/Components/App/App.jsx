@@ -12,7 +12,8 @@ import PrivateRoutes from "../Pages/Auth/PrivateRoutes.jsx";
 import { AuthProvider } from "../../Context/AuthContext.jsx";
 import ResetPasswordPage from "../Pages/Auth/ResetPasswordPage.jsx";
 import ProfilePage from "../Pages/Profile/ProfilePage/ProfilePage.jsx";
-import { ToastContainer, Bounce } from 'react-toastify';
+import EditProfile from "../Pages/Profile/EditProfile/EditProfile.jsx";
+import { ToastContainer, Bounce } from "react-toastify";
 import "react-toastify/ReactToastify.css";
 
 function App() {
@@ -38,13 +39,22 @@ function App() {
               />
             </Route>
             <Route path="/login" element={<LoginPage language={language} />} />
-            <Route path="/signup" element={<SignUpPage language={language} />} />
+            <Route
+              path="/signup"
+              element={<SignUpPage language={language} />}
+            />
             <Route path="/reset-password" element={<ResetPasswordPage />} />
             <Route
               path="/"
-              element={<HomePage language={language} setLanguage={setLanguage} />}
+              element={
+                <HomePage language={language} setLanguage={setLanguage} />
+              }
             />
-            <Route path="/profile" element={<ProfilePage />} />
+            <Route
+              path="/profile"
+              element={<ProfilePage language={language} />}
+            />
+            {/* <Route path="/edit/profile" element={<EditProfile />} /> */}
           </Routes>
         </BrowserRouter>
       </AuthProvider>
