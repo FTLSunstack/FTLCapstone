@@ -5,18 +5,14 @@ import EditProfile from "../EditProfile/EditProfile.jsx";
 import { useAuth } from "../../../../Context/AuthContext.jsx";
 
 export default function ProfilePage({ language }) {
-  const [userData, setUserData] = useState(null);
   const [showModal, setShowModal] = useState(false);
+  const [refreshKey, setRefreshKey] = useState(0);
+
   const { user } = useAuth();
-  useEffect(() => {
-    if (user) {
-      console.log(user);
-      setUserData(user);
-    }
-  }, [user]);
 
   const popUpModal = () => {
     setShowModal(true);
+    console.log("Modal Opened");
   };
   const closeModal = () => {
     setShowModal(false);

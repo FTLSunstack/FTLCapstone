@@ -20,7 +20,6 @@ function TermsList({ language, onClick, setModalTerm, search }) {
               `${import.meta.env.VITE_BACKEND_URL}/glossary/es/${search}`
             );
             setTerms(res.data);
-            console.log("fetched term in spanish", res.data);
           }
         } else {
           if (search === "") {
@@ -33,7 +32,6 @@ function TermsList({ language, onClick, setModalTerm, search }) {
               `${import.meta.env.VITE_BACKEND_URL}/glossary/en/${search}`
             );
             setTerms(res.data);
-            console.log("fetched term in english", res.data);
           }
         }
       } catch (err) {

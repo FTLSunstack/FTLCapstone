@@ -27,7 +27,7 @@ export default function ProfileSection(props) {
   };
 
   return (
-    <div className=" flex flex-row gap-10 m-5 h-fit justify-center mt-40">
+    <div className=" flex flex-row gap-10 m-5 h-fit justify-center mt-10  pt-10 pb-10">
       {/* THIS IS THE PROFILE INFO SECTION */}
       <div className="bg-red-400 h-[700px] w-1/2 rounded-3xl bg-gradient-to-r from-indigo-600 to-purple-600 flex flex-col justify-center items-center gap-10">
         <div className="relative group">
