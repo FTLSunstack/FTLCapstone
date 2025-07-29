@@ -12,9 +12,12 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/auth/me`, {
-          withCredentials: true,
-        });
+        const res = await axios.get(
+          `${import.meta.env.VITE_BACKEND_URL}/auth/me`,
+          {
+            withCredentials: true,
+          }
+        );
         // get the user info
         setUser(res.data.user);
         console.log(res.data);
@@ -40,9 +43,14 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  // NEW: Function to update user data in the context
+  const updateUser = (newUserData) => {
+    setUser(newUserData);
+  };
+
   return (
     // makes sure that these things can be accessed anywhere in the program
-    <AuthContext.Provider value={{ user, setUser, logout }}>
+    <AuthContext.Provider value={{ user, setUser, logout, updateUser }}>
       {children}
     </AuthContext.Provider>
   );

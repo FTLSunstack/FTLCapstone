@@ -20,6 +20,7 @@ function TermsList({ language, onClick, setModalTerm, search }) {
               `${import.meta.env.VITE_BACKEND_URL}/glossary/es/${search}`
             );
             setTerms(res.data);
+            console.log("searched term:", res.data);
           }
         } else {
           if (search === "") {
