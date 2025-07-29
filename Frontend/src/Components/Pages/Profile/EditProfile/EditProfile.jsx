@@ -1,34 +1,31 @@
 import "../../../../tailwind.css";
 import { useAuth } from "../../../../Context/AuthContext.jsx";
 import React, { useState, useEffect } from "react";
-import {
-  Camera,
-  X,
-  User,
-  Mail,
-  MapPin,
-  Globe,
-  FileText,
-  Save,
-  Upload,
-} from "lucide-react";
+import { X, User, Mail, MapPin, Globe, FileText } from "lucide-react";
 import axios from "axios";
 
-export default function EditProfile({ language, onClose }) {
-  const [userData, setUserData] = useState(null);
+export default function EditProfile({ language, onClose, onRefresh }) {
   const [isVisible, setIsVisible] = useState(false);
 
-  const [location, setLocation] = useState("");
-  const [bio, setBio] = useState("");
-  const [linkedIn, setLinkedIn] = useState("");
+  const { user, updateUser } = useAuth();
 
-  const { user } = useAuth();
+  // Use a single state object to hold all editable form data
+  const [formData, setFormData] = useState({
+    location: "",
+    bio: "",
+    linkedIn: "",
+  });
 
+  // --- NEW: Populate formData ONCE when the modal mounts and 'user' is available ---
   useEffect(() => {
     if (user) {
-      setUserData(user);
+      setFormData({
+        location: user.location ?? "",
+        bio: user.aboutMe ?? "", // Ensure 'aboutMe' matches your user object property
+        linkedIn: user.website ?? "", // Ensure 'website' matches your user object property
+      });
     }
-  }, [user]);
+  }, [user]); // This useEffect runs when the 'user' object from AuthContext is initially set or changes
 
   // Trigger animation after component mounts
   useEffect(() => {
@@ -51,29 +48,57 @@ export default function EditProfile({ language, onClose }) {
     }
   };
 
+  // Handle input changes for the form fields
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
   const handleUpdateUser = async () => {
     try {
+      if (!user || !user.userId) {
+        console.error("User or User ID is missing. Cannot update profile.");
+        // You might want to display a user-friendly error message here
+        return;
+      }
+
       const response = await axios.put(
         `${import.meta.env.VITE_BACKEND_URL}/users/${user.userId}`,
         {
-          location: location,
-          aboutMe: bio,
-          website: linkedIn,
+          location: formData.location,
+          aboutMe: formData.bio,
+          website: formData.linkedIn,
         },
         {
           withCredentials: true,
         }
       );
 
-      console.log("User updated:", response.data);
+      console.log("Backend updated user:", response.data);
+
+      const updatedUserFromBackend = response.data.data;
+
+      if (updateUser) {
+        updateUser(updatedUserFromBackend); // Update AuthContext
+      }
+
+      if (onRefresh) {
+        onRefresh(); // Trigger any extra refresh logic in ProfilePage
+      }
       handleClose();
     } catch (error) {
-      console.log(error);
+      console.error("Error updating user:", error);
+      // Add user-friendly error handling here
     }
   };
 
   if (!user) {
-    return <div>Loading....</div>;
+    // This ensures the component's render function (and its useState initializers)
+    // only runs once 'user' is guaranteed to be an object.
+    return <div>Loading user data...</div>;
   }
 
   return (
@@ -107,8 +132,9 @@ export default function EditProfile({ language, onClose }) {
             <input
               type="text"
               placeholder="Name"
-              className="border border-gray-300 py-3 mt-2 rounded-lg p-5"
-              value={user.name}
+              className="border border-gray-300 py-3 mt-2 rounded-lg p-5 bg-gray-100 cursor-not-allowed"
+              value={user.name ?? ""} // Still safely displays current user's name
+              readOnly
             />
           </div>
 
@@ -120,8 +146,9 @@ export default function EditProfile({ language, onClose }) {
             <input
               type="text"
               placeholder="Username"
-              className="border border-gray-300 py-3 mt-2 rounded-lg p-5"
-              value={user.username}
+              className="border border-gray-300 py-3 mt-2 rounded-lg p-5 bg-gray-100 cursor-not-allowed"
+              value={user.username ?? ""} // Still safely displays current user's username
+              readOnly
             />
           </div>
           <div className="flex flex-col">
@@ -132,8 +159,9 @@ export default function EditProfile({ language, onClose }) {
             <input
               type="text"
               placeholder="Email"
-              className="border border-gray-300 py-3 mt-2 rounded-lg p-5"
-              value={user.email}
+              className="border border-gray-300 py-3 mt-2 rounded-lg p-5 bg-gray-100 cursor-not-allowed"
+              value={user.email ?? ""} // Still safely displays current user's email
+              readOnly
             />
           </div>
           <div className="flex flex-col">
@@ -145,7 +173,9 @@ export default function EditProfile({ language, onClose }) {
               type="text"
               placeholder="Location"
               className="border border-gray-300 py-3 mt-2 rounded-lg p-5"
-              onChange={(e) => setLocation(e.target.value)}
+              name="location" // ADDED name attribute
+              value={formData.location} // BIND TO formData
+              onChange={handleChange} // USE generic handleChange
             />
           </div>
           <div className="flex flex-col">
@@ -157,7 +187,9 @@ export default function EditProfile({ language, onClose }) {
               type="text"
               placeholder="Bio"
               className="border border-gray-300 py-3 mt-2 rounded-lg p-5"
-              onChange={(e) => setBio(e.target.value)}
+              name="bio" // ADDED name attribute
+              value={formData.bio} // BIND TO formData
+              onChange={handleChange} // USE generic handleChange
             />
           </div>
           <div className="flex flex-col">
@@ -169,7 +201,9 @@ export default function EditProfile({ language, onClose }) {
               type="text"
               placeholder="LinkedIn"
               className="border border-gray-300 py-3 mt-2 rounded-lg p-5"
-              onChange={(e) => setLinkedIn(e.target.value)}
+              name="linkedIn" // ADDED name attribute
+              value={formData.linkedIn} // BIND TO formData
+              onChange={handleChange} // USE generic handleChange
             />
           </div>
         </div>
