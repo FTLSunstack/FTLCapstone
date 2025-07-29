@@ -9,6 +9,10 @@ export default function ExplanationBox({ language, codeExplanation }) {
   const [liveFeedback, setLiveFeedback] = useState("");
   const [emptyCode, setEmptyCode] = useState(null);
 
+  useEffect(() => {
+    console.log(language);
+  });
+
   const handleCodeExplanation = async (code) => {
     // console.log("Code being sent:", code);
     // console.log("Type of code:", typeof code);
@@ -28,6 +32,7 @@ export default function ExplanationBox({ language, codeExplanation }) {
         {
           codeSnippet: code,
           language: "python",
+          humanLanguage: language,
         }
       );
       setExplanation(response.data.explanation.explanation);
@@ -49,148 +54,144 @@ export default function ExplanationBox({ language, codeExplanation }) {
   return (
     <div>
       {language === "English" ? (
-        <div className="outline-solid w-[800px] h-[1070px] rounded-lg shadow-2xl bg-zinc-900 text-white">
-          <div className="p-6 rounded-t-lg border-b-1">
+        <div className="w-full max-w-[900px] flex flex-col lg:h-[820px] rounded-lg shadow-2xl bg-zinc-900 text-white overflow-y-auto">
+          <div className="p-6 rounded-t border-b bg-zinc-800">
             <h1>AI Explanation/Translation</h1>
           </div>
 
-          <div className="flex flex-col">
-            <div className="m-10 p-5 h-[500px] rounded-lg outline-solid ">
-              <div className="flex flex-row gap-2 items-center ">
-                <span className="bg-green-700 flex items-center px-2 py-1 rounded-full">
-                  💡
-                </span>
+          <div className="flex flex-col gap-10 p-8">
+            {/* Code Explanation Section */}
+            <div className="p-5 rounded-lg outline-solid">
+              <div className="flex flex-row gap-2 items-center mb-4">
+                <span className="bg-green-700 px-2 py-1 rounded-full">💡</span>
                 <h2 className="text-xl font-bold text-green-700 ">
                   Code Explanation
                 </h2>
               </div>
               {emptyCode ? (
-                <div className="flex items-center justify-center h-84 mt-5">
+                <div className="flex items-center justify-center min-h-[200px]">
                   <p className="text-gray-400 text-center italic">
                     Please enter some code to get an explanation
                   </p>
                 </div>
               ) : loading ? (
-                <div className="flex flex-row justify-center items-center h-84 gap-2 mt-5">
+                <div className="flex flex-row justify-center items-center min-h-[200px] gap-2">
                   <div className="animate-spin rounded-full h-8 w-8 border-2 border-emerald-500 border-t-transparent"></div>
                   <p className="text-emerald-500 text-lg font-semibold">
                     Analyzing your code...
                   </p>
                 </div>
               ) : error ? (
-                <div className="flex items-center justify-center h-32 mt-5">
+                <div className="flex items-center justify-center min-h-[100px]">
                   <p className="text-red-400 text-center">{error}</p>
                 </div>
               ) : (
-                <p className="font-semibold mt-5 text-lg">{explanation}</p>
+                <p className="mt-2 text-lg">{explanation}</p>
               )}
             </div>
 
-            <div className="m-10 p-5 h-[330px] rounded-lg outline-solid ">
-              <div className="flex flex-row gap-2 items-center ">
-                <span className="bg-sky-600 flex items-center px-2 py-1 rounded-full">
-                  📖
-                </span>
+            {/* Live Feedback Section */}
+            <div className="p-5 rounded-lg outline-solid">
+              <div className="flex flex-row gap-2 items-center mb-4">
+                <span className="bg-sky-600 px-2 py-1 rounded-full">📖</span>
                 <h2 className="text-xl font-bold text-sky-600">
                   Live Feedback
                 </h2>
               </div>
 
               {emptyCode ? (
-                <div className="flex items-center justify-center h-50 mt-5">
+                <div className="flex items-center justify-center min-h-[200px]">
                   <p className="text-gray-400 text-center italic">
                     Feedback will appear here after code analysis
                   </p>
                 </div>
               ) : loading ? (
-                <div className="flex flex-row justify-center items-center h-50 gap-2 mt-5">
+                <div className="flex flex-row justify-center items-center min-h-[200px] gap-2">
                   <div className="animate-spin rounded-full h-8 w-8 border-2 border-sky-500 border-t-transparent"></div>
                   <p className="text-sky-500 text-lg font-semibold">
                     Giving live feedback...
                   </p>
                 </div>
               ) : error ? (
-                <div className="flex items-center justify-center h-32 mt-5">
+                <div className="flex items-center justify-center min-h-[100px]">
                   <p className="text-red-400 text-center">
                     Unable to provide feedback
                   </p>
                 </div>
               ) : (
-                <p className="font-semibold mt-5 text-lg">{liveFeedback}</p>
+                <p className="mt-2 text-lg">{liveFeedback}</p>
               )}
             </div>
           </div>
         </div>
       ) : (
-        <div className="outline-solid w-[800px] h-[1070px] rounded-lg shadow-2xl bg-zinc-900 text-white">
-          <div className="p-6 rounded-t-lg border-b-1">
+        <div className="w-full max-w-[900px] flex flex-col lg:h-[820px] rounded-lg shadow-2xl bg-zinc-900 text-white overflow-y-auto">
+          <div className="p-6 rounded-t border-b bg-zinc-800">
             <h1>Explicación/traducción de AI</h1>
           </div>
 
-          <div className="flex flex-col">
-            <div className="m-10 p-5 h-[500px] rounded-lg outline-solid">
-              <div className="flex flex-row gap-2 items-center ">
-                <span className="bg-green-700 flex items-center px-2 py-1 rounded-full">
-                  💡
-                </span>
+          <div className="flex flex-col gap-10 p-8">
+            {/* Code Explanation Section */}
+            <div className="p-5 rounded-lg outline-solid">
+              <div className="flex flex-row gap-2 items-center mb-4">
+                <span className="bg-green-700 px-2 py-1 rounded-full">💡</span>
                 <h2 className="text-xl font-bold text-green-700 ">
                   Explicación del concepto
                 </h2>
               </div>
               {emptyCode ? (
-                <div className="flex items-center justify-center h-84 mt-5">
+                <div className="flex items-center justify-center min-h-[200px]">
                   <p className="text-gray-400 text-center italic">
                     Por favor ingresa código para obtener una explicación
                   </p>
                 </div>
               ) : loading ? (
-                <div className="flex flex-row justify-center items-center h-84 gap-2 mt-5">
+                <div className="flex flex-row justify-center items-center min-h-[200px] gap-2">
                   <div className="animate-spin rounded-full h-8 w-8 border-2 border-emerald-500 border-t-transparent"></div>
                   <p className="text-emerald-500 text-lg font-semibold">
                     Analizando tu código...
                   </p>
                 </div>
               ) : error ? (
-                <div className="flex items-center justify-center h-32 mt-5">
+                <div className="flex items-center justify-center min-h-[100px]">
                   <p className="text-red-400 text-center">{error}</p>
                 </div>
               ) : (
-                <p className="font-semibold mt-5 text-lg">{explanation}</p>
+                <p className="mt-2 text-lg">{explanation}</p>
               )}
             </div>
 
-            <div className="m-10 p-5 h-[330px] rounded-lg outline-solid ">
-              <div className="flex flex-row gap-2 items-center ">
-                <span className="bg-sky-600 flex items-center px-2 py-1 rounded-full">
-                  📖
-                </span>
+            {/* Live Feedback Section */}
+            <div className="p-5 rounded-lg outline-solid">
+              <div className="flex flex-row gap-2 items-center mb-4">
+                <span className="bg-sky-600 px-2 py-1 rounded-full">📖</span>
                 <h2 className="text-xl font-bold text-sky-600">
                   Comentarios en vivo
                 </h2>
               </div>
 
               {emptyCode ? (
-                <div className="flex items-center justify-center h-50 mt-5">
+                <div className="flex items-center justify-center min-h-[200px]">
                   <p className="text-gray-400 text-center italic">
                     Los comentarios aparecerán aquí después del análisis del
                     código.
                   </p>
                 </div>
               ) : loading ? (
-                <div className="flex flex-row justify-center items-center h-50 gap-2 mt-5">
+                <div className="flex flex-row justify-center items-center min-h-[200px] gap-2">
                   <div className="animate-spin rounded-full h-8 w-8 border-2 border-sky-500 border-t-transparent"></div>
                   <p className="text-sky-500 text-lg font-semibold">
                     Dando retroalimentación en vivo...
                   </p>
                 </div>
               ) : error ? (
-                <div className="flex items-center justify-center h-32 mt-5">
+                <div className="flex items-center justify-center min-h-[100px]">
                   <p className="text-red-400 text-center">
                     No es posible proporcionar comentarios
                   </p>
                 </div>
               ) : (
-                <p className="font-semibold mt-5 text-lg">{liveFeedback}</p>
+                <p className="mt-2 text-lg">{liveFeedback}</p>
               )}
             </div>
           </div>

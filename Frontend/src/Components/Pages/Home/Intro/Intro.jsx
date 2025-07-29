@@ -6,7 +6,12 @@ function Intro({ language, scrollToFeatures }) {
   const handleIntroClick = () => {
     scrollToFeatures();
   };
-  return <AnimatedBackground language={language} goDown={handleIntroClick} />;
+
+  return (
+    <div className="w-full">
+      <AnimatedBackground language={language} goDown={handleIntroClick} />
+    </div>
+  );
 }
 
 export default Intro;

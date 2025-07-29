@@ -13,16 +13,16 @@ function SignUpPage() {
 
   return (
     <>
-      <div className="min-h-screen bg-gradient-to-r from-violet-600 to-blue-800">
+      <div className="min-h-screen bg-gradient-to-tl from-purple-700 via-violet-600 to-blue-600">
         <button
           onClick={handleBack}
-          className="mt-8 ml-10 py-2 px-4 font-semibold rounded-lg shadow-md text-black bg-white hover:bg-black hover:text-white hover:cursor-pointer transition ease-in-out"
+          className="px-5 py-2 border border-white/40 text-white rounded-md hover:bg-white/20 backdrop-blur-md hover:cursor-pointer transition ease-in-out drop-shadow-lg m-10"
         >
           {" "}
           Back Home
         </button>
-        <div >
-          <div className="flex flex-col justify-center items-center mt-20">
+        <div>
+          <div className="flex flex-col justify-center items-center mt-30">
             <SignUpForm />
           </div>
         </div>

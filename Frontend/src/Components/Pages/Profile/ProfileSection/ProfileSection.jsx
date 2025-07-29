@@ -2,52 +2,127 @@ import React, { useEffect, useState } from "react";
 import "../../../../tailwind.css";
 import mailIcon from "../../../../assets/mail.png";
 import axios from "axios";
+import {
+  Mail,
+  MapPin,
+  Link,
+  Edit3,
+  Calendar,
+  Award,
+  ArrowLeft,
+  Sparkles,
+} from "lucide-react";
+
+import { useNavigate } from "react-router-dom";
+
 export default function ProfileSection(props) {
   const [userData, setUserData] = useState(null);
+  const navigate = useNavigate();
 
-  useEffect(() => {});
+  const handleEditProfile = () => {
+    // navigate("/edit/profile");
+    if (props.editProfileModal) {
+      props.editProfileModal();
+    }
+  };
 
   return (
-    <div>
-      <div className="w-full h-fit flex flex-col justify-center items-center mt-10 gap-10">
-        <div className="bg-violet-300 w-1/3 h-fit rounded-xl flex justify-center p-5 shadow-lg hover:bg-violet-500 hover:text-white cursor-pointer hover:scale-102 transition ease-in-out">
-          <div className="flex flex-col items-center gap-5">
+    <div className=" flex flex-row gap-10 m-5 h-fit justify-center mt-40">
+      {/* THIS IS THE PROFILE INFO SECTION */}
+      <div className="bg-red-400 h-[700px] w-1/2 rounded-3xl bg-gradient-to-r from-indigo-600 to-purple-600 flex flex-col justify-center items-center gap-10">
+        <div className="relative group">
+          <Sparkles
+            className="w-7 h-7 text-yellow-400 animate-bounce [animation-duration:2.5s]
+"
+          />
+          <div className="w-32 h-32 rounded-full border-4 border-white shadow-xl overflow-hidden bg-white">
             <img
               src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/1024px-Default_pfp.svg.png"
-              alt="pfp"
-              className="w-20 size-fit hover:opacity-40 transition ease-in-out cursor-pointer"
+              alt="Profile"
+              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300 cursor-pointer"
             />
-            <div className="items-center flex flex-col mt-5">
-              <h1 className="font-bold text-xl">{props.name}</h1>
-              <h2 className="font-semibold text-lg">{props.userName}</h2>
-            </div>
           </div>
+          <button className="absolute bottom-2 right-2 bg-white rounded-full p-2 shadow-lg hover:bg-gray-50 transition-colors cursor-pointer">
+            <Edit3 className="w-4 h-4 text-gray-600" />
+          </button>
         </div>
+        <div className="flex flex-col items-center gap-3">
+          <h2 className="text-4xl text-white font-bold">{props.name}</h2>
+          <h2 className="text-xl text-white">@{props.userName}</h2>
+        </div>
+        <div className="flex flex-row items-center gap-2 group cursor-pointer transition ease-in-out">
+          <Calendar className="w-4 h-4 text-white opacity-70 group-hover:opacity-100 transition ease-in-out" />
+          <h2 className="text-white opacity-70 group-hover:opacity-100 transition ease-in-out">
+            Joined March 2023
+          </h2>
+        </div>
+        <button
+          className="px-10 py-4 border border-white/40 text-white rounded-md hover:bg-white/20 backdrop-blur-md hover:cursor-pointer transition ease-in-out drop-shadow-lg"
+          onClick={handleEditProfile}
+        >
+          Edit Profile
+        </button>
+      </div>
 
-        <div className="bg-violet-300 mt-10 w-1/3 h-fit p-5 rounded-xl shadow-lg hover:bg-violet-500 hover:text-white cursor-pointer hover:scale-102 transition ease-in-out">
-          <h1 className="font-bold text-lg">About</h1>
-          <div>
-            <h2 className="pt-3">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur.
+      <div className="flex flex-col justify-start h-[700px] w-1/2 gap-30">
+        <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden w-full">
+          <div className="bg-gradient-to-r from-indigo-500 to-purple-600 p-6">
+            <h2 className="text-2xl font-bold text-white flex items-center gap-2">
+              <Edit3 className="w-6 h-6" />
+              About Me
             </h2>
           </div>
+          <div className="p-6">
+            <p className="text-gray-700 leading-relaxed text-lg">
+              {props.about}
+            </p>
+          </div>
         </div>
 
-        <div className="bg-violet-300 mt-10 w-1/3 h-fit p-5 rounded-xl hover:bg-violet-500 hover:text-white cursor-pointer hover:scale-102 transition ease-in-out">
-          <h1 className="font-bold text-lg">Contacts and Links</h1>
-          <div className="pt-5 flex flex-col gap-5">
-            <div className="flex flex-row gap-2">
-              <span className="material-icons">email</span>
-              <p>email</p>
+        <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden w-full">
+          <div className="bg-gradient-to-r from-purple-500 to-pink-600 p-6">
+            <h2 className="text-xl font-bold text-white">Get In Touch</h2>
+          </div>
+          <div className="p-6 space-y-4">
+            <div className="flex items-center gap-4 p-3 rounded-xl hover:bg-gray-50 transition-colors group">
+              <div className="p-2 bg-blue-100 rounded-lg group-hover:bg-blue-200 transition-colors">
+                <Mail className="w-5 h-5 text-blue-600" />
+              </div>
+              <div>
+                <p className="font-medium text-gray-800">Email</p>
+                <p className="text-gray-600 text-sm">
+                  {props.email || "john@example.com"}
+                </p>
+              </div>
             </div>
-            <div className="flex flex-row gap-2">
-              <span className="material-icons">location_on</span>
-              <p>Location</p>
+
+            <div className="flex items-center gap-4 p-3 rounded-xl hover:bg-gray-50 transition-colors group">
+              <div className="p-2 bg-green-100 rounded-lg group-hover:bg-green-200 transition-colors">
+                <MapPin className="w-5 h-5 text-green-600" />
+              </div>
+              <div>
+                <p className="font-medium text-gray-800">Location</p>
+                <p className="text-gray-600 text-sm">
+                  {props.location || "San Francisco, CA"}
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-4 p-3 rounded-xl hover:bg-gray-50 transition-colors group">
+              <div className="p-2 bg-purple-100 rounded-lg group-hover:bg-purple-200 transition-colors">
+                <Link className="w-5 h-5 text-purple-600" />
+              </div>
+              <div>
+                <p className="font-medium text-gray-800">LinkedIn</p>
+                <a
+                  href={props.website || "#"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-purple-600 text-sm hover:underline"
+                >
+                  {props.website || "johndoe.dev"}
+                </a>
+              </div>
             </div>
           </div>
         </div>
