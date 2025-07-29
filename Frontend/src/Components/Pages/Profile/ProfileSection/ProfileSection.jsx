@@ -65,7 +65,7 @@ export default function ProfileSection(props) {
       </div>
 
       <div className="flex flex-col justify-start h-[700px] w-1/2 gap-30">
-        <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden w-full">
+        <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden w-full h-1/3">
           <div className="bg-gradient-to-r from-indigo-500 to-purple-600 p-6">
             <h2 className="text-2xl font-bold text-white flex items-center gap-2">
               <Edit3 className="w-6 h-6" />
