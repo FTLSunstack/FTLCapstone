@@ -1,5 +1,5 @@
 // json file with all glossary terms
-const glossary = require("../data/glossary.json");
+const glossary = require("../data/updatedGlossary.json");
 const spanishtoEnglish = require("../data/spanishToEnglish.json");
 
 // Get all terms
