@@ -8,7 +8,12 @@ function CreatorCard({ name, description, img, linkedin }) {
         <h1 className="text-black text-2xl font-bold text-center pb-4">
           {name}
         </h1>
-        <a href={linkedin} className="relative group">
+        <a
+          href={linkedin}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="relative group"
+        >
           <img
             src={img}
             alt={name}

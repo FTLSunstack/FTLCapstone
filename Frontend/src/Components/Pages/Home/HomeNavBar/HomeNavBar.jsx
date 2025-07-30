@@ -14,27 +14,18 @@ export default function HomeNavBar({
   const { user, logout } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
 
-  // useEffect(() => {
-  //   // console.log(user);
-  //   // console.log(logout);
-  // });
-
   const handleLogin = () => {
     navigate("/login");
   };
-
   const handleSignUp = () => {
     navigate("/signup");
   };
-
   const handleIDE = () => {
     navigate("/ide");
   };
-
   const handleProfilePage = () => {
     navigate("/profile");
   };
-
   const handleChangeLanguage = () => {
     if (language === "English") {
       setLanguage("Español");
@@ -66,7 +57,11 @@ export default function HomeNavBar({
                   className="xl:hidden block focus:outline-none"
                 >
                   <svg
-                    className="w-6 h-6 text-violet-600"
+                    className={`w-8 h-8 ${
+                      isOpen
+                        ? "text-violet-400 hover:text-violet-200"
+                        : "text-violet-200 hover:text-violet-400"
+                    }`}
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -125,6 +120,7 @@ export default function HomeNavBar({
                 </button>
               </div>
             )}
+
             <div className="hidden xl:flex flex-row space-x-5 justify-self-end">
               <button
                 onClick={handleChangeLanguage}
@@ -209,7 +205,11 @@ export default function HomeNavBar({
                   className="xl:hidden block focus:outline-none"
                 >
                   <svg
-                    className="w-6 h-6 text-violet-600"
+                    className={`w-8 h-8 ${
+                      isOpen
+                        ? "text-violet-400 hover:text-violet-200"
+                        : "text-violet-200 hover:text-violet-400"
+                    }`}
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"

@@ -651,7 +651,7 @@
       "term": "caché",
       "def": "Algo que almacena copias de datos para que futuras solicitudes puedan satisfacerse más rápidamente. El CPU de una computadora usa una caché de hardware para mantener valores accedidos recientemente; muchos programas dependen de una caché de software para reducir el tráfico de red y la latencia. Determinar cuándo algo en la caché está desactualizado y debe ser reemplazado es uno de los [dos problemas difíciles en la informática](#two_hard_problems).\n"
     },
- "formExample": false
+    "formExample": false
   },
   "caching": {
     "en": {
@@ -662,7 +662,7 @@
       "term": "caching",
       "def": "Guardar una copia de algún dato en el [caché](#cache) local para hacer su acceso futuro más rápido.\n"
     },
- "formExample": false
+    "formExample": false
   },
   "call_stack": {
     "en": {
@@ -673,7 +673,7 @@
       "term": "pila de llamadas",
       "def": "Una estructura de datos que almacena información sobre las subrutinas activas que se están ejecutando.\n"
     },
- "formExample": false
+    "formExample": false
   },
   "callback": {
     "en": {
@@ -684,7 +684,7 @@
       "term": "función de devolución (callback)",
       "def": "Una función A que se pasa a otra función B para que B pueda llamarla posteriormente. Las funciones de devolución pueden utilizarse de forma [sincrónica](#synchronous), como en funciones genéricas como `map`, que invoca una función callback una vez por cada elemento de una colección, o de forma [asincrónica](#asynchronous), como en un [cliente](#client) que ejecuta una callback cuando se recibe una [respuesta](#http_response) a una [solicitud](#http_request).\n"
     },
- "formExample": false
+    "formExample": false
   },
   "camel_case": {
     "en": {
@@ -695,7 +695,7 @@
       "term": "notación camel case",
       "def": "Un estilo de escritura de código que consiste en nombrar variables y objetos sin espacios, guiones bajos (`_`), puntos (`.`) ni guiones (`-`), y donde cada palabra comienza con mayúscula. Ejemplos incluyen `CalculateSum` y `findPattern`.\n"
     },
- "formExample": false
+    "formExample": false
   },
   "catch_exception": {
     "en": {
@@ -706,7 +706,7 @@
       "term": "capturar (una excepción)",
       "def": "Aceptar la responsabilidad de manejar un error u otro evento inesperado. [R](#r_language) prefiere el término \"manejar una condición\" en lugar de \"capturar una excepción\". Por otro lado, [Python](#python) fomenta lanzar y capturar excepciones, y en algunas situaciones lo requiere.\n"
     },
- "formExample": false
+    "formExample": false
   },
   "causation": {
     "en": {
@@ -717,7 +717,7 @@
       "term": "causalidad",
       "def": "Una relación entre eventos distintos, donde se afirma que uno de ellos es responsable de producir o afectar un cambio en el otro.\n"
     },
- "formExample": false
+    "formExample": false
   },
   "cc_0": {
     "en": {
@@ -728,7 +728,7 @@
       "term": "CC-0",
       "def": "Una [licencia](#license) de [Creative Commons](#cc_license) que no impone ninguna restricción, por lo que pone a la obra en dominio público.\n"
     },
- "formExample": false
+    "formExample": false
   },
   "cc_by": {
     "en": {
@@ -739,7 +739,7 @@
       "term": "CC-BY",
       "def": "La [licencia](#license) de [Creative Commons](#cc_license) - Atribución que requiere que las personas den crédito al autor de una obra, pero no impone otras restricciones.\n"
     },
- "formExample": false
+    "formExample": false
   },
   "cc_license": {
     "en": {
@@ -750,7 +750,7 @@
       "term": "licencia Creative Commons",
       "def": "Un conjunto de [licencias](#license) que se pueden aplicar a obras publicadas. Cada licencia se forma concatenando uno o más de los siguientes elementos: `-BY` (Atribución): los usuarios deben citar la fuente original; `-SA` (CompartirIgual): los usuarios deben compartir su trabajo bajo una licencia similar; `-NC` (NoComercial): la obra no puede utilizarse con fines comerciales sin el permiso del creador; `-ND` (SinObrasDerivadas): no se pueden crear obras derivadas (por ejemplo, traducciones) sin el permiso del creador. Por lo tanto, `CC-BY-NC` significa \"los usuarios deben dar atribución y no pueden usar con fines comerciales sin permiso.\" El término `CC-0` (cero, no la letra 'O') se usa a veces para significar \"sin restricciones,\" es decir, que la obra está en el dominio público.\n"
     },
- "formExample": false
+    "formExample": false
   },
   "centroid": {
     "en": {
@@ -761,7 +761,7 @@
       "term": "centroide",
       "def": "El centro o punto de referencia de un grupo creado por un algoritmo de [agrupamiento](#clustering).\n"
     },
- "formExample": false
+    "formExample": false
   },
   "character_encoding": {
     "en": {
@@ -772,7 +772,7 @@
       "term": "codificación de caracteres",
       "def": "Especificación sobre cómo los caracteres están guardados como bytes. En la actualidad, la codificación más utilizada es [UTF-8](#utf_8).\n"
     },
- "formExample": false
+    "formExample": false
   },
   "chi_square_test": {
     "en": {
@@ -783,7 +783,7 @@
       "term": "prueba chi-cuadrado",
       "def": "Un método estadístico para estimar si dos variables en una tabla cruzada están [correlacionadas](#correlation). Una distribución chi-cuadrado varía de una [distribución normal](#normal_distribution) según los [grados de libertad](#degrees_of_freedom) utilizados para calcularla.\n"
     },
- "formExample": false
+    "formExample": false
   },
   "child_class": {
     "en": {
@@ -794,7 +794,7 @@
       "term": "subclase",
       "def": "En [programación orientada a objetos](#oop), es la extensión de otra clase (denominada [superclase](#parent_class)).\n"
     },
- "formExample": false
+    "formExample": false
   },
   "child_tree": {
     "en": {
@@ -805,7 +805,7 @@
       "term": "hijo (en un árbol)",
       "def": "Un [nodo](#node) en un [árbol](#node) que está por debajo de otro nodo (llamado el [padre](#parent_tree)).\n"
     },
- "formExample": false
+    "formExample": false
   },
   "class": {
     "en": {
@@ -816,7 +816,7 @@
       "term": "clase",
       "def": "En [programación orientada a objetos](#oop), es una estructura que combina datos y operaciones (denominadas [métodos](#method)). El programa emplea un [constructor](#constructor) para crear un [objeto](#object) con esas propiedades y métodos. Los programadores generalmente definen comportamientos genéricos o reutilizables en [superclases](#parent_class) y comportamientos más específicos o detallados en [subclases](#child_class).\n"
     },
-  "formExample": true,
+    "formExample": true,
     "example": "class Dog:\n    def __init__(self, name):\n        self.name = name\n\n    def bark(self):\n        print(\"Woof!\")\n\nmy_dog = Dog(\"Buddy\")\nprint(my_dog.name) # Output: Buddy\nmy_dog.bark()       # Output: Woof!"
   },
   "classification": {
@@ -828,9 +828,9 @@
       "term": "clasificación",
       "def": "El proceso de identificar a qué categoría predefinida pertenece un elemento, como decidir si un mensaje de correo electrónico es spam o no. Muchos algoritmos de [aprendizaje automático](#machine_learning) realizan tareas de clasificación.\n"
     },
- "formExample": false
+    "formExample": false
   },
-"cli": {
+  "cli": {
     "en": {
       "term": "command-line interface",
       "def": "A user interface that relies solely on text for commands and output, typically running in a [shell](#shell).\n"
@@ -839,7 +839,7 @@
       "term": "interfaz de línea de comandos",
       "def": "Una interfaz de usuario que se basa únicamente en texto para los comandos y la salida, normalmente ejecutándose en una [terminal](#shell).\n"
     },
- "formExample": false
+    "formExample": false
   },
   "client": {
     "en": {
@@ -850,7 +850,7 @@
       "term": "cliente",
       "def": "Típicamente, un programa como un navegador web que obtiene datos de un [servidor](#server) y los muestra o interactúa con los usuarios. El término también se usa de forma más general para referirse a cualquier programa A que hace solicitudes a otro programa B. Un solo programa puede ser tanto cliente como servidor.\n"
     },
- "formExample": false
+    "formExample": false
   },
   "closure": {
     "en": {
@@ -861,7 +861,7 @@
       "term": "clausura",
       "def": "Un conjunto de variables definidas en el mismo [ámbito](#scope) cuya existencia se ha preservado después de que ese ámbito haya terminado.\n"
     },
- "formExample": false
+    "formExample": false
   },
   "clustering": {
     "en": {
@@ -872,7 +872,7 @@
       "term": "agrupamiento",
       "def": "El proceso de dividir datos en grupos cuando los grupos no se conocen de antemano.\n"
     },
- "formExample": false
+    "formExample": false
   },
   "code_coverage": {
     "en": {
@@ -883,7 +883,7 @@
       "term": "cobertura de código (en pruebas)",
       "def": "Qué parte de una [librería](#library) o programa se ejecuta cuando se corren pruebas. Normalmente se reporta como un porcentaje de líneas de código: por ejemplo, si se ejecutan 40 de 50 líneas durante una prueba, esas pruebas tienen una cobertura del 80%.\n"
     },
- "formExample": false
+    "formExample": false
   },
   "code_review": {
     "en": {
@@ -894,7 +894,7 @@
       "term": "revisión de código",
       "def": "Revisar un programa o un cambio a un programa inspeccionando su código fuente.\n"
     },
- "formExample": false
+    "formExample": false
   },
   "coercion": {
     "en": {
@@ -905,7 +905,7 @@
       "term": "coerción",
       "def": "Ver [coerción de tipo](#type_coercion).\n"
     },
- "formExample": false
+    "formExample": false
   },
   "cognitive_load": {
     "en": {
@@ -916,7 +916,7 @@
       "term": "carga cognitiva",
       "def": "La cantidad de memoria de trabajo necesaria para llevar a cabo un conjunto de tareas simultáneamente.\n"
     },
- "formExample": false
+    "formExample": false
   },
   "command": {
     "en": {
@@ -927,7 +927,7 @@
       "term": "comando",
       "def": "Una instrucción que le indica a un programa de computadora realizar una tarea específica.\n"
     },
- "formExample": false
+    "formExample": false
   },
   "command_history": {
     "en": {
@@ -938,7 +938,7 @@
       "term": "historial de comandos",
       "def": "Una lista creada automáticamente con los comandos ejecutados anteriormente. La mayoría de los [REPLs](#repl), incluyendo el [shell de Unix](#shell), registran este historial y permiten volver a ejecutar comandos recientes.\n"
     },
- "formExample": false
+    "formExample": false
   },
   "command_line_argument": {
     "en": {
@@ -949,7 +949,7 @@
       "term": "argumento de línea de comandos",
       "def": "Un nombre de archivo o indicador de control que se le pasa a un programa de línea de comandos al ejecutarlo.\n"
     },
- "formExample": false
+    "formExample": false
   },
   "comment": {
     "en": {
@@ -972,7 +972,7 @@
       "term": "commit",
       "def": "Como verbo, el acto de guardar un conjunto de cambios en una base de datos o [repositorio](#repository) de [control de versiones](#version_control_system). Como sustantivo, los cambios guardados.\n"
     },
- "formExample": false
+    "formExample": false
   },
   "commit_message": {
     "en": {
@@ -983,7 +983,7 @@
       "term": "mensaje de commit",
       "def": "Un comentario adjunto a un [commit](#commit) que explica qué se hizo y por qué.\n"
     },
- "formExample": false
+    "formExample": false
   },
   "compile": {
     "en": {
@@ -994,7 +994,7 @@
       "term": "compilar",
       "def": "Traducir código fuente en texto a otra forma. Los programas en [lenguajes compilados](#compiled_language) se traducen a instrucciones de máquina para que la computadora los ejecute, y [Markdown](#markdown) usualmente se traduce a [HTML](#html) para su visualización.\n"
     },
- "formExample": false
+    "formExample": false
   },
   "compiled_language": {
     "en": {
@@ -1005,7 +1005,7 @@
       "term": "lenguaje compilado",
       "def": "Originalmente, un lenguaje como C o Fortran que se traduce a instrucciones de máquina para su ejecución. Lenguajes como Java también se compilan antes de ejecutarse, pero a [byte code](#byte_code) en lugar de instrucciones de máquina, mientras que los [lenguajes interpretados](#interpreted_language) como [Python](#python) se compilan a byte code dinámicamente.\n"
     },
- "formExample": false
+    "formExample": false
   },
   "compiler": {
     "en": {
@@ -1016,7 +1016,7 @@
       "term": "compilador",
       "def": "Una aplicación que traduce programas escritos en ciertos lenguajes a instrucciones de máquina o a [byte code](#byte_code).\n"
     },
- "formExample": false
+    "formExample": false
   },
   "computational_linguistics": {
     "en": {
@@ -1027,7 +1027,7 @@
       "term": "lingüística computacional",
       "def": "El estudio o aplicación de métodos computacionales para procesamiento o entendimiento de lenguajes humanos. Los primeros acercamientos fueron algorítmicos; la mayoría de los acercamientos modernos son estadísticos.\n"
     },
- "formExample": false
+    "formExample": false
   },
   "computational_notebook": {
     "en": {
@@ -1038,7 +1038,7 @@
       "term": "cuaderno computacional",
       "def": "Una combinación entre un formato de documento que permite a los usuarios mezclar prosa y código en un solo archivo, y una aplicación que ejecuta ese código de forma interactiva y en el mismo lugar. [Jupyter Notebook](#jupyter_notebook) y [R Markdown](#r_markdown) son ejemplos de cuadernos computacionales.\n"
     },
- "formExample": false
+    "formExample": false
   },
   "condition": {
     "en": {
@@ -1049,7 +1049,7 @@
       "term": "condición",
       "def": "Un error u otro evento inesperado que interrumpe el flujo normal de ejecución.\n"
     },
- "formExample": false
+    "formExample": false
   },
   "conditional_expression": {
     "en": {
@@ -1060,7 +1060,7 @@
       "term": "expresión condicional",
       "def": "Una [expresión ternaria](#ternary_expression) que cumple el rol de una instrucción if/else. Por ejemplo, en C y lenguajes similares se usa la sintaxis `test ? ifTrue : ifFalse` para significar \"elige el valor `ifTrue` si `test` es verdadero, o `ifFalse` si no lo es.\"\n"
     },
- "formExample": false
+    "formExample": false
   },
   "confidence_interval": {
     "en": {
@@ -1071,7 +1071,7 @@
       "term": "intervalo de confianza",
       "def": "Un rango alrededor de una estimación que indica el margen de error, junto con una probabilidad de que el valor real caiga dentro de ese rango.\n"
     },
- "formExample": false
+    "formExample": false
   },
   "configuration file": {
     "en": {
@@ -4533,7 +4533,7 @@
     "formExample": true,
     "example": "my_list = [1, 2, 3]\nmy_list[0] = 10  # Changing the first element of the list\nprint(my_list) # Output: [10, 2, 3]"
   },
-"n_gram": {
+  "n_gram": {
     "en": {
       "term": "n-gram",
       "def": "A sequence of $N$ items, typically words in natural language. For example, a trigram is a sequence of three words. N-grams are often used as input in [computational linguistics](#computational_linguistics).\n"
@@ -4885,7 +4885,7 @@
     },
     "formExample": false
   },
-   "p_value": {
+  "p_value": {
     "en": {
       "term": "p value",
       "def": "The probability of obtaining a result at least as strong as the one observed if the [null_hypothesis](#null_hypothesis) is [true](#true) (i.e., if variation is purely due to chance). The lower the p-value, the more likely it is that something other than chance is having an effect.\n"
@@ -5935,9 +5935,9 @@
       "term": "aprendizaje por refuerzo",
       "def": "Cualquier algoritmo de [aprendizaje automático](#machine_learning) al que no se le asignan metas específicas, sino que se le proporciona retroalimentación sobre si está progresando o no.\n"
     },
-   "formExample": false
+    "formExample": false
   },
-"relational_database": {
+  "relational_database": {
     "en": {
       "term": "relational database",
       "def": "A database that organizes information into [tables](#table), each of which has a fixed set of named [fields](#field) (shown as columns) and a variable number of [records](#record) (shown as rows).\n"
@@ -5946,7 +5946,7 @@
       "term": "base de datos relacional",
       "def": "Una base de datos que organiza la información en [tablas](#table), cada una de las cuales tiene un set fijo de [campos](#field) con nombre (que se muestran como columnas) y un número variable de [registros](#record) (que se muestran como filas).\n"
     },
- "formExample": false
+    "formExample": false
   },
   "relative_error": {
     "en": {
@@ -5957,7 +5957,7 @@
       "term": "error relativo",
       "def": "El valor absoluto de la diferencia entre el valor observado y el valor correcto, dividido por el valor deseado. Por ejemplo, si el valor observado es 9 y el valor correcto es 10, el error relativo es 0.1. El error relativo suele ser más útil que el [error absoluto](#absolute_error).\n"
     },
- "formExample": false
+    "formExample": false
   },
   "relative_path": {
     "en": {
@@ -5968,7 +5968,7 @@
       "term": "ruta relativa",
       "def": "Una ruta cuyo destino se interpreta en relación con otra ubicación, como el [directorio de trabajo actual](#current_working_directory). Una ruta relativa es el equivalente a dar direcciones usando términos como \"recto\" y \"izquierda\".\n"
     },
- "formExample": false
+    "formExample": false
   },
   "relative_row_number": {
     "en": {
@@ -5990,7 +5990,7 @@
       "term": "inicio de sesión remoto",
       "def": "Iniciar una sesión interactiva en una computadora desde otra computadora, por ejemplo, usando [SSH](#ssh).\n"
     },
- "formExample": false
+    "formExample": false
   },
   "remote_repository": {
     "en": {
