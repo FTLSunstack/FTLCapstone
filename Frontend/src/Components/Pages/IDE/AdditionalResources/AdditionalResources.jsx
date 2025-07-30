@@ -100,13 +100,13 @@ function AdditionalResources({ language }) {
               }`}
             >
               <div className="flex flex-row justify-center">
-                <div className="text-center p-4 bg-red-50 rounded-lg border border-red-200">
+                <div className="text-center p-4 bg-blue-50 rounded-lg border border-blue-200">
                   <h1 className="text-gray-700 mb-3">
                     We value your feedback and take all complaints seriously.
                   </h1>
                   <button
                     onClick={handleEmailRedirect}
-                    className="bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-lg transition-colors duration-200 font-semibold hover:shadow-md cursor-pointer"
+                    className="bg-blue-600 hover:bg-blue-800 text-white px-6 py-2 rounded-lg transition-colors duration-200 font-semibold hover:shadow-md cursor-pointer"
                   >
                     Email Codifica
                   </button>
@@ -184,14 +184,14 @@ function AdditionalResources({ language }) {
               }`}
             >
               <div className="flex flex-row justify-center">
-                <div className="text-center p-4 bg-red-50 rounded-lg border border-red-200">
+                <div className="text-center p-4 bg-blue-50 rounded-lg border border-blue-200">
                   <h1 className="text-gray-700 mb-3">
                     Valoramos sus comentarios y tomamos todas las quejas en
                     serio.
                   </h1>
                   <button
                     onClick={handleEmailRedirect}
-                    className="bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-lg transition-colors duration-200 font-semibold hover:shadow-md cursor-pointer"
+                    className="bg-blue-600 hover:bg-blue-800 text-white px-6 py-2 rounded-lg transition-colors duration-200 font-semibold hover:shadow-md cursor-pointer"
                   >
                     Enviar Email a Codifica
                   </button>
