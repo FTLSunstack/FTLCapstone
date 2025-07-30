@@ -91,7 +91,11 @@ function NavBar({ language, setLanguage }) {
                   className="md:hidden block focus:outline-none"
                 >
                   <svg
-                    className="w-6 h-6 text-violet-600"
+                    className={`w-8 h-8 ${
+                      isOpen
+                        ? "text-violet-400 hover:text-violet-600"
+                        : "text-violet-600 hover:text-violet-400"
+                    }`}
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -186,7 +190,11 @@ function NavBar({ language, setLanguage }) {
                   className="md:hidden block focus:outline-none"
                 >
                   <svg
-                    className="w-6 h-6 text-violet-600"
+                    className={`w-8 h-8 ${
+                      isOpen
+                        ? "text-violet-400 hover:text-violet-600"
+                        : "text-violet-600 hover:text-violet-400"
+                    }`}
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"

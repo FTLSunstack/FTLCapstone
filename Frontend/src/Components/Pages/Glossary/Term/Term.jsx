@@ -9,6 +9,7 @@ function Term({ term, language, onClick, setModalTerm }) {
       <div
         onClick={() => {
           setModalTerm(term);
+          console.log(term);
           onClick();
         }}
         className="bg-white p-10 shadow-lg rounded-lg border border-black text-center flex items-center justify-center hover:cursor-pointer hover:shadow-xl hover:scale-105 transition-all duration-300"
