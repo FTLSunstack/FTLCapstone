@@ -9,6 +9,20 @@ export default function ExplanationBox({ language, codeExplanation }) {
   const [liveFeedback, setLiveFeedback] = useState("");
   const [emptyCode, setEmptyCode] = useState(null);
 
+  function formatTextIntoParagraphs(text) {
+    console.log("here it is inside the formattingbut it is not doing it")
+    //this splits the explanation from the llm by any puntuation marks they may have 
+    const sentences = text.split(/(?<=[.?!])\s+/);
+    // this then gets a map of each sentence it found  
+    return sentences.map((sentence, index) => (
+      // and for each sentence it then creates a new component and displays it
+      <p key={index} className="mb-2 leading-relaxed text-gray-200">
+        {sentence}
+      </p>
+    ));
+  } 
+
+
   useEffect(() => {
     console.log(language);
   });
@@ -86,7 +100,7 @@ export default function ExplanationBox({ language, codeExplanation }) {
                   <p className="text-red-400 text-center">{error}</p>
                 </div>
               ) : (
-                <p className="mt-2 text-lg">{explanation}</p>
+                <p className="mt-2 text-lg">{formatTextIntoParagraphs(explanation)}</p>
               )}
             </div>
 
