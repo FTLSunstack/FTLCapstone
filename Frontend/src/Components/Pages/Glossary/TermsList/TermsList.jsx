@@ -3,37 +3,49 @@ import axios from "axios";
 import Term from "../Term/Term.jsx";
 import "../../../../tailwind.css";
 
-function TermsList({ language, onClick, setModalTerm, search }) {
+function TermsList({ language, onClick, setModalTerm, search, activeLetter }) {
   const [terms, setTerms] = useState([]);
 
   useEffect(() => {
     const fetchTerms = async () => {
       try {
-        if (language === "Español") {
-          if (search === "") {
-            const res = await axios.get(
-              `${import.meta.env.VITE_BACKEND_URL}/glossary/`
-            );
-            setTerms(res.data);
-          } else {
-            const res = await axios.get(
-              `${import.meta.env.VITE_BACKEND_URL}/glossary/es/${search}`
-            );
-            setTerms(res.data);
-          }
+        // Fetch full glossary or filtered by search
+        const baseURL = `${import.meta.env.VITE_BACKEND_URL}/glossary`;
+        let res;
+
+        if (search === "") {
+          res = await axios.get(baseURL);
         } else {
-          if (search === "") {
-            const res = await axios.get(
-              `${import.meta.env.VITE_BACKEND_URL}/glossary/`
+          const langPath = language === "Español" ? "es" : "en";
+          res = await axios.get(`${baseURL}/${langPath}/${search}`);
+        }
+
+        const rawData = res.data;
+
+        // If rawData is a dictionary (object), convert to array first
+        let arrayData = [];
+
+        for (const slug in rawData) {
+          arrayData.push({
+            slug,
+            ...rawData[slug],
+          });
+        }
+
+        // Filter by activeLetter if applicable
+        if (activeLetter) {
+          if (language === "English") {
+            arrayData = arrayData.filter((entry) =>
+              entry.slug.toLowerCase().startsWith(activeLetter.toLowerCase())
             );
-            setTerms(res.data);
           } else {
-            const res = await axios.get(
-              `${import.meta.env.VITE_BACKEND_URL}/glossary/en/${search}`
+            arrayData = arrayData.filter((entry) =>
+              entry.es.term.toLowerCase().startsWith(activeLetter.toLowerCase())
             );
-            setTerms(res.data);
           }
         }
+
+        setTerms(arrayData);
       } catch (err) {
         console.error("Search error:", err);
         setTerms([]);
@@ -41,7 +53,7 @@ function TermsList({ language, onClick, setModalTerm, search }) {
     };
 
     fetchTerms();
-  }, [search]);
+  }, [search, activeLetter, language]);
 
   return (
     <>

@@ -2,13 +2,12 @@ import React, { useState } from "react";
 import "../../../../tailwind.css";
 import NavBar from "../../../Common/NavBar/NavBar";
 import Footer from "../../../Common/Footer/Footer";
-import CodeEditor from "../CodeEditor/CodeEditor";
-import CodeOutput from "../CodeOutput/CodeOutput";
+import Description from "../Description/IDEDescription";
 import ExplanationBox from "../ExplanationBox/ExplanationBox";
 import IDEContainer from "../IDEContainer/IDEContainer";
 import AdditionalResources from "../AdditionalResources/AdditionalResources";
 
-function IDEPage({ language, setLanguage }) {
+function IDEPage({ language, setLanguage, setLastPage }) {
   const [codeInstance, setCodeInstance] = useState(null);
 
   const handleCodeExplanation = (code) => {
@@ -17,7 +16,12 @@ function IDEPage({ language, setLanguage }) {
 
   return (
     <>
-      <NavBar language={language} setLanguage={setLanguage} />
+      <NavBar
+        language={language}
+        setLanguage={setLanguage}
+        setLastPage={setLastPage}
+      />
+      <Description language={language} />
       <div className="flex flex-col lg:flex-row gap-5 justify-center p-10">
         <div className="flex-1">
           <IDEContainer

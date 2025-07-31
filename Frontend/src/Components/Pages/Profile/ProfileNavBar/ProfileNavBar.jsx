@@ -3,11 +3,15 @@ import "../../../../tailwind.css";
 import { useNavigate } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 
-export default function ProfileNavBar() {
+export default function ProfileNavBar({ lastPage }) {
   const navigate = useNavigate();
 
   const handleBackToHomePage = () => {
-    navigate("/");
+    if (lastPage === "home") {
+      navigate("/");
+    } else {
+      navigate(`/${lastPage}`);
+    }
   };
   return (
     <div className="w-full p-5 flex flex-row justify-between items-center">

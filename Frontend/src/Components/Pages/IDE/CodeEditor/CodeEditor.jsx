@@ -168,7 +168,7 @@ export default function CodeEditor({
 
   return (
     <div>
-      <div className="relative w-full max-w-[900px] h-[400px] max-h-[500px] min-h-[300px] mx-auto">
+      <div className="relative w-full max-w-[900px] h-[400px] max-h-[500px] min-h-[300px] mx-auto shadow-4xl">
         <div
           ref={editorRef}
           className="w-full h-full"
