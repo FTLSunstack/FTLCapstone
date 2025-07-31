@@ -87,7 +87,7 @@ export default function HomeNavBar({
               <div className="flex flex-row gap-8">
                 <button
                   onClick={handleChangeLanguage}
-                  className="xl:hidden bg-white/20 backdrop-blur-md px-5 py-2 rounded-md hover:cursor-pointer w-24 text-white hover:bg-white/30 transition ease-in-out border border-white/30 drop-shadow-lg"
+                  className="xl:hidden px-5 py-2 bg-white/20 text-white rounded-md shadow-md backdrop-blur-lg transition-all hover:cursor-pointer hover:bg-white/30 hover:scale-105 hover:shadow-lg border border-white/30"
                 >
                   {language === "Español" ? "English" : "Español"}
                 </button>
@@ -121,18 +121,18 @@ export default function HomeNavBar({
               <div className="hidden xl:flex flex-row gap-10 justify-center">
                 <button
                   onClick={onScrollToFeatures}
-                  className="text-lg text-white hover:opacity-50 transition ease-in-out cursor-pointer drop-shadow-md"
+                  className="text-lg text-white hover:opacity-50 transition ease-in-out cursor-pointer drop-shadow-md transition hover:scale-105"
                 >
                   Características
                 </button>
                 <button
                   onClick={onScrollToAboutUs}
-                  className="text-lg text-white hover:opacity-50 transition ease-in-out cursor-pointer drop-shadow-md"
+                  className="text-lg text-white hover:opacity-50 transition ease-in-out cursor-pointer drop-shadow-md transition hover:scale-105"
                 >
                   Sobre Nosotros
                 </button>
                 <button
-                  className="text-lg text-white hover:opacity-50 transition ease-in-out cursor-pointer drop-shadow-md"
+                  className="text-lg text-white hover:opacity-50 transition ease-in-out cursor-pointer drop-shadow-md transition hover:scale-105"
                   onClick={handleIDE}
                 >
                   Aprender
@@ -142,19 +142,19 @@ export default function HomeNavBar({
               <div className="hidden xl:flex flex-row gap-10 justify-center">
                 <button
                   onClick={onScrollToFeatures}
-                  className="text-lg text-white hover:opacity-70 transition ease-in-out cursor-pointer drop-shadow-md"
+                  className="text-lg text-white hover:opacity-70 transition ease-in-out cursor-pointer drop-shadow-md transition hover:scale-105"
                 >
                   Características
                 </button>
                 <button
                   onClick={onScrollToAboutUs}
-                  className="text-lg text-white hover:opacity-70 transition ease-in-out cursor-pointer drop-shadow-md"
+                  className="text-lg text-white hover:opacity-70 transition ease-in-out cursor-pointer drop-shadow-md transition hover:scale-105"
                 >
                   Sobre Nosotros
                 </button>
                 <button
                   onClick={onScrollToGetStarted}
-                  className="text-lg text-white hover:opacity-70 transition ease-in-out cursor-pointer drop-shadow-md"
+                  className="text-lg text-white hover:opacity-70 transition ease-in-out cursor-pointer drop-shadow-md transition hover:scale-105"
                 >
                   Comenzar
                 </button>
@@ -164,7 +164,7 @@ export default function HomeNavBar({
             <div className="hidden xl:flex flex-row space-x-5 justify-self-end">
               <button
                 onClick={handleChangeLanguage}
-                className="bg-white/20 backdrop-blur-md px-5 py-2 rounded-md hover:cursor-pointer w-24 text-white hover:bg-white/30 transition ease-in-out border border-white/30 drop-shadow-lg"
+                className="px-5 py-2 bg-white/20 text-white rounded-md shadow-md backdrop-blur-lg transition-all hover:cursor-pointer hover:bg-white/30 hover:scale-105 hover:shadow-lg border border-white/30"
               >
                 {language === "Español" ? "English" : "Español"}
               </button>
@@ -173,7 +173,7 @@ export default function HomeNavBar({
                 <div className="flex flex-row space-x-5">
                   <button
                     onClick={handleUserLogout}
-                    className="bg-white/20 backdrop-blur-md px-5 py-2 rounded-md hover:cursor-pointer w-24 text-white hover:bg-white/30 transition ease-in-out border border-white/30 drop-shadow-lg"
+                    className="bg-white/20 backdrop-blur-md px-5 py-2 rounded-md hover:cursor-pointer w-24 text-white hover:bg-white/30 transition-all hover:scale-105 hover:shadow-lg ease-in-out border border-white/30 drop-shadow-lg"
                   >
                     Logout
                   </button>
@@ -181,7 +181,7 @@ export default function HomeNavBar({
                     <img
                       src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/1024px-Default_pfp.svg.png"
                       alt="pfp"
-                      className="w-10 cursor-pointer drop-shadow-lg rounded-full"
+                      className="w-10 cursor-pointer drop-shadow-lg rounded-full transition-all hover:scale-105 hover:shadow-lg"
                       onClick={handleProfilePage}
                     />
                   </span>
@@ -190,13 +190,13 @@ export default function HomeNavBar({
                 <div className="hidden xl:flex space-x-5">
                   <button
                     onClick={handleLogin}
-                    className="px-5 py-2 border border-white/40 text-white rounded-md hover:bg-white/20 backdrop-blur-md hover:cursor-pointer transition ease-in-out drop-shadow-lg"
+                    className="px-5 py-2 border border-white/40 text-white rounded-md hover:bg-white/20 backdrop-blur-md hover:cursor-pointer transition-all hover:scale-105 hover:shadow-lg ease-in-out drop-shadow-lg"
                   >
                     Iniciar Sesión
                   </button>
                   <button
                     onClick={handleSignUp}
-                    className="px-5 py-2 bg-white/20 backdrop-blur-md text-white rounded-md border border-white/30 hover:bg-white/30 hover:cursor-pointer transition ease-in-out drop-shadow-lg"
+                    className="px-5 py-2 bg-white/20 text-white rounded-md shadow-md backdrop-blur-lg transition-all hover:cursor-pointer hover:bg-white/30 hover:scale-105 hover:shadow-lg border border-white/30"
                   >
                     Registrarse
                   </button>
@@ -216,12 +216,12 @@ export default function HomeNavBar({
                   <img
                     src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/1024px-Default_pfp.svg.png"
                     alt="pfp"
-                    className="w-10 rounded-full cursor-pointer"
+                    className="w-10 rounded-full cursor-pointer transition-all hover:scale-105 hover:shadow-lg"
                     onClick={handleProfilePage}
                   />
                   <button
                     onClick={handleUserLogout}
-                    className="bg-white/20 backdrop-blur-md px-5 py-2 rounded-md hover:cursor-pointer w-24 text-white hover:bg-white/30 transition ease-in-out border border-white/30 drop-shadow-lg"
+                    className="bg-white/20 backdrop-blur-md px-5 py-2 rounded-md hover:cursor-pointer w-24 text-white hover:bg-white/30 transition-all hover:scale-105 hover:shadow-lg ease-in-out border border-white/30 drop-shadow-lg"
                   >
                     Logout
                   </button>
@@ -249,7 +249,7 @@ export default function HomeNavBar({
               <div className="flex flex-row gap-8">
                 <button
                   onClick={handleChangeLanguage}
-                  className="xl:hidden bg-white/20 backdrop-blur-md px-5 py-2 rounded-md hover:cursor-pointer w-24 text-white hover:bg-white/30 transition ease-in-out border border-white/30 drop-shadow-lg"
+                  className="xl:hidden px-5 py-2 bg-white/20 text-white rounded-md shadow-md backdrop-blur-lg transition-all hover:cursor-pointer hover:bg-white/30 hover:scale-105 hover:shadow-lg border border-white/30"
                 >
                   {language === "Español" ? "English" : "Español"}
                 </button>
@@ -283,19 +283,19 @@ export default function HomeNavBar({
               <div className="hidden xl:flex flex-row gap-10 justify-center">
                 <button
                   onClick={onScrollToFeatures}
-                  className="text-lg text-white hover:opacity-70 cursor-pointer drop-shadow-md cursor-pointer"
+                  className="text-lg text-white hover:opacity-70 cursor-pointer drop-shadow-md cursor-pointer transition hover:scale-105"
                 >
                   Features
                 </button>
                 <button
                   onClick={onScrollToAboutUs}
-                  className="text-lg text-white hover:opacity-70 transition ease-in-out cursor-pointer drop-shadow-md cursor-pointer"
+                  className="text-lg text-white hover:opacity-70 transition ease-in-out cursor-pointer drop-shadow-md cursor-pointer transition hover:scale-105"
                 >
                   About Us
                 </button>
                 <button
                   onClick={handleIDE}
-                  className="text-lg text-white hover:opacity-70 transition ease-in-out cursor-pointer drop-shadow-md cursor-pointer"
+                  className="text-lg text-white hover:opacity-70 transition ease-in-out cursor-pointer drop-shadow-md cursor-pointer transition hover:scale-105"
                 >
                   Learn
                 </button>
@@ -304,19 +304,19 @@ export default function HomeNavBar({
               <div className="hidden xl:flex flex-row gap-10 justify-center">
                 <button
                   onClick={onScrollToFeatures}
-                  className="text-lg text-white hover:opacity-70 drop-shadow-md cursor-pointer"
+                  className="text-lg text-white hover:opacity-70 drop-shadow-md cursor-pointer transition hover:scale-105"
                 >
                   Features
                 </button>
                 <button
                   onClick={onScrollToAboutUs}
-                  className="text-lg text-white hover:opacity-70 transition ease-in-out drop-shadow-md cursor-pointer"
+                  className="text-lg text-white hover:opacity-70 transition ease-in-out drop-shadow-md cursor-pointer transition hover:scale-105"
                 >
                   About Us
                 </button>
                 <button
                   onClick={onScrollToGetStarted}
-                  className="text-lg text-white hover:opacity-70 transition ease-in-out drop-shadow-md cursor-pointer"
+                  className="text-lg text-white hover:opacity-70 transition ease-in-out drop-shadow-md cursor-pointer transition hover:scale-105"
                 >
                   Get Started
                 </button>
@@ -325,7 +325,7 @@ export default function HomeNavBar({
             <div className="hidden xl:flex flex-row space-x-5 justify-self-end">
               <button
                 onClick={handleChangeLanguage}
-                className="bg-white/20 backdrop-blur-md px-5 py-2 rounded-md hover:cursor-pointer w-24 text-white hover:bg-white/30 transition ease-in-out border border-white/30 drop-shadow-lg"
+                className="px-5 py-2 bg-white/20 text-white rounded-md shadow-md backdrop-blur-lg transition-all hover:cursor-pointer hover:bg-white/30 hover:scale-105 hover:shadow-lg border border-white/30"
               >
                 {language === "English" ? "Español" : "English"}
               </button>
@@ -333,7 +333,7 @@ export default function HomeNavBar({
                 <div className="flex flex-row space-x-5">
                   <button
                     onClick={handleUserLogout}
-                    className="bg-white/20 backdrop-blur-md px-5 py-2 rounded-md hover:cursor-pointer w-24 text-white hover:bg-white/30 transition ease-in-out border border-white/30 drop-shadow-lg"
+                    className="bg-white/20 backdrop-blur-md px-5 py-2 rounded-md hover:cursor-pointer w-24 text-white hover:bg-white/30 transition-all hover:scale-105 hover:shadow-lg ease-in-out border border-white/30 drop-shadow-lg"
                   >
                     Logout
                   </button>
@@ -341,7 +341,7 @@ export default function HomeNavBar({
                     <img
                       src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/1024px-Default_pfp.svg.png"
                       alt="pfp"
-                      className="w-10 cursor-pointer drop-shadow-lg rounded-full"
+                      className="w-10 cursor-pointer drop-shadow-lg rounded-full transition-all hover:scale-105 hover:shadow-lg"
                       onClick={handleProfilePage}
                     />
                   </span>
@@ -350,13 +350,13 @@ export default function HomeNavBar({
                 <div className="hidden xl:flex space-x-5">
                   <button
                     onClick={handleLogin}
-                    className="px-5 py-2 border border-white/40 text-white rounded-md hover:bg-white/20 backdrop-blur-md hover:cursor-pointer transition ease-in-out drop-shadow-lg"
+                    className="px-5 py-2 border border-white/40 text-white rounded-md hover:bg-white/20 backdrop-blur-md hover:cursor-pointer transition-all hover:scale-105 hover:shadow-lg ease-in-out drop-shadow-lg"
                   >
                     Sign In
                   </button>
                   <button
                     onClick={handleSignUp}
-                    className="px-5 py-2 bg-white/20 backdrop-blur-md text-white rounded-md border border-white/30 hover:bg-white/30 hover:cursor-pointer transition ease-in-out drop-shadow-lg"
+                    className="px-5 py-2 bg-white/20 text-white rounded-md shadow-md backdrop-blur-lg transition-all hover:cursor-pointer hover:bg-white/30 hover:scale-105 hover:shadow-lg border border-white/30"
                   >
                     Sign Up
                   </button>
@@ -376,12 +376,12 @@ export default function HomeNavBar({
                   <img
                     src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/1024px-Default_pfp.svg.png"
                     alt="pfp"
-                    className="w-10 rounded-full cursor-pointer"
+                    className="w-10 rounded-full cursor-pointer transition hover:scale-105 hover:shadow-lg"
                     onClick={handleProfilePage}
                   />
                   <button
                     onClick={handleUserLogout}
-                    className="bg-white/20 backdrop-blur-md px-5 py-2 rounded-md hover:cursor-pointer w-24 text-white hover:bg-white/30 transition ease-in-out border border-white/30 drop-shadow-lg"
+                    className="bg-white/20 backdrop-blur-md px-5 py-2 rounded-md hover:cursor-pointer w-24 text-white hover:bg-white/30 transition-all hover:scale-105 hover:shadow-lg ease-in-out border border-white/30 drop-shadow-lg"
                   >
                     Logout
                   </button>

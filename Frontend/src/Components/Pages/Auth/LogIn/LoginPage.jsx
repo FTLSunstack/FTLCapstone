@@ -4,8 +4,8 @@ import "../../../../tailwind.css";
 import LoginForm from "./LoginForm";
 import Footer from "../../../Common/Footer/Footer";
 
-function LoginPage({language}) {
-  console.log(language)
+function LoginPage({ language }) {
+  console.log(language);
   const navigate = useNavigate();
   const [homeButtonTxt, setHomeButtonTxt] = useState("Volver Al Inicio");
 
@@ -16,29 +16,35 @@ function LoginPage({language}) {
     } else {
       setHomeButtonTxt("Back Home");
     }
-  }, [language]); 
+  }, [language]);
 
   const handleBack = () => {
     navigate("/");
   };
 
-
-
   return (
     <>
-      <div className="min-h-screen h-14 bg-gradient-to-r from-violet-600 to-blue-800">
-        <button
-          onClick={handleBack}
-          className="mt-8 ml-10 mb-8 py-2 px-4 font-semibold rounded-lg shadow-md text-black bg-white hover:bg-black hover:text-white hover:cursor-pointer transition ease-in-out"
-        >
-          {" "}
-          {homeButtonTxt}
-        </button>
-        <div className="flex flex-col opacity-100 items-center">
-          <div className="mt-10">
-            <div className="flex flex-col items-center justify-center w-screen mb-15">
-              <LoginForm language={language}></LoginForm>
-            </div>
+      <div className="min-h-screen bg-gradient-to-br from-purple-700 via-violet-600 to-blue-600 flex flex-col">
+        {/* Animated gradient waves */}
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-r from-pink-500/20 via-purple-500/30 to-blue-500/20 animate-wave-1"></div>
+          <div className="absolute inset-0 bg-gradient-to-l from-blue-400/25 via-violet-400/20 to-pink-400/25 animate-wave-2"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-indigo-500/15 via-transparent to-purple-500/15 animate-wave-3"></div>
+        </div>
+        {/* Top Button */}
+        <div className="p-6">
+          <button
+            onClick={handleBack}
+            className="px-5 py-2 bg-white/20 text-white rounded-md shadow-md backdrop-blur-lg transition-all hover:bg-white/30 hover:scale-105 hover:shadow-lg border border-white/30"
+          >
+            {homeButtonTxt}
+          </button>
+        </div>
+
+        {/* Centered Login Card */}
+        <div className="flex-1 flex items-center justify-center px-4 z-100">
+          <div className="w-full max-w-md">
+            <LoginForm language={language} />
           </div>
         </div>
       </div>
