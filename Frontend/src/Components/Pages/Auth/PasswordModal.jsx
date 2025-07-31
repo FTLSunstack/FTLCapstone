@@ -36,7 +36,7 @@ function PasswordModal({ email, setEmail, closePasswordModal, language}) {
     try {
       const response = await axios.post(
         `${import.meta.env.VITE_BACKEND_URL}/auth/req-reset-password`,
-        { email }
+        { email, language}
       );
       console.log("Reset Password Request successful!", response.data);
       NotifSuccess("Reset Password Request");
