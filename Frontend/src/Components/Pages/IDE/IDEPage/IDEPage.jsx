@@ -28,9 +28,6 @@ function IDEPage({ language, setLanguage }) {
         <div className="flex-1 flex flex-col h-full w-full">
           <ExplanationBox language={language} codeExplanation={codeInstance} />
         </div>
-        {/* <div className="flex-1">
-          <AdditionalResources language={language} />
-        </div> */}
       </div>
       <AdditionalResources language={language} />
       <Footer language={language} />

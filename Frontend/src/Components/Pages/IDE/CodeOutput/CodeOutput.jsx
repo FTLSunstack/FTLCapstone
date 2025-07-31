@@ -62,9 +62,9 @@ export default function CodeOutput({
           {/* Tab Content */}
           <div className="min-h-[250px] max-h-[400px] overflow-y-auto">
             {activeButton === "button1" ? (
-              <div>
+              <div className="p-4">
                 {loading ? (
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-3 p-4">
                     <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-yellow-400"></div>
                     <p className="text-yellow-400">Running your code...</p>
                   </div>
@@ -74,11 +74,11 @@ export default function CodeOutput({
                     <p className="text-red-300 font-mono text-sm">{error}</p>
                   </div>
                 ) : output && output.trim() !== "" ? (
-                  <div className="bg-green-900/20 border border-green-500 rounded p-4">
-                    <h2 className="text-green-400 font-semibold mb-2">
+                  <div className="bg-green-900/20 border border-green-500 rounded p-4 mt-2">
+                    <h2 className="text-green-400 font-semibold mb-3">
                       Output:
                     </h2>
-                    <pre className="text-green-300 font-mono text-sm whitespace-pre-wrap">
+                    <pre className="text-green-300 font-mono text-sm whitespace-pre-wrap leading-relaxed">
                       {output}
                     </pre>
                   </div>
@@ -98,7 +98,7 @@ export default function CodeOutput({
                 <textarea
                   value={input}
                   placeholder="Enter your code here..."
-                  className="bg-zinc-900 text-white placeholder-gray-400 w-full h-88 rounded-b-lg p-4 border-0 outline-none resize-none rounded-none font-mono leading-relaxed"
+                  className="bg-zinc-900 text-white placeholder-gray-400 w-full h-full rounded-b-lg p-4 border-0 outline-none resize-none rounded-none font-mono leading-relaxed"
                   onChange={handleInputChange}
                 />
               </div>
@@ -135,9 +135,9 @@ export default function CodeOutput({
           {/* Tab Content */}
           <div className="min-h-[250px] max-h-[400px] overflow-y-auto">
             {activeButton === "button1" ? (
-              <div>
+              <div className="p-4">
                 {loading ? (
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-3 p-4">
                     <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-yellow-400"></div>
                     <p className="text-yellow-400">Ejecutando tu código...</p>
                   </div>
@@ -147,11 +147,11 @@ export default function CodeOutput({
                     <p className="text-red-300 font-mono text-sm">{error}</p>
                   </div>
                 ) : output && output.trim() !== "" ? (
-                  <div className="bg-green-900/20 border border-green-500 rounded p-4">
-                    <h2 className="text-green-400 font-semibold mb-2">
+                  <div className="bg-green-900/20 border border-green-500 rounded p-4 mt-2">
+                    <h2 className="text-green-400 font-semibold mb-3">
                       Producción:
                     </h2>
-                    <pre className="text-green-300 font-mono text-sm whitespace-pre-wrap">
+                    <pre className="text-green-300 font-mono text-sm whitespace-pre-wrap leading-relaxed">
                       {output}
                     </pre>
                   </div>
@@ -172,7 +172,7 @@ export default function CodeOutput({
                 <textarea
                   value={input}
                   placeholder="Enter your code here..."
-                  className="bg-zinc-900 text-white placeholder-gray-400 w-full h-88 rounded-b-lg p-4 border-0 outline-none resize-none rounded-none font-mono leading-relaxed"
+                  className="bg-zinc-900 text-white placeholder-gray-400 w-full h-full rounded-b-lg p-4 border-0 outline-none resize-none rounded-none font-mono leading-relaxed"
                   onChange={handleInputChange}
                 />
               </div>
