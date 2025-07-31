@@ -19,12 +19,14 @@ function SearchBar({
   const handleClear = (e) => {
     e.preventDefault();
     console.log("Clearing");
+    handleLetterClick("");
+    setInput("");
     setSearch("");
   };
 
   return (
     <>
-      <div className="flex flex-col items-center justify-center p-10 border-1 border-black bg-white shadow-xl rounded-lg m-10 w-4/5 max-w-[1150px]">
+      <div className="flex flex-col items-center justify-center p-10 border-2 border-purple-600 bg-violet-200 shadow-xl rounded-lg m-10 w-4/5 max-w-[1150px]">
         <div>
           <div className="flex flex-col sm:flex-row w-full sm:w-2/3 gap-2 justify-self-center">
             <form
@@ -57,7 +59,7 @@ function SearchBar({
                   onChange={(e) => setInput(e.target.value)}
                   value={input}
                   name="Search"
-                  className="border border-black pl-10 pr-4 py-2 rounded-lg w-full"
+                  className="border border-purple-700 pl-10 pr-4 py-2 rounded-lg w-full bg-white"
                 />
               </div>
               {language === "Español" ? (
@@ -95,11 +97,11 @@ function SearchBar({
               <button
                 key={letter}
                 onClick={() => handleLetterClick(letter)}
-                className={`w-8 h-8 flex items-center justify-center rounded-full text-sm font-medium 
+                className={`w-8 h-8 flex items-center justify-center rounded-full text-sm font-medium
         ${
           activeLetter === letter
             ? "bg-purple-600 text-white"
-            : "border border-purple-700 text-purple-700 hover:bg-purple-700 hover:text-white"
+            : "border border-purple-700 text-purple-700 bg-white hover:bg-purple-700 hover:text-white"
         } transition`}
               >
                 {letter}
