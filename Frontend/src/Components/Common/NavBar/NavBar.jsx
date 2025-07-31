@@ -5,7 +5,7 @@ import "../../../tailwind.css";
 import { useAuth } from "../../../Context/AuthContext";
 import { toast, Bounce } from "react-toastify";
 
-function NavBar({ language, setLanguage }) {
+function NavBar({ language, setLanguage, setLastPage }) {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
   const { setUser } = useAuth();
@@ -22,7 +22,6 @@ function NavBar({ language, setLanguage }) {
       theme: "light",
       transition: Bounce,
     });
-
   const handleUserLogout = async () => {
     try {
       const response = await axios.post(
@@ -44,7 +43,6 @@ function NavBar({ language, setLanguage }) {
       );
     }
   };
-
   const handleChangeLanguage = () => {
     if (language === "English") {
       setLanguage("Español");
@@ -52,27 +50,30 @@ function NavBar({ language, setLanguage }) {
       setLanguage("English");
     }
   };
-
   const handleGlossaryClick = () => {
+    setLastPage("glossary");
     navigate("/glossary");
   };
-
   const handleIdeClick = () => {
+    setLastPage("ide");
     navigate("/ide");
   };
-
   const handleBackToHomePage = () => {
+    setLastPage("home");
     navigate("/");
+  };
+  const handleProfilePage = () => {
+    navigate("/profile");
   };
 
   return (
     <>
       {language === "English" ? (
         <div>
-          <div className="bg-white p-5 md:grid md:grid-cols-3 items-center border-b border-black shadow-md">
+          <div className="absolute top-0 left-0 right-0 z-50 p-5 lg:grid lg:grid-cols-3 items-center bg-white backdrop-blur-sm shadow-md">
             <div className="flex flex-row justify-between">
               <h1
-                className="text-violet-600 font-bold text-3xl hover:cursor-pointer hover:opacity-70 transition ease-in-out"
+                className="text-purple-600 font-bold text-3xl hover:cursor-pointer hover:opacity-70 transition ease-in-out"
                 onClick={handleBackToHomePage}
               >
                 Codifica
@@ -81,14 +82,14 @@ function NavBar({ language, setLanguage }) {
               <div className="flex flex-row gap-8">
                 <button
                   onClick={handleChangeLanguage}
-                  className="md:hidden bg-violet-500 px-5 py-2 rounded-md hover:cursor-pointer w-24 text-white hover:bg-violet-700 transition ease-in-out"
+                  className="lg:hidden bg-violet-500 px-5 py-2 rounded-md hover:cursor-pointer w-24 text-white hover:bg-violet-700 transition ease-in-out"
                 >
                   {language === "Español" ? "English" : "Español"}
                 </button>
                 {/* Hamburger Icon (visible only on mobile) */}
                 <button
                   onClick={() => setIsOpen(!isOpen)}
-                  className="md:hidden block focus:outline-none"
+                  className="lg:hidden block focus:outline-none"
                 >
                   <svg
                     className={`w-8 h-8 ${
@@ -111,27 +112,27 @@ function NavBar({ language, setLanguage }) {
               </div>
             </div>
 
-            <div className="hidden md:flex flex-row justify-center gap-10">
+            <div className="hidden lg:flex flex-row justify-center gap-10 text-gray-500 text-lg">
               <a
                 onClick={handleIdeClick}
-                className="text-lg text-gray-500 hover:text-black transition ease-in-out cursor-pointer text-center"
+                className="hover:text-black transition ease-in-out cursor-pointer text-center"
               >
                 IDE
               </a>
               <a
                 onClick={handleGlossaryClick}
-                className="text-lg text-gray-500 hover:text-black transition ease-in-out cursor-pointer text-center"
+                className="hover:text-black transition ease-in-out cursor-pointer text-center"
               >
                 Glossary
               </a>
             </div>
 
-            <div className="hidden md:flex flex-row space-x-5 justify-self-end">
+            <div className="hidden lg:flex flex-row space-x-5 justify-self-end">
               <button
                 onClick={handleChangeLanguage}
                 className="bg-violet-500 px-5 py-2 rounded-md hover:cursor-pointer w-24 text-white hover:bg-violet-700 transition ease-in-out"
               >
-                {language}
+                {language === "Español" ? "English" : "Español"}
               </button>
               <button
                 onClick={handleUserLogout}
@@ -139,12 +140,20 @@ function NavBar({ language, setLanguage }) {
               >
                 Logout
               </button>
+              <span>
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/1024px-Default_pfp.svg.png"
+                  alt="pfp"
+                  className="w-10 cursor-pointer drop-shadow-lg rounded-full"
+                  onClick={handleProfilePage}
+                />
+              </span>
             </div>
           </div>
 
           {/* Dropdown Menu for Mobile */}
           {isOpen && (
-            <div className="md:hidden flex flex-col align-center gap-4 px-5 py-4 bg-white/10 backdrop-blur-md text-white absolute top-[80px] left-0 right-0 z-40 shadow-lg">
+            <div className="lg:hidden flex flex-col items-center gap-4 px-5 py-4 bg-white/10 backdrop-blur-md text-white absolute top-[80px] left-0 right-0 z-40 shadow-lg">
               <a
                 onClick={handleIdeClick}
                 className="text-white hover:cursor-pointer text-center"
@@ -157,6 +166,14 @@ function NavBar({ language, setLanguage }) {
               >
                 Glossary
               </a>
+              <span>
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/1024px-Default_pfp.svg.png"
+                  alt="pfp"
+                  className="w-10 cursor-pointer drop-shadow-lg rounded-full"
+                  onClick={handleProfilePage}
+                />
+              </span>
               <button
                 onClick={handleUserLogout}
                 className="px-4 py-2 rounded-md bg-violet-500 text-white hover:cursor-pointer"
@@ -168,7 +185,7 @@ function NavBar({ language, setLanguage }) {
         </div>
       ) : (
         <div>
-          <div className="bg-white p-5 md:grid md:grid-cols-3 items-center border-b border-black shadow-md">
+          <div className="absolute top-0 left-0 right-0 z-50 p-5 lg:grid lg:grid-cols-3 items-center bg-white backdrop-blur-sm shadow-md">
             <div className="flex flex-row justify-between">
               <h1
                 className="text-violet-600 font-bold text-3xl hover:cursor-pointer hover:opacity-70 transition ease-in-out mr-4"
@@ -180,14 +197,14 @@ function NavBar({ language, setLanguage }) {
               <div className="flex flex-row gap-8">
                 <button
                   onClick={handleChangeLanguage}
-                  className="md:hidden bg-violet-500 px-5 py-2 rounded-md hover:cursor-pointer w-24 text-white hover:bg-violet-700 transition ease-in-out"
+                  className="lg:hidden bg-violet-500 px-5 py-2 rounded-md hover:cursor-pointer w-24 text-white hover:bg-violet-700 transition ease-in-out"
                 >
                   {language === "Español" ? "English" : "Español"}
                 </button>
                 {/* Hamburger Icon (visible only on mobile) */}
                 <button
                   onClick={() => setIsOpen(!isOpen)}
-                  className="md:hidden block focus:outline-none"
+                  className="lg:hidden block focus:outline-none"
                 >
                   <svg
                     className={`w-8 h-8 ${
@@ -210,7 +227,7 @@ function NavBar({ language, setLanguage }) {
               </div>
             </div>
 
-            <div className="hidden md:flex flex-row justify-center gap-10">
+            <div className="hidden lg:flex flex-row justify-center gap-10">
               <a
                 onClick={handleIdeClick}
                 className="text-lg text-gray-500 hover:text-black transition ease-in-out cursor-pointer text-center"
@@ -225,12 +242,12 @@ function NavBar({ language, setLanguage }) {
               </a>
             </div>
 
-            <div className="hidden md:flex flex-row space-x-5 justify-self-end">
+            <div className="hidden lg:flex flex-row space-x-5 justify-self-end">
               <button
                 onClick={handleChangeLanguage}
                 className="bg-violet-500 px-5 py-2 rounded-md hover:cursor-pointer w-24 text-white hover:bg-violet-700 transition ease-in-out ml-4"
               >
-                {language}
+                {language === "Español" ? "English" : "Español"}
               </button>
               <button
                 onClick={handleUserLogout}
@@ -238,12 +255,20 @@ function NavBar({ language, setLanguage }) {
               >
                 Finalizar Sesión
               </button>
+              <span>
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/1024px-Default_pfp.svg.png"
+                  alt="pfp"
+                  className="w-10 cursor-pointer drop-shadow-lg rounded-full"
+                  onClick={handleProfilePage}
+                />
+              </span>
             </div>
           </div>
 
           {/* Dropdown Menu for Mobile */}
           {isOpen && (
-            <div className="md:hidden flex flex-col align-center gap-4 px-5 py-4 bg-white/10 backdrop-blur-md text-white absolute top-[80px] left-0 right-0 z-40 shadow-lg">
+            <div className="lg:hidden flex flex-col items-center gap-4 px-5 py-4 bg-white/10 backdrop-blur-md text-white absolute top-[80px] left-0 right-0 z-40 shadow-lg">
               <a
                 onClick={handleIdeClick}
                 className="text-white hover:cursor-pointer text-center"
@@ -256,6 +281,14 @@ function NavBar({ language, setLanguage }) {
               >
                 Glosario
               </a>
+              <span>
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/1024px-Default_pfp.svg.png"
+                  alt="pfp"
+                  className="w-10 cursor-pointer drop-shadow-lg rounded-full"
+                  onClick={handleProfilePage}
+                />
+              </span>
               <button
                 onClick={handleUserLogout}
                 className="px-4 py-2 rounded-md bg-violet-500 text-white hover:cursor-pointer"

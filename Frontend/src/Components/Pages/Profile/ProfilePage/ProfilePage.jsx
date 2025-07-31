@@ -4,7 +4,7 @@ import ProfileNavBar from "../ProfileNavBar/ProfileNavBar";
 import EditProfile from "../EditProfile/EditProfile.jsx";
 import { useAuth } from "../../../../Context/AuthContext.jsx";
 
-export default function ProfilePage({ language }) {
+export default function ProfilePage({ language, lastPage }) {
   const [showModal, setShowModal] = useState(false);
   const [refreshKey, setRefreshKey] = useState(0);
 
@@ -24,7 +24,7 @@ export default function ProfilePage({ language }) {
 
   return (
     <div className="h-screen pb-5">
-      <ProfileNavBar />
+      <ProfileNavBar lastPage={lastPage} />
       <ProfileSection
         name={user.name}
         userName={user.username}

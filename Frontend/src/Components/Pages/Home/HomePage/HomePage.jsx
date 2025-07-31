@@ -7,7 +7,7 @@ import Features from "../Features/Features.jsx";
 import GetStarted from "../GetStarted/GetStarted.jsx";
 import AboutUs from "../AboutUs/AboutUs.jsx";
 
-function HomePage({ language, setLanguage }) {
+function HomePage({ language, setLanguage, setLastPage }) {
   const featuresRef = useRef(null);
   const aboutUsRef = useRef(null);
   const getStartedRef = useRef(null);
@@ -24,6 +24,7 @@ function HomePage({ language, setLanguage }) {
         onScrollToFeatures={() => scrollTo(featuresRef)}
         onScrollToAboutUs={() => scrollTo(aboutUsRef)}
         onScrollToGetStarted={() => scrollTo(getStartedRef)}
+        setLastPage={setLastPage}
       />
 
       <main className="w-full">

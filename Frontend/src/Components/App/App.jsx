@@ -16,6 +16,7 @@ import "react-toastify/ReactToastify.css";
 
 function App() {
   const [language, setLanguage] = useState("Español");
+  const [lastPage, setLastPage] = useState("home");
 
   return (
     <>
@@ -26,13 +27,21 @@ function App() {
               <Route
                 path="/glossary"
                 element={
-                  <GlossaryPage language={language} setLanguage={setLanguage} />
+                  <GlossaryPage
+                    language={language}
+                    setLanguage={setLanguage}
+                    setLastPage={setLastPage}
+                  />
                 }
               />
               <Route
                 path="/ide"
                 element={
-                  <IDEPage language={language} setLanguage={setLanguage} />
+                  <IDEPage
+                    language={language}
+                    setLanguage={setLanguage}
+                    setLastPage={setLastPage}
+                  />
                 }
               />
             </Route>
@@ -45,12 +54,16 @@ function App() {
             <Route
               path="/"
               element={
-                <HomePage language={language} setLanguage={setLanguage} />
+                <HomePage
+                  language={language}
+                  setLanguage={setLanguage}
+                  setLastPage={setLastPage}
+                />
               }
             />
             <Route
               path="/profile"
-              element={<ProfilePage language={language} />}
+              element={<ProfilePage language={language} lastPage={lastPage} />}
             />
             {/* <Route path="/edit/profile" element={<EditProfile />} /> */}
           </Routes>
