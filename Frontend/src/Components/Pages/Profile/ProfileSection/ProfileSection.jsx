@@ -37,7 +37,7 @@ export default function ProfileSection(props) {
           />
           <div className="w-32 h-32 rounded-full border-4 border-white shadow-xl overflow-hidden bg-white">
             <img
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/1024px-Default_pfp.svg.png"
+              src="https://adamchang.com/wp-content/uploads/2022/05/Tokyo-Olympics_Astro-Statics_large__Medal-Pose-1.png"
               alt="Profile"
               className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300 cursor-pointer"
             />
