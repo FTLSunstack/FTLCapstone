@@ -29,12 +29,15 @@ export default function CodeEditor({
   const [output, setOutput] = useState("");
   const [result, setResult] = useState("");
 
+  const handleExplanation = () => {
+    const currentCode = viewRef.current.state.doc.toString();
+    if (onRun) onRun(currentCode);
+  };
+
   const handleSubmit = async () => {
     if (viewRef.current) {
       const currentCode = viewRef.current.state.doc.toString();
       const formattedCode = currentCode.replace(/\n/g, "\n");
-
-      if (onRun) onRun(currentCode);
 
       setLoading(true);
       if (onLoading) onLoading(true);
@@ -174,13 +177,21 @@ export default function CodeEditor({
           className="w-full h-full"
           style={{ outline: "none" }}
         />
-        <button
-          className="absolute bottom-2 right-2 bg-violet-400 text-white px-4 py-2 rounded hover:bg-violet-500 hover:cursor-pointer transition flex items-center gap-1"
-          onClick={handleSubmit}
-        >
-          <span className="material-icons">play_arrow</span>
-          {language === "English" ? "Run" : "Ejecutar"}
-        </button>
+        <div className="relative">
+          <button
+            className="absolute bottom-2 left-2 bg-violet-400 text-white px-4 py-2 rounded text-white cursor-pointer hover:bg-violet-500 transition ease-in-out"
+            onClick={handleExplanation}
+          >
+            {language === "English" ? "Explain" : "Explicar"}
+          </button>
+          <button
+            className="absolute bottom-2 right-2 bg-violet-400 text-white px-4 py-2 rounded hover:bg-violet-500 hover:cursor-pointer transition flex items-center gap-1"
+            onClick={handleSubmit}
+          >
+            <span className="material-icons">play_arrow</span>
+            {language === "English" ? "Run" : "Ejecutar"}
+          </button>
+        </div>
       </div>
     </div>
   );
