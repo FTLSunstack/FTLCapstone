@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate, useLocation} from "react-router-dom";
 import "../../../tailwind.css";
 import axios from "axios";
@@ -10,10 +10,27 @@ function ResetPasswordPage() {
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
     const location = useLocation();
-    
+
     // Get token from URL
     const searchParams = new URLSearchParams(location.search);
     const token = searchParams.get("token");
+    //need to get the language
+    const urlLanguage = searchParams.get("lang");
+
+    const [pageTxt, setPageTxt] = useState("Por favor, restablezca su contraseña aquí.");
+    const [buttonTxt, setButtonTxt] = useState("Actualice su Contraseña");
+
+
+    useEffect(() => {
+        // only if language changes
+        if (urlLanguage === "Español") {
+            setPageTxt("Por favor, restablezca su contraseña aquí.");
+            setButtonTxt("Actualice su Contraseña");
+        } else {
+            setButtonTxt("Update Password");
+        }
+    }, [urlLanguage]); 
+    
 
     const handleBack = () => {
         navigate("/login");
@@ -46,13 +63,13 @@ function ResetPasswordPage() {
                         <div className="PasswordFrom bg-white bg-center flex flex-col items-center justify-around w-100 h-140 rounded-md"> 
                             <div className="Title Header align-center">
                                 <div className="Title mt-10 mb-4 text-center text-violet-600 font-bold text-5xl">Codifica</div>
-                                <div className="Caption mb-6 text-center text-black font-bold text-xl">Please reset your password here.</div>
+                                <div className="Caption mb-6 text-center text-black font-bold text-xl">{pageTxt}</div>
                             </div>
-                    
+
                             <form onSubmit={handleUpdateForgottenPassword} className="Input flex flex-col items-center pb-30 px-10 w-full" >
-                                <ResetPasswordInput password={password} setPassword={setPassword} ></ResetPasswordInput>
+                                <ResetPasswordInput password={password} setPassword={setPassword} language={urlLanguage} ></ResetPasswordInput>
                                 <div className= "flex flex-col items-left">
-                                    <button type="submit" className="mt-2 mb-4 py-2 px-15 text-center font-semibold rounded-lg shadow-md text-white bg-indigo-700 hover:bg-blue-800 cursor-pointer"> Update Password</button>
+                                    <button type="submit" className="mt-2 mb-4 py-2 px-15 text-center font-semibold rounded-lg shadow-md text-white bg-indigo-700 hover:bg-blue-800 cursor-pointer"> {buttonTxt}</button>
                                 </div>
                             </form>
                             {/* <div className= "flex flex-row">
