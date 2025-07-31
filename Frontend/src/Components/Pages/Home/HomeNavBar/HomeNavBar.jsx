@@ -1,7 +1,9 @@
 import "../../../../tailwind.css";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import { useAuth } from "../../../../Context/AuthContext.jsx";
 import React, { useState } from "react";
+import { toast, Bounce } from "react-toastify";
 
 export default function HomeNavBar({
   language,
@@ -9,10 +11,12 @@ export default function HomeNavBar({
   onScrollToFeatures,
   onScrollToAboutUs,
   onScrollToGetStarted,
+  setLastPage,
 }) {
   const navigate = useNavigate();
   const { user, logout } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
+  const { setUser } = useAuth();
 
   const handleLogin = () => {
     navigate("/login");
@@ -21,9 +25,11 @@ export default function HomeNavBar({
     navigate("/signup");
   };
   const handleIDE = () => {
+    setLastPage("ide");
     navigate("/ide");
   };
   const handleProfilePage = () => {
+    setLastPage("home");
     navigate("/profile");
   };
   const handleChangeLanguage = () => {
@@ -31,6 +37,40 @@ export default function HomeNavBar({
       setLanguage("Español");
     } else {
       setLanguage("English");
+    }
+  };
+
+  const logOutNotifSuccess = () =>
+    toast.warning("You have logged out", {
+      position: "top-center",
+      autoClose: 1500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+    });
+  const handleUserLogout = async () => {
+    try {
+      const response = await axios.post(
+        `${import.meta.env.VITE_BACKEND_URL}/auth/logout`,
+        {},
+        { withCredentials: true }
+      );
+      console.log("LogOut successful!", response.data);
+      logOutNotifSuccess();
+      setTimeout(() => {
+        navigate("/");
+      }, 100);
+      setUser(null);
+    } catch (err) {
+      alert(
+        err.response?.data?.error ||
+          err.response?.data?.message ||
+          "Logout Failed"
+      );
     }
   };
 
@@ -95,7 +135,7 @@ export default function HomeNavBar({
                   className="text-lg text-white hover:opacity-50 transition ease-in-out cursor-pointer drop-shadow-md"
                   onClick={handleIDE}
                 >
-                  IDE
+                  Aprender
                 </button>
               </div>
             ) : (
@@ -130,14 +170,22 @@ export default function HomeNavBar({
               </button>
 
               {user ? (
-                <span>
-                  <img
-                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/1024px-Default_pfp.svg.png"
-                    alt="pfp"
-                    className="w-10 cursor-pointer drop-shadow-lg rounded-full"
-                    onClick={handleProfilePage}
-                  />
-                </span>
+                <div className="flex flex-row space-x-5">
+                  <button
+                    onClick={handleUserLogout}
+                    className="bg-white/20 backdrop-blur-md px-5 py-2 rounded-md hover:cursor-pointer w-24 text-white hover:bg-white/30 transition ease-in-out border border-white/30 drop-shadow-lg"
+                  >
+                    Logout
+                  </button>
+                  <span>
+                    <img
+                      src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/1024px-Default_pfp.svg.png"
+                      alt="pfp"
+                      className="w-10 cursor-pointer drop-shadow-lg rounded-full"
+                      onClick={handleProfilePage}
+                    />
+                  </span>
+                </div>
               ) : (
                 <div className="hidden xl:flex space-x-5">
                   <button
@@ -164,13 +212,19 @@ export default function HomeNavBar({
                 <>
                   <button onClick={onScrollToFeatures}>Características</button>
                   <button onClick={onScrollToAboutUs}>Sobre Nosotros</button>
-                  <button onClick={handleIDE}>IDE</button>
+                  <button onClick={handleIDE}>Aprender</button>
                   <img
                     src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/1024px-Default_pfp.svg.png"
                     alt="pfp"
                     className="w-10 rounded-full cursor-pointer"
                     onClick={handleProfilePage}
                   />
+                  <button
+                    onClick={handleUserLogout}
+                    className="bg-white/20 backdrop-blur-md px-5 py-2 rounded-md hover:cursor-pointer w-24 text-white hover:bg-white/30 transition ease-in-out border border-white/30 drop-shadow-lg"
+                  >
+                    Logout
+                  </button>
                 </>
               ) : (
                 <>
@@ -243,7 +297,7 @@ export default function HomeNavBar({
                   onClick={handleIDE}
                   className="text-lg text-white hover:opacity-70 transition ease-in-out cursor-pointer drop-shadow-md cursor-pointer"
                 >
-                  IDE
+                  Learn
                 </button>
               </div>
             ) : (
@@ -276,14 +330,22 @@ export default function HomeNavBar({
                 {language === "English" ? "Español" : "English"}
               </button>
               {user ? (
-                <span>
-                  <img
-                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/1024px-Default_pfp.svg.png"
-                    alt="pfp"
-                    className="w-10 cursor-pointer drop-shadow-lg rounded-full"
-                    onClick={handleProfilePage}
-                  />
-                </span>
+                <div className="flex flex-row space-x-5">
+                  <button
+                    onClick={handleUserLogout}
+                    className="bg-white/20 backdrop-blur-md px-5 py-2 rounded-md hover:cursor-pointer w-24 text-white hover:bg-white/30 transition ease-in-out border border-white/30 drop-shadow-lg"
+                  >
+                    Logout
+                  </button>
+                  <span>
+                    <img
+                      src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/1024px-Default_pfp.svg.png"
+                      alt="pfp"
+                      className="w-10 cursor-pointer drop-shadow-lg rounded-full"
+                      onClick={handleProfilePage}
+                    />
+                  </span>
+                </div>
               ) : (
                 <div className="hidden xl:flex space-x-5">
                   <button
@@ -310,13 +372,19 @@ export default function HomeNavBar({
                 <>
                   <button onClick={onScrollToFeatures}>Features</button>
                   <button onClick={onScrollToAboutUs}>About Us</button>
-                  <button onClick={handleIDE}>IDE</button>
+                  <button onClick={handleIDE}>Learn</button>
                   <img
                     src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/1024px-Default_pfp.svg.png"
                     alt="pfp"
                     className="w-10 rounded-full cursor-pointer"
                     onClick={handleProfilePage}
                   />
+                  <button
+                    onClick={handleUserLogout}
+                    className="bg-white/20 backdrop-blur-md px-5 py-2 rounded-md hover:cursor-pointer w-24 text-white hover:bg-white/30 transition ease-in-out border border-white/30 drop-shadow-lg"
+                  >
+                    Logout
+                  </button>
                 </>
               ) : (
                 <>

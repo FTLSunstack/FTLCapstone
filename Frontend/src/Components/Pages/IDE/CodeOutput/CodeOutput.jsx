@@ -33,7 +33,7 @@ export default function CodeOutput({
   return (
     <div>
       {language === "English" ? (
-        <div className="bg-zinc-900 w-full max-w-[900px] h-[400px] max-h-[500px] rounded-lg mx-auto">
+        <div className="bg-zinc-900 w-full max-w-[900px] h-[400px] max-h-[500px] rounded-lg mx-auto shadow-4xl">
           <div className="flex gap-1 bg-zinc-800 rounded-lg p-1">
             <button
               onClick={handleButton1}

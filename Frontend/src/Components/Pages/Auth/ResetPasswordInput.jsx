@@ -1,36 +1,50 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../../tailwind.css";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 
 
-function ResetPasswordInput({password,setPassword}) {   
-const [icon, setIcon] = useState(FaRegEyeSlash);
-const [passwordType, setPasswordType] = useState("password")
+function ResetPasswordInput({password,setPassword, language}) {   
+    const [passwordPlaceholder, setPasswordPlaceholder] = useState("Ingrese su contraseña aquí");
+    const [passwordLabel, setpasswordLabel] = useState("Contraseña");
 
-const showPassword = () => {
-    if (passwordType === "password"){
-        setIcon(FaRegEye);
-        setPasswordType("text");
-    }
-    else {
-        setIcon(FaRegEyeSlash);
-        setPasswordType("password");
-    }
-} 
-    return (
-        <>
-            <div className=" mb-3 w-full">
-                <div className="Heading mb-1 text-left text-black font-bold text-sm">New Password:</div>
-                <div className="relative w-full">
-                    <input value={password} onChange={(e) => setPassword(e.target.value)} id="password" className="p-1 w-full border-2 border-solid border-gray-300 rounded-md" type= {passwordType} placeholder="Enter your password" required/>
-                    <span id = "passwordToggle" className="password-toggle absolute inset-y-1/4 right-2 cursor-pointer text-gray-500 hover:cursor-pointer" onClick={showPassword} >
-                        {icon}
-                    </span>
+    useEffect(() => {
+        // only if language changes
+        if (language === "Español") {
+            setPasswordPlaceholder("Ingrese su nueva contraseña aquí")
+            setpasswordLabel("Nueva Contraseña")
+        } else {
+            setPasswordPlaceholder("Enter your new password")
+            setpasswordLabel("New Password")
+        }
+    }, [language]); 
+
+    const [icon, setIcon] = useState(FaRegEyeSlash);
+    const [passwordType, setPasswordType] = useState("password")
+
+    const showPassword = () => {
+        if (passwordType === "password"){
+            setIcon(FaRegEye);
+            setPasswordType("text");
+        }
+        else {
+            setIcon(FaRegEyeSlash);
+            setPasswordType("password");
+        }
+    } 
+        return (
+            <>
+                <div className=" mb-3 w-full">
+                    <div className="Heading mb-1 text-left text-black font-bold text-sm">{passwordLabel}:</div>
+                    <div className="relative w-full">
+                        <input value={password} onChange={(e) => setPassword(e.target.value)} id="password" className="p-1 w-full border-2 border-solid border-gray-300 rounded-md" type= {passwordType} placeholder={passwordPlaceholder} required/>
+                        <span id = "passwordToggle" className="password-toggle absolute inset-y-1/4 right-2 cursor-pointer text-gray-500 hover:cursor-pointer" onClick={showPassword} >
+                            {icon}
+                        </span>
+                    </div>
                 </div>
-            </div>
-        </>
-    );
-}
+            </>
+        );
+    }
 
 export default ResetPasswordInput;

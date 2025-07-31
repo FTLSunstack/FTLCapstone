@@ -236,7 +236,7 @@ exports.refresh = (req, res) => {
 
 exports.requestResetPassword = async (req, res) => {
   console.log("Received reset request", req.body);
-  const { email } = req.body;
+  const { email,language } = req.body;
 
   const user = await prisma.user.findUnique({ where: { email } });
   if (!user) {
@@ -256,33 +256,57 @@ exports.requestResetPassword = async (req, res) => {
     },
   });
 
+  //need to get the language and change it 
+  let emailSubject = "Reset your Codifica password securely";
+  let emailHeading = "Codifica Password Reset";
+  let emailGreeting = "Hi there,";
+  let emailReceivedRequest = "We received a request to reset your password for your Codifica account.";
+  let emailClickInstructions = "To reset your password, please click the button below. This link is valid for 15 minutes:";
+  let emailButtonText = "Reset Password";
+  let emailCopyPasteInstructions = "Or copy and paste this link into your browser:";
+  let emailIgnoreInstructions = "If you didn’t request a password reset, please ignore this email. Your password will remain unchanged.";
+  let emailFooter = "This message was sent from Codifica. If you have any questions, reply to this email. Please pls pls dont send to spam i am making a project and sending them to myself pls";
+
+
+  if (language === "Español") {
+    emailSubject = "Restablece tu contraseña de Codifica de forma segura";
+    emailHeading = "Restablecimiento de Contraseña de Codifica";
+    emailGreeting = "Hola,";
+    emailReceivedRequest = "Hemos recibido una solicitud para restablecer la contraseña de tu cuenta de Codifica.";
+    emailClickInstructions = "Para restablecer tu contraseña, haz clic en el botón de abajo. Este enlace es válido por 15 minutos:";
+    emailButtonText = "Restablecer Contraseña";
+    emailCopyPasteInstructions = "O copia y pega este enlace en tu navegador:";
+    emailIgnoreInstructions = "Si no solicitaste un restablecimiento de contraseña, por favor ignora este correo. Tu contraseña permanecerá sin cambios.";
+    emailFooter = "Este mensaje fue enviado desde Codifica. Si tienes alguna pregunta, responde a este correo electrónico. Por favor, por favor, no lo envíes a spam, estoy haciendo un proyecto y enviándolos a mí mismo, por favor.";
+  }
+
   // link that will be sent to the user’s email.
   // points to the front end reset password form
   const frontendUrl = process.env.FRONTEND_URL;
-  const resetLink = `${frontendUrl}/reset-password?token=${resetToken}`;
+  const resetLink = `${frontendUrl}/reset-password?token=${resetToken}&lang=${language}`;
 
   // Send the email and its content
   const mailOptions = {
     from: '"Codifica Support" <support@codifica.it.com>', // sender address
     to: email,
-    subject: "Reset your Codifica password securely",
+    subject: emailSubject,
     html: `
         <div style="font-family: Arial, sans-serif; color: #333; line-height: 1.6; padding: 20px;">
-        <h2 style="color: #4f46e5;">Codifica Password Reset</h2>
-        <p>Hi there,</p>
-        <p>We received a request to reset your password for your Codifica account.</p>
-        <p>To reset your password, please click the button below. This link is valid for 15 minutes:</p>
+        <h2 style="color: #4f46e5;">${emailHeading}</h2>
+        <p>${emailGreeting}</p>
+        <p>${emailReceivedRequest}</p>
+        <p>${emailClickInstructions}</p>
         <p>
             <a href="${resetLink}" style="display: inline-block; background-color: #4f46e5; color: #fff; padding: 10px 20px; text-decoration: none; border-radius: 4px;">
-            Reset Password
+            ${emailButtonText}
             </a>
         </p>
-        <p>Or copy and paste this link into your browser:</p>
+        <p>O${emailCopyPasteInstructions}</p>
         <p style="word-break: break-all;">${resetLink}</p>
-        <p>If you didn’t request a password reset, please ignore this email. Your password will remain unchanged.</p>
+        <p>I${emailIgnoreInstructions}.</p>
         'h:List-Unsubscribe': '<mailto:unsubscribe@codifica.it.com?subject=unsubscribe>'
         <hr style="margin: 30px 0;" />
-        <p style="font-size: 12px; color: #999;">This message was sent from Codifica. If you have any questions, reply to this email. Please pls pls dont send to spam i am making a project and sending them to myself pls </p>
+        <p style="font-size: 12px; color: #999;">${emailFooter}</p>
         </div>
         `,
   };

@@ -105,7 +105,7 @@ const AnimatedBackground = ({ language = "English", goDown }) => {
           <div>
             <>
               <h1 className="text-white text-6xl font-bold mb-8 animate-title-glow">
-                Aprenda a Programar en Español!
+                Aprenda a Programar en tu Idioma!
               </h1>
               <h2 className="text-white/95 text-2xl max-w-4xl animate-subtitle-fade">
                 Rompe la barrera del idioma en la programación. Obtén
@@ -126,7 +126,7 @@ const AnimatedBackground = ({ language = "English", goDown }) => {
           <div>
             <>
               <h1 className="text-white text-6xl font-bold mb-8 animate-title-glow">
-                Learn to Code in English!
+                Learn to Code in your Language!
               </h1>
               <h2 className="text-white/95 text-2xl max-w-4xl animate-subtitle-fade">
                 Break the language barrier in programming. Get explanations,

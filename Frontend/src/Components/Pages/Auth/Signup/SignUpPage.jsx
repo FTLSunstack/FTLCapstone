@@ -1,11 +1,21 @@
-import { useState } from "react";
+import { useState, useEffect} from "react";
 import "../../../../tailwind.css";
 import { useNavigate } from "react-router-dom";
 import SignUpForm from "./SignUpForm";
 import Footer from "../../../Common/Footer/Footer";
 
-function SignUpPage() {
+function SignUpPage({language}) {
   const navigate = useNavigate();
+  const [homeButtonTxt, setHomeButtonTxt] = useState("Volver Al Inicio");
+  
+    useEffect(() => {
+      // only if language changes
+      if (language === "Español") {
+        setHomeButtonTxt("Volver Al Inicio");
+      } else {
+        setHomeButtonTxt("Back Home");
+      }
+    }, [language]); 
 
   const handleBack = () => {
     navigate("/");
@@ -19,11 +29,11 @@ function SignUpPage() {
           className="px-5 py-2 border border-white/40 text-white rounded-md hover:bg-white/20 backdrop-blur-md hover:cursor-pointer transition ease-in-out drop-shadow-lg m-10"
         >
           {" "}
-          Back Home
+          {homeButtonTxt}
         </button>
         <div>
           <div className="flex flex-col justify-center items-center mt-30">
-            <SignUpForm />
+            <SignUpForm language={language}/>
           </div>
         </div>
       </div>

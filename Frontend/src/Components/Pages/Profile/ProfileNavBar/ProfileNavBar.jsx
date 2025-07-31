@@ -6,13 +6,17 @@ import axios from "axios";
 import { toast, Bounce } from "react-toastify";
 import { useAuth } from "../../../../Context/AuthContext";
 
-export default function ProfileNavBar() {
+export default function ProfileNavBar({ lastPage }) {
   const navigate = useNavigate();
 
   const { setUser } = useAuth();
 
   const handleBackToHomePage = () => {
-    navigate("/");
+    if (lastPage === "home") {
+      navigate("/");
+    } else {
+      navigate(`/${lastPage}`);
+    }
   };
 
   const logOutNotifSuccess = () =>
