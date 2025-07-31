@@ -1,19 +1,42 @@
-import { useState } from "react";
+import { useState, useEffect} from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "../../../tailwind.css";
 import {NotifSuccess, NotifError} from "../../Common/ToastNotifs/ToastNotifs";
 
-function PasswordModal({ email, setEmail, closePasswordModal }) {
+function PasswordModal({ email, setEmail, closePasswordModal, language}) {
   const [emailSent, setEmailState] = useState(false);
   const navigate = useNavigate();
+
+  const [emailPlaceholder, setEmailPlaceholder] = useState("Ingrese su correo electrónico aquí");
+  const [emailLabel, setEmailLabel] = useState("Correo electrónico");
+  const [loginButtonTxt, setLoginButtonTxt] = useState( "Iniciar Sesión" );
+  const [WelcomeTxt, setWelcomeTxt] = useState("¡Bienvenido de vuelta!");
+  const [backLoginTxt, setBackLoginTxt] = useState("¡Jaja! He recordado mi contraseña!");
+
+
+  useEffect(() => {
+      // only if language changes
+      if (language === "Español") {
+        setEmailPlaceholder("Ingrese su correo electrónico aquí");
+        setEmailLabel("Correo Electrónico")
+        setLoginButtonTxt("Enviar Correo Electrónico")
+        setWelcomeTxt("¿Olvidó su contraseña? ¡No se procupe!")
+        setBackLoginTxt("¡Jaja! He recordado mi contraseña")
+      } else {
+        setEmailPlaceholder("Enter your email");
+        setEmailLabel("Email")
+        setLoginButtonTxt("Send Email");
+        setBackLoginTxt("JK! I remember my password");
+      }
+  }, [language]); 
 
   const handleForgotPassword = async (e) => {
     e.preventDefault();
     try {
       const response = await axios.post(
         `${import.meta.env.VITE_BACKEND_URL}/auth/req-reset-password`,
-        { email }
+        { email, language}
       );
       console.log("Reset Password Request successful!", response.data);
       NotifSuccess("Reset Password Request");
@@ -44,14 +67,14 @@ function PasswordModal({ email, setEmail, closePasswordModal }) {
               Codifica
             </div>
             <div className="Caption mb-6 text-center text-black font-bold text-xl">
-              Forgot your password? No worries!
+              {WelcomeTxt}
             </div>
           </div>
           <div className="ResetInput flex flex-col items-center align-center items-center justify-center pb-10">
             <form onSubmit={handleForgotPassword} className="Input flex flex-col items-center align-center w-full mb-1">
               <div className="px-10 mb-4 w-full">
                 <div className="Heading w-full mb-1 text-left text-black font-bold text-sm">
-                  Email:
+                  {emailLabel}:
                 </div>
                 <input
                   value={email}
@@ -59,7 +82,7 @@ function PasswordModal({ email, setEmail, closePasswordModal }) {
                   id="email"
                   className="p-1 w-80 border-content border-2 border-solid border-gray-300 rounded-md"
                   type="email"
-                  placeholder="Enter your Email"
+                  placeholder={emailPlaceholder}
                   required
                 />
               </div>
@@ -68,7 +91,7 @@ function PasswordModal({ email, setEmail, closePasswordModal }) {
               className="mb-4 py-2 px-8 text-center align-center items-center justify-center font-semibold rounded-lg shadow-md text-white bg-indigo-700 hover:bg-blue-800 cursor-pointer"
               >
                 {" "}
-                Get Reset Email
+                {loginButtonTxt}
               </button>
             </form>
           </div>
@@ -78,7 +101,7 @@ function PasswordModal({ email, setEmail, closePasswordModal }) {
               className="ml-3 text-xs text-gray-500 underline hover:text-indigo-500 hover:cursor-pointer p-9"
             >
               {" "}
-              JK! I remember my password.
+              {backLoginTxt}
             </p>
           </div>
         </div>
