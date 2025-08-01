@@ -11,6 +11,8 @@ import { indentWithTab } from "@codemirror/commands";
 import { keymap, logException } from "@codemirror/view";
 import axios from "axios";
 
+import { Sparkles } from "lucide-react";
+
 export default function CodeEditor({
   initialCode = "print('Hello world')",
   onChange,
@@ -28,6 +30,7 @@ export default function CodeEditor({
   const [loading, setLoading] = useState(false);
   const [output, setOutput] = useState("");
   const [result, setResult] = useState("");
+  const [explanationHovered, setExplanationHovered] = useState(false);
 
   const handleExplanation = () => {
     const currentCode = viewRef.current.state.doc.toString();
@@ -179,10 +182,10 @@ export default function CodeEditor({
         />
         <div className="relative">
           <button
-            className="absolute bottom-2 left-2 bg-violet-400 text-white px-4 py-2 rounded text-white cursor-pointer hover:bg-violet-500 transition ease-in-out"
+            className="absolute bottom-2 left-2 bg-violet-400 text-white px-4 py-2 rounded cursor-pointer hover:bg-violet-500 transition-all duration-300 ease-in-out overflow-hidden"
             onClick={handleExplanation}
           >
-            {language === "English" ? "Explain" : "Explicar"}
+            {language === "English" ? <h1>Explain</h1> : <h1>Explicar</h1>}
           </button>
           <button
             className="absolute bottom-2 right-2 bg-violet-400 text-white px-4 py-2 rounded hover:bg-violet-500 hover:cursor-pointer transition flex items-center gap-1"
