@@ -15,6 +15,7 @@ function TermModal({ language, onClose, term }) {
         `${import.meta.env.VITE_BACKEND_URL}/explainer/refreshExampleTerm`,
         {
           term: term.en.term,
+          language: language
         }
       );
       console.log(term.en.term);

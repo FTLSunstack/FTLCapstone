@@ -111,7 +111,7 @@ Here is an example of the desired JSON format:
 
 const refreshTermExample = async (req,res) => {
   try {
-    const {term} = req.body
+    const {term, language} = req.body
     if (!term) {
       console.error("Missing 'term' in request body");
       return res.status(400).json({
@@ -120,6 +120,7 @@ const refreshTermExample = async (req,res) => {
       });
     }
     const prompt = `Provide a beginner-level, short Python code snippet for the term ${term}. Include a comment within the code indicating its expected output. Return only the code snippet as a plain string, without any additional text or formatting outside the code block.The code must include a comment using '#' to explain the expected output. Use only # comments to explain the code. 
+      All comments should be in this ${language}. The code itself should always be in English.
       Do NOT use Markdown formatting.
       Do NOT wrap the code in triple backticks.
       Do NOT use Python docstrings ("""...""").
