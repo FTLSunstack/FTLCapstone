@@ -27,6 +27,7 @@ function ResetPasswordPage() {
             setPageTxt("Por favor, restablezca su contraseña aquí.");
             setButtonTxt("Actualice su Contraseña");
         } else {
+            setPageTxt("Please update your password here.");
             setButtonTxt("Update Password");
         }
     }, [urlLanguage]); 
