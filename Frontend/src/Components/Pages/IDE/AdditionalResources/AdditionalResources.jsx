@@ -34,79 +34,93 @@ function AdditionalResources({ language }) {
             {/* Additional Resources Section */}
             <div className="w-full flex flex-col items-center">
               <div
-                className="flex flex-row justify-between m-10 p-5 text-lg w-3/4 border-b-2 hover:cursor-pointer group hover:bg-gray-50 transition-colors duration-200"
+                className="flex items-center justify-between w-3/4 p-5 m-6 border-b-2 cursor-pointer transition-colors duration-200 rounded-md bg-white hover:bg-violet-50"
                 onClick={openMoreResources}
               >
-                <h1 className="hover:cursor-pointer font-semibold">
+                <h1 className="font-semibold text-lg text-black">
                   Additional Resources
                 </h1>
-                <span
-                  className={`hover:cursor-pointer transition-transform duration-300 ease-in-out ${
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className={`h-6 w-6 text-purple-600 transform transition-transform duration-300 ${
                     showAdditionalResources ? "rotate-90" : "rotate-0"
                   }`}
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
                 >
-                  &gt;
-                </span>
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
               </div>
 
-              {/* Smooth expanding content for Additional Resources */}
               <div
-                className={`w-3/4 overflow-hidden transition-all duration-500 ease-in-out ${
+                className={`w-3/4 transition-all duration-500 ease-in-out transform ${
                   showAdditionalResources
-                    ? "max-h-32 opacity-100 mb-5"
-                    : "max-h-0 opacity-0 mb-0"
-                }`}
+                    ? "scale-100 opacity-100 max-h-[200px] mb-6"
+                    : "scale-95 opacity-0 max-h-0 mb-0"
+                } overflow-hidden`}
               >
-                <div className="flex flex-row justify-center">
-                  <div className="text-center p-4 bg-blue-50 rounded-lg border border-blue-200">
-                    <h1 className="text-gray-700">
-                      Want to learn more? Visit our{" "}
-                      <button
-                        onClick={navigateToGlossary}
-                        className="text-blue-600 hover:text-blue-800 underline hover:no-underline transition-colors duration-200 font-semibold cursor-pointer"
-                      >
-                        Glossary
-                      </button>{" "}
-                      and take a look!
-                    </h1>
-                  </div>
+                <div className="p-5 bg-violet-100 rounded-xl border border-purple-300 shadow-md text-center">
+                  <p className="text-gray-700">
+                    Want to learn more? Visit our{" "}
+                    <button
+                      onClick={navigateToGlossary}
+                      className="text-purple-600 hover:text-purple-800 font-semibold underline transition-colors"
+                    >
+                      Glossary
+                    </button>{" "}
+                    and take a look!
+                  </p>
                 </div>
               </div>
             </div>
 
             {/* Complaints Section */}
-            <div
-              className="flex flex-row justify-between m-10 p-5 text-lg w-3/4 border-b-2 hover:cursor-pointer group hover:bg-gray-50 transition-colors duration-200"
-              onClick={openComplaints}
-            >
-              <h1 className="hover:cursor-pointer font-semibold">
-                Complaints? Reach out to us here
-              </h1>
-              <span
-                className={`hover:cursor-pointer transition-transform duration-300 ease-in-out ${
-                  showComplaints ? "rotate-90" : "rotate-0"
-                }`}
+            <div className="w-full flex flex-col items-center">
+              <div
+                onClick={openComplaints}
+                className="flex items-center justify-between w-3/4 p-5 m-6 border-b-2 cursor-pointer transition-colors duration-200 rounded-md bg-white hover:bg-violet-50"
               >
-                &gt;
-              </span>
-            </div>
+                <h1 className="font-semibold text-lg text-black">
+                  Complaints? Reach out to us here
+                </h1>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className={`h-6 w-6 text-purple-600 transform transition-transform duration-300 ${
+                    showComplaints ? "rotate-90" : "rotate-0"
+                  }`}
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </div>
 
-            {/* Smooth expanding content for Complaints */}
-            <div
-              className={`w-3/4 overflow-hidden transition-all duration-500 ease-in-out ${
-                showComplaints
-                  ? "max-h-40 opacity-100 mb-5"
-                  : "max-h-0 opacity-0 mb-0"
-              }`}
-            >
-              <div className="flex flex-row justify-center">
-                <div className="text-center p-4 bg-blue-50 rounded-lg border border-blue-200">
-                  <h1 className="text-gray-700 mb-3">
+              <div
+                className={`w-3/4 transition-all duration-500 ease-in-out transform ${
+                  showComplaints
+                    ? "scale-100 opacity-100 max-h-[220px] mb-6"
+                    : "scale-95 opacity-0 max-h-0 mb-0"
+                } overflow-hidden`}
+              >
+                <div className="p-5 bg-violet-100 rounded-xl border border-purple-300 shadow-md text-center">
+                  <p className="text-gray-700 mb-4">
                     We value your feedback and take all complaints seriously.
-                  </h1>
+                  </p>
                   <button
                     onClick={handleEmailRedirect}
-                    className="bg-blue-600 hover:bg-blue-800 text-white px-6 py-2 rounded-lg transition-colors duration-200 font-semibold hover:shadow-md cursor-pointer"
+                    className="bg-purple-600 hover:bg-purple-800 text-white px-6 py-2 rounded-lg font-semibold transition-all duration-300 hover:shadow-md"
                   >
                     Email Codifica
                   </button>
@@ -117,81 +131,96 @@ function AdditionalResources({ language }) {
         ) : (
           <div className="flex flex-col items-center">
             {/* Spanish Additional Resources Section */}
-            <div
-              className="flex flex-row justify-between m-10 p-5 text-lg w-3/4 border-b-2 hover:cursor-pointer group hover:bg-gray-50 transition-colors duration-200"
-              onClick={openMoreResources}
-            >
-              <h1 className="hover:cursor-pointer font-semibold">
-                Recursos adicionales
-              </h1>
-              <span
-                className={`hover:cursor-pointer transition-transform duration-300 ease-in-out ${
-                  showAdditionalResources ? "rotate-90" : "rotate-0"
-                }`}
+            <div className="w-full flex flex-col items-center">
+              <div
+                className="flex items-center justify-between w-3/4 p-5 m-6 border-b-2 cursor-pointer transition-colors duration-200 rounded-md bg-white hover:bg-violet-50"
+                onClick={openMoreResources}
               >
-                &gt;
-              </span>
-            </div>
+                <h1 className="font-semibold text-lg text-black">
+                  Recursos Adicionales
+                </h1>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className={`h-6 w-6 text-purple-600 transform transition-transform duration-300 ${
+                    showAdditionalResources ? "rotate-90" : "rotate-0"
+                  }`}
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </div>
 
-            {/* Smooth expanding content for Additional Resources (Spanish) */}
-            <div
-              className={`w-3/4 overflow-hidden transition-all duration-500 ease-in-out ${
-                showAdditionalResources
-                  ? "max-h-32 opacity-100 mb-5"
-                  : "max-h-0 opacity-0 mb-0"
-              }`}
-            >
-              <div className="flex flex-row justify-center">
-                <div className="text-center p-4 bg-blue-50 rounded-lg border border-blue-200">
-                  <h1 className="text-gray-700">
+              <div
+                className={`w-3/4 transition-all duration-500 ease-in-out transform ${
+                  showAdditionalResources
+                    ? "scale-100 opacity-100 max-h-[200px] mb-6"
+                    : "scale-95 opacity-0 max-h-0 mb-0"
+                } overflow-hidden`}
+              >
+                <div className="p-5 bg-violet-100 rounded-xl border border-purple-300 shadow-md text-center">
+                  <p className="text-gray-700">
                     ¿Quiere aprender más? Visite nuestro{" "}
                     <button
                       onClick={navigateToGlossary}
-                      className="text-blue-600 hover:text-blue-800 underline hover:no-underline transition-colors duration-200 font-semibold cursor-pointer"
+                      className="text-purple-600 hover:text-purple-800 font-semibold underline transition-colors"
                     >
                       Glosario
                     </button>{" "}
                     y échele un vistazo!
-                  </h1>
+                  </p>
                 </div>
               </div>
             </div>
 
-            {/* Spanish Complaints Section */}
-
-            <div
-              className="flex flex-row justify-between m-10 p-5 text-lg w-3/4 border-b-2 hover:cursor-pointer group hover:bg-gray-50 transition-colors duration-200"
-              onClick={openComplaints}
-            >
-              <h1 className="hover:cursor-pointer font-semibold">
-                ¿Tiene alguna queja? Contáctenos aquí.
-              </h1>
-              <span
-                className={`hover:cursor-pointer transition-transform duration-300 ease-in-out ${
-                  showComplaints ? "rotate-90" : "rotate-0"
-                }`}
+            {/* Complaints Section */}
+            <div className="w-full flex flex-col items-center">
+              <div
+                onClick={openComplaints}
+                className="flex items-center justify-between w-3/4 p-5 m-6 border-b-2 cursor-pointer transition-colors duration-200 rounded-md bg-white hover:bg-violet-50"
               >
-                &gt;
-              </span>
-            </div>
+                <h1 className="font-semibold text-lg text-black">
+                  ¿Tiene alguna queja? Contáctenos aquí.
+                </h1>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className={`h-6 w-6 text-purple-600 transform transition-transform duration-300 ${
+                    showComplaints ? "rotate-90" : "rotate-0"
+                  }`}
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </div>
 
-            {/* Smooth expanding content for Complaints (Spanish) */}
-            <div
-              className={`w-3/4 overflow-hidden transition-all duration-500 ease-in-out${
-                showComplaints
-                  ? "max-h-40 opacity-100 mb-5"
-                  : "max-h-0 opacity-0 mb-0"
-              }`}
-            >
-              <div className="flex flex-row justify-center">
-                <div className="text-center p-4 bg-blue-50 rounded-lg border border-blue-200">
-                  <h1 className="text-gray-700 mb-3">
+              <div
+                className={`w-3/4 transition-all duration-500 ease-in-out transform ${
+                  showComplaints
+                    ? "scale-100 opacity-100 max-h-[220px] mb-6"
+                    : "scale-95 opacity-0 max-h-0 mb-0"
+                } overflow-hidden`}
+              >
+                <div className="p-5 bg-violet-100 rounded-xl border border-purple-300 shadow-md text-center">
+                  <p className="text-gray-700 mb-4">
                     Valoramos sus comentarios y tomamos todas las quejas en
                     serio.
-                  </h1>
+                  </p>
                   <button
                     onClick={handleEmailRedirect}
-                    className="bg-blue-600 hover:bg-blue-800 text-white px-6 py-2 rounded-lg transition-colors duration-200 font-semibold hover:shadow-md cursor-pointer"
+                    className="bg-purple-600 hover:bg-purple-800 text-white px-6 py-2 rounded-lg font-semibold transition-all duration-300 hover:shadow-md"
                   >
                     Enviar Email a Codifica
                   </button>

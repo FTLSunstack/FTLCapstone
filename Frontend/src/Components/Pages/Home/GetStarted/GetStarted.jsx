@@ -20,7 +20,7 @@ function GetStarted({ language }) {
           </h2>
           <button
             onClick={handleSignUp}
-            className="mt-8 bg-white text-lg font-bold px-6 py-3 rounded-lg shadow-lg outline-violet-600 text-violet-600 rounded-md hover:bg-violet-600 hover:text-white hover:cursor-pointer transition ease-in-out"
+            className="mt-8 bg-white text-lg font-bold px-6 py-3 rounded-lg shadow-lg outline-violet-600 text-violet-600 rounded-md hover:bg-violet-600 hover:text-white hover:cursor-pointer transition-all hover:scale-105 hover:shadow-lg ease-in-out"
           >
             Comienza Ahora
           </button>
@@ -35,7 +35,7 @@ function GetStarted({ language }) {
           </h2>
           <button
             onClick={handleSignUp}
-            className="mt-8 bg-white text-lg font-bold px-6 py-3 rounded-lg shadow-lg outline-violet-600 text-violet-600 rounded-md hover:bg-violet-600 hover:text-white hover:cursor-pointer transition ease-in-out"
+            className="mt-8 bg-white text-lg font-bold px-6 py-3 rounded-lg shadow-lg outline-violet-600 text-violet-600 rounded-md hover:bg-violet-600 hover:text-white hover:cursor-pointer transition-all hover:scale-105 hover:shadow-lg ease-in-out"
           >
             Get Started Now
           </button>

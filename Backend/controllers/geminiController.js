@@ -6,6 +6,7 @@ const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 const explainCode = async (req, res) => {
   try {
     const { codeSnippet, language = "python", humanLanguage } = req.body;
+    console.log(codeSnippet);
 
     if (!codeSnippet) {
       return res.status(400).json({
@@ -42,18 +43,21 @@ const explainCode = async (req, res) => {
     const prompt = `Given the following ${language} code: ${codeSnippet}, provide a comprehensive analysis in ${humanLanguage}.
 
 Create a JSON object with the following properties:
-1. "code": The ORIGINAL and EXACT code from the input, without any modifications.
+1. "code": The ORIGINAL and EXACT code from the input, without any modifications.(preserve newlines and formatting).
 2. "explanation": A detailed explanation in ${humanLanguage} that covers:
    - What the overall program does and its purpose
    - How the main components/functions work together
    - Key programming concepts being used
    - The flow of execution
    - Any important details about the implementation
+   referring to a small chunk of code using backticks (like \`print(text + number)\`). For each group of lines, explain what it's doing in simple, clear, beginner-to-intermediate language
 
 3. "liveFeedback": A brief and concise analysis in ${humanLanguage} (maximum 3-4 sentences) that includes:
-   - Quick assessment if code is correct or has issues
-   - One main suggestion for improvement
-   - One practical tip for better coding
+   - Whether the code is **correct or incorrect**
+   - What the problem is (if any) in plain terms
+   - One direct, helpful fix
+   - One helpful tip to avoid the mistake again
+Use friendly and supportive language suitable for learners. Do not use technical jargon unless explained clearly.
 
 Keep the feedback short, direct, and actionable. Use simple language and focus on the most important points only.
 
@@ -107,7 +111,7 @@ Here is an example of the desired JSON format:
 
 const refreshTermExample = async (req,res) => {
   try {
-    const {term} = req.body
+    const {term, language} = req.body
     if (!term) {
       console.error("Missing 'term' in request body");
       return res.status(400).json({
@@ -116,6 +120,7 @@ const refreshTermExample = async (req,res) => {
       });
     }
     const prompt = `Provide a beginner-level, short Python code snippet for the term ${term}. Include a comment within the code indicating its expected output. Return only the code snippet as a plain string, without any additional text or formatting outside the code block.The code must include a comment using '#' to explain the expected output. Use only # comments to explain the code. 
+      All comments should be in this ${language}. The code itself should always be in English.
       Do NOT use Markdown formatting.
       Do NOT wrap the code in triple backticks.
       Do NOT use Python docstrings ("""...""").

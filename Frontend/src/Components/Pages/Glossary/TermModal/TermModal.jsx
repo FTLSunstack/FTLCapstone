@@ -15,6 +15,7 @@ function TermModal({ language, onClose, term }) {
         `${import.meta.env.VITE_BACKEND_URL}/explainer/refreshExampleTerm`,
         {
           term: term.en.term,
+          language: language
         }
       );
       console.log(term.en.term);
@@ -33,13 +34,13 @@ function TermModal({ language, onClose, term }) {
     if (term.formExample) {
       // show example
       return (
-        <div className="w-full max-w-md sm:max-w-lg md:max-w-xl bg-gray-200 text-black text-sm sm:text-base md:text-lg p-4 sm:p-5 rounded-xl shadow-md mx-auto transition-all relative">
+        <div className="w-full max-w-md sm:max-w-lg md:max-w-xl bg-purple-500 text-black text-sm sm:text-base md:text-lg p-4 sm:p-5 rounded-xl shadow-md mx-auto transition-all relative">
           {/* Top right refresh button on md+ */}
           <div className="hidden sm:flex absolute top-3 right-3">
             <button
               onClick={() => refreshExample(term)}
               disabled={exampleLoading}
-              className={`p-1 rounded-md border border-purple-500 text-purple-700 transition duration-300 shadow-md flex items-center justify-center ${
+              className={`p-1 rounded-md border border-white text-white transition duration-300 shadow-md flex items-center justify-center ${
                 exampleLoading
                   ? "bg-purple-300 cursor-not-allowed"
                   : "hover:bg-purple-600 hover:text-white"
@@ -55,7 +56,7 @@ function TermModal({ language, onClose, term }) {
             </button>
           </div>
 
-          <p className="font-bold text-purple-700 mb-3">
+          <p className="font-bold text-white mb-3">
             {language === "Español"
               ? "Ejemplo en Python:"
               : "Example in Python:"}
@@ -74,14 +75,14 @@ function TermModal({ language, onClose, term }) {
             <button
               onClick={() => refreshExample(term)}
               disabled={exampleLoading}
-              className={`p-1 rounded-md border border-purple-500 text-purple-700 transition duration-300 shadow-md flex items-center justify-center ${
+              className={`p-1 rounded-md border border-white text-white transition duration-300 shadow-md flex items-center justify-center ${
                 exampleLoading
                   ? "bg-purple-300 cursor-not-allowed"
                   : "hover:bg-purple-600 hover:text-white"
               }`}
             >
               {exampleLoading ? (
-                <div className="h-4 w-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                <div className="h-6 w-6 border-2 border-white border-t-transparent rounded-full animate-spin" />
               ) : (
                 <span className="material-icons text-sm leading-none flex items-center justify-center">
                   refresh
@@ -93,45 +94,53 @@ function TermModal({ language, onClose, term }) {
       );
     }
   };
+
   return (
     <>
-      {language === "Español" ? (
+      <div
+        onClick={onClose}
+        className="bg-[rgba(0,0,0,0.5)] fixed inset-0 z-[100] flex items-center justify-center transition-all duration-300"
+      >
         <div
-          onClick={onClose}
-          className="bg-[rgba(0,0,0,0.5)] fixed inset-0 flex items-center justify-center animation-fade-in transition-all duration-300"
+          onClick={(e) => e.stopPropagation()}
+          className="bg-white w-11/12 max-w-2xl sm:p-10 p-6 rounded-2xl shadow-2xl relative flex flex-col gap-6 border-t-8 border-purple-500 animate-fade-in-scale duration-300"
         >
-          <div
-            onClick={(e) => e.stopPropagation()}
-            className="bg-white flex flex-col items-center justify-center text-center rounded-lg p-16 shadow-lg max-w-3/5"
-          >
-            <div>
-              <h1 className="text-black font-bold text-2xl">{term.es.term}</h1>
-              <h2 className="text-xl my-4">Traducción: {term.en.term}</h2>
-              <div className="text-gray-700 text-lg my-4">
-                <ReactMarkdown>{term.es.def}</ReactMarkdown>
-              </div>
-              <ShowExample term={term} />
-            </div>
+          {/* Header */}
+          <div className="text-center">
+            <span className="inline-block text-sm uppercase tracking-widest text-purple-600 font-semibold">
+              {language === "Español" ? "Término Técnico" : "Tech Term"}
+            </span>
+            <h1 className="text-3xl font-extrabold text-zinc-900 mt-2">
+              {language === "Español" ? term.es.term : term.en.term}
+            </h1>
+            <p className="text-zinc-500 text-lg mt-2 italic">
+              {language === "Español"
+                ? `Traducción: ${term.en.term}`
+                : `Translation: ${term.es.term}`}
+            </p>
           </div>
-        </div>
-      ) : (
-        <div
-          onClick={onClose}
-          className="bg-[rgba(0,0,0,0.5)] fixed inset-0 flex items-center justify-center animation-fade-in transition-all duration-300"
-        >
-          <div
-            onClick={(e) => e.stopPropagation()}
-            className="bg-white flex flex-col items-center justify-center text-center rounded-lg p-16 shadow-lg max-w-3/5"
-          >
-            <h1 className="text-black font-bold text-2xl">{term.en.term}</h1>
-            <h2 className="text-xl my-4">Translation: {term.es.term}</h2>
-            <div className="text-gray-700 text-lg my-4">
-              <ReactMarkdown>{term.en.def}</ReactMarkdown>
-            </div>
-            <ShowExample term={term} />
+
+          {/* Definition */}
+          <div className="text-zinc-700 text-left text-base sm:text-lg leading-relaxed bg-zinc-100 p-5 rounded-xl border border-zinc-200">
+            <ReactMarkdown>
+              {language === "Español" ? term.es.def : term.en.def}
+            </ReactMarkdown>
           </div>
+
+          {/* Example Section (unchanged) */}
+          <ShowExample term={term} />
+
+          {/* Close Button (optional if needed) */}
+          {/* 
+      <button
+        onClick={onClose}
+        className="absolute top-4 right-4 text-zinc-400 hover:text-zinc-600"
+      >
+        <span className="text-xl">&times;</span>
+      </button>
+      */}
         </div>
-      )}
+      </div>
     </>
   );
 }

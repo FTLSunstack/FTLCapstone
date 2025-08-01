@@ -27,10 +27,10 @@ function GlossaryPage({ language, setLanguage, setLastPage }) {
       setActiveLetter(letter);
     }
   };
-
+  //bg-gradient-to-br from-purple-900 via-violet-500 to-blue-400
   return (
     <>
-      <div className="flex flex-col bg-gray-100 min-h-screen">
+      <div className="flex flex-col bg-white min-h-screen">
         <NavBar
           language={language}
           setLanguage={setLanguage}
@@ -44,6 +44,7 @@ function GlossaryPage({ language, setLanguage, setLastPage }) {
             setSearch={setSearch}
             handleLetterClick={handleLetterClick}
             activeLetter={activeLetter}
+            setActiveLetter={setActiveLetter}
           />
           <TermsList
             language={language}
