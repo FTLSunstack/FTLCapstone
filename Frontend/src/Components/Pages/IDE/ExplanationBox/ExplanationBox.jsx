@@ -10,18 +10,17 @@ export default function ExplanationBox({ language, codeExplanation }) {
   const [emptyCode, setEmptyCode] = useState(null);
 
   function formatTextIntoParagraphs(text) {
-    console.log("here it is inside the formattingbut it is not doing it")
-    //this splits the explanation from the llm by any puntuation marks they may have 
+    console.log("here it is inside the formattingbut it is not doing it");
+    //this splits the explanation from the llm by any puntuation marks they may have
     const sentences = text.split(/(?<=[.?!])\s+/);
-    // this then gets a map of each sentence it found  
+    // this then gets a map of each sentence it found
     return sentences.map((sentence, index) => (
       // and for each sentence it then creates a new component and displays it
       <p key={index} className="mb-2 leading-relaxed text-gray-200">
         {sentence}
       </p>
     ));
-  } 
-
+  }
 
   useEffect(() => {
     console.log(language);
@@ -68,12 +67,12 @@ export default function ExplanationBox({ language, codeExplanation }) {
   return (
     <div>
       {language === "English" ? (
-        <div className="w-full max-w-[900px] flex flex-col lg:h-[820px] rounded-lg shadow-2xl bg-zinc-900 text-white overflow-y-auto">
+        <div className="w-full max-w-[900px] flex flex-col lg:h-[820px] rounded-lg shadow-2xl bg-zinc-900 text-white overflow-y-auto ">
           <div className="p-6 rounded-t border-b bg-zinc-800">
             <h1>AI Explanation/Translation</h1>
           </div>
 
-          <div className="flex flex-col gap-10 p-8">
+          <div className="flex flex-col gap-10 p-8 h-full">
             {/* Code Explanation Section */}
             <div className="p-5 rounded-lg outline-solid">
               <div className="flex flex-row gap-2 items-center mb-4">
@@ -100,12 +99,14 @@ export default function ExplanationBox({ language, codeExplanation }) {
                   <p className="text-red-400 text-center">{error}</p>
                 </div>
               ) : (
-                <p className="mt-2 text-lg">{formatTextIntoParagraphs(explanation)}</p>
+                <p className="mt-2 text-lg">
+                  {formatTextIntoParagraphs(explanation)}
+                </p>
               )}
             </div>
 
             {/* Live Feedback Section */}
-            <div className="p-5 rounded-lg outline-solid">
+            <div className="p-5 rounded-lg outline-solid h-full bg-zinc-800">
               <div className="flex flex-row gap-2 items-center mb-4">
                 <span className="bg-sky-600 px-2 py-1 rounded-full">📖</span>
                 <h2 className="text-xl font-bold text-sky-600">
