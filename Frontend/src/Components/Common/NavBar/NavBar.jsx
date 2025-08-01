@@ -144,11 +144,7 @@ function NavBar({ language, setLanguage, setLastPage }) {
                 <img
                   src="https://adamchang.com/wp-content/uploads/2022/05/Tokyo-Olympics_Astro-Statics_large__Medal-Pose-1.png"
                   alt="pfp"
-<<<<<<< HEAD
                   className="w-18 cursor-pointer drop-shadow-lg rounded-full"
-=======
-                  className="w-10 cursor-pointer drop-shadow-lg rounded-full transition-all hover:scale-105 hover:shadow-lg"
->>>>>>> c77b2ba8db02acd1f0fa8178ac3b6b0522cb0c7b
                   onClick={handleProfilePage}
                 />
               </span>
@@ -263,11 +259,7 @@ function NavBar({ language, setLanguage, setLastPage }) {
                 <img
                   src="https://adamchang.com/wp-content/uploads/2022/05/Tokyo-Olympics_Astro-Statics_large__Medal-Pose-1.png"
                   alt="pfp"
-<<<<<<< HEAD
                   className="w-18 cursor-pointer drop-shadow-lg rounded-full"
-=======
-                  className="w-10 cursor-pointer drop-shadow-lg rounded-full transition-all hover:scale-105 hover:shadow-lg"
->>>>>>> c77b2ba8db02acd1f0fa8178ac3b6b0522cb0c7b
                   onClick={handleProfilePage}
                 />
               </span>
