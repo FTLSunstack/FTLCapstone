@@ -23,7 +23,7 @@ function AdditionalResources({ language }) {
 
   const handleEmailRedirect = () => {
     window.location.href =
-      "mailto:codepath@example.com?subject=Complaint&body=Hello, I would like to submit a complaint regarding...";
+      "mailto:codificaftl@gmail.com?subject=Complaint&body=Hello, I would like to submit a complaint regarding...";
   };
 
   return (
@@ -70,7 +70,7 @@ function AdditionalResources({ language }) {
                     Want to learn more? Visit our{" "}
                     <button
                       onClick={navigateToGlossary}
-                      className="text-purple-600 hover:text-purple-800 font-semibold underline transition-colors"
+                      className="text-purple-600 hover:text-purple-800 font-semibold underline transition-colors cursor-pointer"
                     >
                       Glossary
                     </button>{" "}
@@ -120,7 +120,7 @@ function AdditionalResources({ language }) {
                   </p>
                   <button
                     onClick={handleEmailRedirect}
-                    className="bg-purple-600 hover:bg-purple-800 text-white px-6 py-2 rounded-lg font-semibold transition-all duration-300 hover:shadow-md"
+                    className="bg-purple-600 hover:bg-purple-800 text-white px-6 py-2 rounded-lg font-semibold transition-all duration-300 hover:shadow-md cursor-pointer"
                   >
                     Email Codifica
                   </button>
@@ -169,7 +169,7 @@ function AdditionalResources({ language }) {
                     ¿Quiere aprender más? Visite nuestro{" "}
                     <button
                       onClick={navigateToGlossary}
-                      className="text-purple-600 hover:text-purple-800 font-semibold underline transition-colors"
+                      className="text-purple-600 hover:text-purple-800 font-semibold underline transition-colors cursor-pointer"
                     >
                       Glosario
                     </button>{" "}
@@ -220,7 +220,7 @@ function AdditionalResources({ language }) {
                   </p>
                   <button
                     onClick={handleEmailRedirect}
-                    className="bg-purple-600 hover:bg-purple-800 text-white px-6 py-2 rounded-lg font-semibold transition-all duration-300 hover:shadow-md"
+                    className="bg-purple-600 hover:bg-purple-800 text-white px-6 py-2 rounded-lg font-semibold transition-all duration-300 hover:shadow-md cursor-pointer"
                   >
                     Enviar Email a Codifica
                   </button>
