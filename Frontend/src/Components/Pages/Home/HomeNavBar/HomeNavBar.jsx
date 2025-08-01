@@ -181,7 +181,7 @@ export default function HomeNavBar({
                     <img
                       src="https://adamchang.com/wp-content/uploads/2022/05/Tokyo-Olympics_Astro-Statics_large__Medal-Pose-1.png"
                       alt="pfp"
-                      className="w-10 cursor-pointer drop-shadow-lg rounded-full"
+                      className="w-20 cursor-pointer drop-shadow-lg rounded-full"
                       onClick={handleProfilePage}
                     />
                   </span>
