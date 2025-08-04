@@ -8,7 +8,17 @@ export default function ProfilePage({ language, lastPage }) {
   const [showModal, setShowModal] = useState(false);
   const [refreshKey, setRefreshKey] = useState(0);
 
-  const { user } = useAuth();
+  const { user, loading } = useAuth();
+
+  // useEffect(() => {
+  //   if (user) {
+  //     console.log(user.name);
+  //     console.log(user.email);
+  //     console.log(user.location);
+  //     console.log(user.aboutMe);
+  //     console.log(user.website);
+  //   }
+  // });
 
   const popUpModal = () => {
     setShowModal(true);
@@ -17,6 +27,10 @@ export default function ProfilePage({ language, lastPage }) {
   const closeModal = () => {
     setShowModal(false);
   };
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   if (!user) {
     return <div>Loading....</div>;

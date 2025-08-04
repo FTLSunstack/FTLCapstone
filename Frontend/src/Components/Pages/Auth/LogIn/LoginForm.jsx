@@ -67,9 +67,16 @@ function LoginForm({ language }) {
         { username, password },
         { withCredentials: true }
       );
+
+      const userResponse = await axios.get(
+        `${import.meta.env.VITE_BACKEND_URL}/auth/me`,
+        { withCredentials: true }
+      );
+
       console.log("Login successful!", response.data);
       NotifSuccess("login");
-      setUser(response.data.user);
+      setUser(userResponse.data.user);
+
       // wait a little bit before navigating
       setTimeout(() => {
         navigate("/ide");
