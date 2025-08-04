@@ -26,83 +26,70 @@ function SearchBar({
 
   return (
     <>
-      <div className="flex flex-col items-center justify-center p-10 border-2 border-purple-600 bg-violet-200 shadow-xl rounded-lg m-10 w-4/5 max-w-[1150px]">
-        <div>
-          <div className="flex flex-col sm:flex-row w-full sm:w-2/3 gap-2 justify-self-center">
-            <form
-              id="search-bar"
-              onSubmit={handleSubmit}
-              className="flex flex-col sm:flex-row justify-center items-center gap-2 flex-1"
-            >
-              <div className="relative w-full flex-1">
-                <span className="absolute inset-y-0 left-3 flex items-center pointer-events-none">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-5 w-5 text-gray-400"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={2}
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 104.5 4.5a7.5 7.5 0 0012.15 12.15z"
-                    />
-                  </svg>
-                </span>
-                <input
-                  type="text"
-                  placeholder={
-                    language === "Español" ? "Buscar..." : "Search..."
-                  }
-                  onChange={(e) => setInput(e.target.value)}
-                  value={input}
-                  name="Search"
-                  className="border border-purple-700 pl-10 pr-4 py-2 rounded-lg w-full bg-white"
-                />
-              </div>
-              {language === "Español" ? (
-                <div className="flex flex-row gap-2">
-                  <button
-                    type="submit"
-                    className="p-2 bg-purple-500 text-white rounded-lg hover:bg-purple-700"
-                  >
-                    Buscar
-                  </button>
-                  <button
-                    onClick={handleClear}
-                    className="p-2 bg-purple-500 text-white rounded-lg hover:bg-purple-700"
-                  >
-                    Borrar
-                  </button>
-                </div>
-              ) : (
-                <div className="flex flex-row gap-2">
-                  <button className="p-2 bg-purple-500 text-white rounded-lg hover:bg-purple-700">
-                    Search
-                  </button>
-                  <button
-                    onClick={handleClear}
-                    className="p-2 bg-purple-500 text-white rounded-lg hover:bg-purple-700"
-                  >
-                    Clear
-                  </button>
-                </div>
-              )}
-            </form>
-          </div>
-          <div className="flex flex-wrap justify-center gap-1 mt-7">
+      <div className="flex flex-col items-center justify-center p-10 bg-gradient-to-br from-violet-200 to-blue-100 shadow-xl rounded-2xl border-2 border-purple-400 rounded-xl border-2 border-purple-400 m-10 w-4/5 max-w-[1150px]">
+        <div className="w-full max-w-2xl">
+          {/* search form */}
+          <form
+            id="search-bar"
+            onSubmit={handleSubmit}
+            className="flex flex-col sm:flex-row items-center gap-3 w-full"
+          >
+            <div className="relative w-full flex-1">
+              <span className="absolute inset-y-0 left-3 flex items-center pointer-events-none">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5 text-purple-500"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 104.5 4.5a7.5 7.5 0 0012.15 12.15z"
+                  />
+                </svg>
+              </span>
+              <input
+                type="text"
+                placeholder={language === "Español" ? "Buscar..." : "Search..."}
+                onChange={(e) => setInput(e.target.value)}
+                value={input}
+                name="Search"
+                className="w-full py-2 pl-10 pr-4 rounded-xl border-2 border-purple-400 bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-400 transition"
+              />
+            </div>
+
+            <div className="flex gap-2">
+              <button
+                type="submit"
+                className="px-4 py-2 bg-purple-600 text-white rounded-xl shadow-md hover:bg-purple-700 transition"
+              >
+                {language === "Español" ? "Buscar" : "Search"}
+              </button>
+              <button
+                onClick={handleClear}
+                type="button"
+                className="px-4 py-2 bg-purple-500 text-white rounded-xl shadow-md hover:bg-purple-700 transition"
+              >
+                {language === "Español" ? "Borrar" : "Clear"}
+              </button>
+            </div>
+          </form>
+
+          {/* alphabet filter */}
+          <div className="flex flex-wrap justify-center gap-1 mt-8">
             {"ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").map((letter) => (
               <button
                 key={letter}
                 onClick={() => handleLetterClick(letter)}
-                className={`w-8 h-8 flex items-center justify-center rounded-full text-sm font-medium
-        ${
-          activeLetter === letter
-            ? "bg-purple-600 text-white"
-            : "border border-purple-700 text-purple-700 bg-white hover:bg-purple-700 hover:text-white"
-        } transition`}
+                className={`w-8 h-8 flex items-center justify-center rounded-full text-sm font-medium shadow-sm
+              ${
+                activeLetter === letter
+                  ? "bg-purple-600 text-white"
+                  : "border border-purple-500 text-purple-600 bg-white hover:bg-purple-600 hover:text-white"
+              } transition-all duration-200`}
               >
                 {letter}
               </button>
