@@ -74,10 +74,10 @@ export default function ExplanationBox({ language, codeExplanation }) {
 
           <div className="flex flex-col gap-10 p-8 h-full">
             {/* Code Explanation Section */}
-            <div className="p-5 rounded-lg outline-solid">
+            <div className="p-5 rounded-lg outline-solid h-full">
               <div className="flex flex-row gap-2 items-center mb-4">
                 <span className="bg-green-700 px-2 py-1 rounded-full">💡</span>
-                <h2 className="text-xl font-bold text-green-700 ">
+                <h2 className="text-xl font-bold text-green-700">
                   Code Explanation
                 </h2>
               </div>
@@ -106,7 +106,7 @@ export default function ExplanationBox({ language, codeExplanation }) {
             </div>
 
             {/* Live Feedback Section */}
-            <div className="p-5 rounded-lg outline-solid h-full bg-zinc-800">
+            <div className="p-5 rounded-lg outline-solid">
               <div className="flex flex-row gap-2 items-center mb-4">
                 <span className="bg-sky-600 px-2 py-1 rounded-full">📖</span>
                 <h2 className="text-xl font-bold text-sky-600">
@@ -145,9 +145,9 @@ export default function ExplanationBox({ language, codeExplanation }) {
             <h1>Explicación/traducción de AI</h1>
           </div>
 
-          <div className="flex flex-col gap-10 p-8">
+          <div className="flex flex-col gap-10 p-8 h-full">
             {/* Code Explanation Section */}
-            <div className="p-5 rounded-lg outline-solid">
+            <div className="p-5 rounded-lg outline-solid h-full">
               <div className="flex flex-row gap-2 items-center mb-4">
                 <span className="bg-green-700 px-2 py-1 rounded-full">💡</span>
                 <h2 className="text-xl font-bold text-green-700 ">
