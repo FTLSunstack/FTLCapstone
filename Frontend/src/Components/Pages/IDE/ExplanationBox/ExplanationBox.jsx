@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import "../../../../tailwind.css";
 import axios from "axios";
 import { useState } from "react";
+
 export default function ExplanationBox({ language, codeExplanation }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -16,9 +17,9 @@ export default function ExplanationBox({ language, codeExplanation }) {
     // this then gets a map of each sentence it found
     return sentences.map((sentence, index) => (
       // and for each sentence it then creates a new component and displays it
-      <p key={index} className="mb-2 leading-relaxed text-gray-200">
+      <span key={index} className="mb-2 leading-relaxed text-gray-200">
         {sentence}
-      </p>
+      </span>
     ));
   }
 

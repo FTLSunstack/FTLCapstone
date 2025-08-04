@@ -34,18 +34,21 @@ function AboutUs({ language }) {
                 description="Desarrolladora Full Stack"
                 img={joannapicture}
                 linkedin={joannaLink}
+                language={language}
               />
               <CreatorCard
                 name="Luis-Angel Moreno"
                 description="Desarrollador Full Stack"
                 img={luispicture}
                 linkedin={luisLink}
+                language={language}
               />
               <CreatorCard
                 name="Heiryn Hernandez Rojas"
                 description="Desarrolladora Full Stack"
                 img={heirynpicture}
                 linkedin={heirynLink}
+                language={language}
               />
             </div>
           </div>

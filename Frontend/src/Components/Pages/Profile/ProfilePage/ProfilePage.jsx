@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import ProfileSection from "../ProfileSection/ProfileSection";
 import ProfileNavBar from "../ProfileNavBar/ProfileNavBar";
 import EditProfile from "../EditProfile/EditProfile.jsx";
+import Footer from "../../../Common/Footer/Footer";
 import { useAuth } from "../../../../Context/AuthContext.jsx";
 
-export default function ProfilePage({ language, lastPage }) {
+export default function ProfilePage({ language, lastPage, setLanguage }) {
   const [showModal, setShowModal] = useState(false);
   const [refreshKey, setRefreshKey] = useState(0);
 
@@ -38,7 +39,11 @@ export default function ProfilePage({ language, lastPage }) {
 
   return (
     <div className="h-screen pb-5">
-      <ProfileNavBar lastPage={lastPage} />
+      <ProfileNavBar
+        lastPage={lastPage}
+        language={language}
+        setLanguage={setLanguage}
+      />
       <ProfileSection
         name={user.name}
         userName={user.username}
@@ -47,7 +52,10 @@ export default function ProfilePage({ language, lastPage }) {
         website={user.website}
         about={user.aboutMe}
         editProfileModal={popUpModal}
+        userId={user.userId}
+        language={language}
       />
+      <Footer language={language} />
       {showModal && <EditProfile language={language} onClose={closeModal} />}
     </div>
   );

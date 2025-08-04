@@ -6,7 +6,7 @@ import axios from "axios";
 import { toast, Bounce } from "react-toastify";
 import { useAuth } from "../../../../Context/AuthContext";
 
-export default function ProfileNavBar({ lastPage }) {
+export default function ProfileNavBar({ lastPage, language, setLanguage }) {
   const navigate = useNavigate();
 
   const { setUser } = useAuth();
@@ -16,6 +16,14 @@ export default function ProfileNavBar({ lastPage }) {
       navigate("/");
     } else {
       navigate(`/${lastPage}`);
+    }
+  };
+
+  const handleChangeLanguage = () => {
+    if (language === "English") {
+      setLanguage("Español");
+    } else {
+      setLanguage("English");
     }
   };
 
@@ -58,24 +66,30 @@ export default function ProfileNavBar({ lastPage }) {
   return (
     <div className="w-full p-5 flex flex-row justify-between items-center">
       <h1
-        className="text-3xl font-semibold text-violet-600 cursor-pointer hover:opacity-70 transition ease-in-out"
+        className="text-violet-600 font-bold text-3xl hover:cursor-pointer hover:opacity-70 transition-all hover:scale-105 ease-in-out mr-4"
         onClick={handleBackToHomePage}
       >
         Codifica
       </h1>
       <div className="flex flex-row gap-5">
         <button
-          className="group font-semibold text-white bg-gradient-to-r from-violet-600 to-purple-600 py-3 px-6 rounded-lg hover:shadow-lg transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-1"
+          className="group text-white bg-gradient-to-r from-violet-600 to-purple-600 px-5 py-2 rounded-lg hover:shadow-lg transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-1"
           onClick={handleBackToHomePage}
         >
           <div className="flex items-center gap-2">
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform duration-300" />
-            Back
+            {language === "Español" ? "Atrás" : "Back"}
           </div>
         </button>
         <button
+          onClick={handleChangeLanguage}
+          className="px-5 py-2 border-violet-700 bg-violet-500 text-violet-700 rounded-md shadow-md backdrop-blur-lg transition-all hover:cursor-pointer hover:bg-violet-700 text-white hover:scale-105 hover:shadow-lg border border-gray-300 duration-300"
+        >
+          {language === "Español" ? "English" : "Español"}
+        </button>
+        <button
           onClick={handleUserLogout}
-          className="border border-gray-300 px-6 py-3 rounded-lg hover:border-gray-400 hover:bg-gray-100 transition ease-in-out cursor-pointer"
+          className="border border-violet-700 text-violet-700 px-5 py-2 rounded-lg hover:bg-violet-700 hover:text-white hover:scale-105 hover:shadow-lg transition ease-in-out cursor-pointer duration-300"
         >
           <div>Logout</div>
         </button>

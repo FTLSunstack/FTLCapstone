@@ -1,8 +1,8 @@
 import React from "react";
 import "../../../../tailwind.css";
-
+import SaveModal from "../SaveModal/SaveModal";
+import { useAuth } from "../../../../Context/AuthContext";
 import { EditorView, basicSetup } from "codemirror";
-
 import { barf } from "thememirror";
 import { python } from "@codemirror/lang-python";
 import { useEffect, useRef, useState } from "react";
@@ -10,7 +10,6 @@ import { autocompletion, completionKeymap } from "@codemirror/autocomplete";
 import { indentWithTab } from "@codemirror/commands";
 import { keymap, logException } from "@codemirror/view";
 import axios from "axios";
-
 import { Sparkles } from "lucide-react";
 
 export default function CodeEditor({
@@ -31,6 +30,11 @@ export default function CodeEditor({
   const [output, setOutput] = useState("");
   const [result, setResult] = useState("");
   const [explanationHovered, setExplanationHovered] = useState(false);
+  const [showSaveModal, setShowSaveModal] = useState(false);
+  const [snippetTitle, setSnippetTitle] = useState("");
+  const [snippetNotes, setSnippetNotes] = useState("");
+
+  const { user } = useAuth();
 
   const handleExplanation = () => {
     const currentCode = viewRef.current.state.doc.toString();
@@ -88,6 +92,32 @@ export default function CodeEditor({
       }
     }
     // console.log("Submit Code was ran");
+  };
+
+  const handleSaveClick = () => {
+    setShowSaveModal(true);
+  };
+
+  const handleSnippetSubmit = async () => {
+    try {
+      const res = await axios.post(
+        `${import.meta.env.VITE_BACKEND_URL}/code/${user.userId}`,
+        {
+          code: "print('hello world')",
+          language: "English",
+          codeLang: "Python",
+          title: snippetTitle,
+          notes: snippetNotes,
+        },
+        { withCredentials: true }
+      );
+      console.log("Saved snippet:", res.data);
+      setShowSaveModal(false);
+      setSnippetTitle("");
+      setSnippetNotes("");
+    } catch (err) {
+      console.error("Save failed:", err);
+    }
   };
 
   useEffect(() => {
@@ -180,15 +210,25 @@ export default function CodeEditor({
           className="w-full h-full"
           style={{ outline: "none" }}
         />
-        <div className="relative">
+        <div className="">
           <button
-            className="absolute bottom-2 left-2 bg-violet-400 text-white px-4 py-2 rounded cursor-pointer hover:bg-violet-500 transition-all duration-300 ease-in-out overflow-hidden"
+            className="absolute bottom-2 left-2 bg-purple-500 text-white px-4 py-2 rounded cursor-pointer hover:bg-purple-700 hover:scale-105 transition-all duration-300 ease-in-out overflow-hidden"
             onClick={handleExplanation}
           >
             {language === "English" ? <h1>Explain</h1> : <h1>Explicar</h1>}
           </button>
           <button
-            className="absolute bottom-2 right-2 bg-violet-400 text-white px-4 py-2 rounded hover:bg-violet-500 hover:cursor-pointer transition flex items-center gap-1"
+            className="absolute top-2 right-2 bg-purple-500 text-white px-4 py-2 rounded cursor-pointer hover:bg-purple-700 hover:scale-105 transition-all duration-300 ease-in-out overflow-hidden"
+            onClick={handleSaveClick}
+          >
+            {language === "English" ? (
+              <h1>Save Code</h1>
+            ) : (
+              <h1>Guardar Codigo</h1>
+            )}
+          </button>
+          <button
+            className="absolute bottom-2 right-2 bg-purple-500 text-white px-4 py-2 rounded hover:bg-purple-700 hover:scale-105 hover:cursor-pointer transition flex items-center gap-1"
             onClick={handleSubmit}
           >
             <span className="material-icons">play_arrow</span>
@@ -196,6 +236,16 @@ export default function CodeEditor({
           </button>
         </div>
       </div>
+      <SaveModal
+        isOpen={showSaveModal}
+        onClose={() => setShowSaveModal(false)}
+        onSubmit={handleSnippetSubmit}
+        title={snippetTitle}
+        setTitle={setSnippetTitle}
+        notes={snippetNotes}
+        setNotes={setSnippetNotes}
+        language={language}
+      />
     </div>
   );
 }

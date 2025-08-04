@@ -146,7 +146,7 @@ const AnimatedBackground = ({ language = "English", goDown }) => {
       </div>
 
       {/* Enhanced animations */}
-      <style jsx>{`
+      <style>{`
         @keyframes wave-1 {
           0%,
           100% {
