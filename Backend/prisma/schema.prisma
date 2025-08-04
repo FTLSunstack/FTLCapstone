@@ -14,19 +14,33 @@ datasource db {
 }
 
 model User {
-  userId Int @id @default(autoincrement())
-  name String
-  username String @unique
-  email String @unique
-  passwordHash String
+  userId        Int @id @default(autoincrement())
+  name          String
+  username      String @unique
+  email         String @unique
+  passwordHash  String
 
-  aboutMe String?
-  location String?
-  website String?
+  aboutMe       String?
+  location      String?
+  website       String?
 
-  passwordResetToken          String? 
-  passwordResetTokenExpiry    DateTime?
+  passwordResetToken        String? 
+  passwordResetTokenExpiry  DateTime?
 
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @default(now()) @updatedAt
+
+  codeSnippets  CodeSnippet[]
+}
+
+model CodeSnippet {
+  id        Int      @id @default(autoincrement())
+  user      User     @relation(fields: [userId], references: [userId])
+  userId    Int
+  code      String
+  codeLang  String
+  title     String   @default("")
+  notes     String?  // optional
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now()) @updatedAt
 }

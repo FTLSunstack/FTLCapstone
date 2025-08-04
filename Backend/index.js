@@ -24,11 +24,13 @@ const authRouter = require("./routes/authRoutes");
 const JudgeRoutes = require("./routes/JudgeRoute");
 const geminiRoutes = require("./routes/geminiRoutes");
 const updateRoutes = require("./routes/updateRoute");
+const snippetRoutes = require("./routes/snippetRoutes");
 
 app.use("/auth", authRouter);
 app.use("/api", JudgeRoutes);
 app.use("/explainer", geminiRoutes);
 app.use("/users", updateRoutes);
+app.use("/code", snippetRoutes);
 
 app.get("/", (req, res) => {
   res.send("This is Codifica!");
