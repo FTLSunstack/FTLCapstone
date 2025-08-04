@@ -18,7 +18,7 @@ function LoginInput({username, setUsername,password,setPassword, language}) {
             setpasswordLabel("Contraseña")
         } else {
             setUsernamePlaceholder("Enter your username");
-            setUsernameLabel("Username:")
+            setUsernameLabel("Username")
             setPasswordPlaceholder("Enter your password")
             setpasswordLabel("Password")
         }
