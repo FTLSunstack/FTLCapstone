@@ -15,7 +15,7 @@ function TermModal({ language, onClose, term }) {
         `${import.meta.env.VITE_BACKEND_URL}/explainer/refreshExampleTerm`,
         {
           term: term.en.term,
-          language: language
+          language: language,
         }
       );
       console.log(term.en.term);
@@ -34,7 +34,7 @@ function TermModal({ language, onClose, term }) {
     if (term.formExample) {
       // show example
       return (
-        <div className="w-full max-w-md sm:max-w-lg md:max-w-xl bg-purple-500 text-black text-sm sm:text-base md:text-lg p-4 sm:p-5 rounded-xl shadow-md mx-auto transition-all relative">
+        <div className="w-full max-w-md sm:max-w-lg md:max-w-xl bg-purple-600 text-black text-sm sm:text-base md:text-lg p-4 sm:p-5 rounded-xl shadow-md mx-auto transition-all relative">
           {/* Top right refresh button on md+ */}
           <div className="hidden sm:flex absolute top-3 right-3">
             <button
@@ -103,7 +103,7 @@ function TermModal({ language, onClose, term }) {
       >
         <div
           onClick={(e) => e.stopPropagation()}
-          className="bg-white w-11/12 max-w-2xl sm:p-10 p-6 rounded-2xl shadow-2xl relative flex flex-col gap-6 border-t-8 border-purple-500 animate-fade-in-scale duration-300"
+          className="bg-white w-11/12 max-w-2xl sm:p-10 p-6 rounded-2xl shadow-2xl relative flex flex-col gap-6 border-t-8 border-purple-600 animate-fade-in-scale duration-300"
         >
           {/* Header */}
           <div className="text-center">
@@ -129,16 +129,6 @@ function TermModal({ language, onClose, term }) {
 
           {/* Example Section (unchanged) */}
           <ShowExample term={term} />
-
-          {/* Close Button (optional if needed) */}
-          {/* 
-      <button
-        onClick={onClose}
-        className="absolute top-4 right-4 text-zinc-400 hover:text-zinc-600"
-      >
-        <span className="text-xl">&times;</span>
-      </button>
-      */}
         </div>
       </div>
     </>

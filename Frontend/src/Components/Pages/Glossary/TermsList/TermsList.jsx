@@ -87,7 +87,7 @@ function TermsList({ language, onClick, setModalTerm, search, activeLetter }) {
         ))}
       </div>
       <div className="m-8 w-full flex justify-center">
-        <div className="flex items-center gap-6 bg-violet-200 border border-violet-600 rounded-xl px-4 py-2 shadow-lg">
+        <div className="flex items-center gap-6 bg-gradient-to-br from-violet-200 to-blue-100 border border-violet-600 rounded-xl px-4 py-2 shadow-lg">
           <button
             onClick={prevPage}
             disabled={currentPage === 1}

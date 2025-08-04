@@ -63,7 +63,13 @@ function App() {
             />
             <Route
               path="/profile"
-              element={<ProfilePage language={language} lastPage={lastPage} />}
+              element={
+                <ProfilePage
+                  language={language}
+                  lastPage={lastPage}
+                  setLanguage={setLanguage}
+                />
+              }
             />
             {/* <Route path="/edit/profile" element={<EditProfile />} /> */}
           </Routes>

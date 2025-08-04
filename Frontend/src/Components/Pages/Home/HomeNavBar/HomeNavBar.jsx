@@ -181,7 +181,7 @@ export default function HomeNavBar({
                     <img
                       src="https://adamchang.com/wp-content/uploads/2022/05/Tokyo-Olympics_Astro-Statics_large__Medal-Pose-1.png"
                       alt="pfp"
-                      className="w-20 cursor-pointer drop-shadow-lg rounded-full"
+                      className="w-20 hover:scale-105 cursor-pointer rounded-full transition"
                       onClick={handleProfilePage}
                     />
                   </span>
@@ -214,9 +214,9 @@ export default function HomeNavBar({
                   <button onClick={onScrollToAboutUs}>Sobre Nosotros</button>
                   <button onClick={handleIDE}>Aprender</button>
                   <img
-                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/1024px-Default_pfp.svg.png"
+                    src="https://adamchang.com/wp-content/uploads/2022/05/Tokyo-Olympics_Astro-Statics_large__Medal-Pose-1.png"
                     alt="pfp"
-                    className="w-10 rounded-full cursor-pointer transition-all hover:scale-105 hover:shadow-lg"
+                    className="w-20 hover:scale-105 rounded-full cursor-pointer transition-all hover:scale-105 transition"
                     onClick={handleProfilePage}
                   />
                   <button
@@ -341,7 +341,7 @@ export default function HomeNavBar({
                     <img
                       src="https://adamchang.com/wp-content/uploads/2022/05/Tokyo-Olympics_Astro-Statics_large__Medal-Pose-1.png"
                       alt="pfp"
-                      className="w-20 cursor-pointer drop-shadow-lg rounded-full transition-all hover:scale-105 hover:shadow-lg"
+                      className="w-20 cursor-pointer drop-shadow-lg rounded-full transition-all hover:scale-105 transition"
                       onClick={handleProfilePage}
                     />
                   </span>
