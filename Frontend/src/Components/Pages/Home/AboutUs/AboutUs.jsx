@@ -22,7 +22,7 @@ function AboutUs({ language }) {
               Conoce a Nuestro Equipo
             </h1>
             <h2 className="text-gray-500 text-xl text-center max-w-5xl">
-              Somos un equipo apasionado de desarrolladores y educadores
+              Somos un equipo apasionado de desarrolladores
               comprometidos con hacer que la programación sea accesible para
               todos. Creemos en el poder del aprendizaje inclusivo y en la
               importancia de eliminar las barreras lingüísticas en la educación
@@ -61,7 +61,7 @@ function AboutUs({ language }) {
               Meet Our Team
             </h1>
             <h2 className="text-gray-500 text-xl text-center max-w-5xl">
-              We are a passionate team of developers and educators committed to
+              We are a passionate team of developers committed to
               making programming accessible for everyone. We believe in the
               power of inclusive learning and the importance of breaking down
               language barriers in tech education.

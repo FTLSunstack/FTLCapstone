@@ -87,7 +87,7 @@ function AdditionalResources({ language }) {
                 className="flex items-center justify-between w-3/4 p-5 m-6 border-b-2 cursor-pointer transition-colors duration-200 rounded-md bg-white hover:bg-violet-50"
               >
                 <h1 className="font-semibold text-lg text-black">
-                  Complaints? Reach out to us here
+                  Reach out to the team here
                 </h1>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -186,7 +186,7 @@ function AdditionalResources({ language }) {
                 className="flex items-center justify-between w-3/4 p-5 m-6 border-b-2 cursor-pointer transition-colors duration-200 rounded-md bg-white hover:bg-violet-50"
               >
                 <h1 className="font-semibold text-lg text-black">
-                  ¿Tiene alguna queja? Contáctenos aquí.
+                  Contáctenos aquí.
                 </h1>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

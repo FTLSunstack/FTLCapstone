@@ -19,8 +19,7 @@ function Features({ language }) {
             <FeatureCard
               title="IDE Integrado"
               description="Nuestro IDE integrado te permite escribir, ejecutar y probar 
-            código directamente desde tu navegador. Compatible con varios lenguajes de 
-            programación, es ideal para aprender de forma interactiva y practicar en tiempo real."
+            código directamente desde tu navegador. Es ideal para aprender de forma interactiva y practicar en tiempo real."
               logo="🧠"
             />
             <FeatureCard
@@ -52,7 +51,7 @@ function Features({ language }) {
             <FeatureCard
               title="Integrated IDE"
               description="Our integrated IDE allows you to write, run, and test code directly from your browser. 
-                Compatible with multiple programming languages, it is ideal for interactive learning and real-time practice."
+                It is perfect for interactive learning and real-time practice."
               logo="🧠"
             />
             <FeatureCard
