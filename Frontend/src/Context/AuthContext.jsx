@@ -7,6 +7,7 @@ const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   // empty obj will hold the user info ofc
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   // need to check if it is authenticated
   useEffect(() => {
@@ -24,6 +25,8 @@ export const AuthProvider = ({ children }) => {
       } catch (err) {
         // not logged in
         setUser(null);
+      } finally {
+        setLoading(false);
       }
     };
     checkAuth();
@@ -50,7 +53,9 @@ export const AuthProvider = ({ children }) => {
 
   return (
     // makes sure that these things can be accessed anywhere in the program
-    <AuthContext.Provider value={{ user, setUser, logout, updateUser }}>
+    <AuthContext.Provider
+      value={{ user, setUser, logout, updateUser, loading }}
+    >
       {children}
     </AuthContext.Provider>
   );

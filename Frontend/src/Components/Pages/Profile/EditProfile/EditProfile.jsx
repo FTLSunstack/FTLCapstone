@@ -4,6 +4,11 @@ import React, { useState, useEffect } from "react";
 import { X, User, Mail, MapPin, Globe, FileText } from "lucide-react";
 import axios from "axios";
 
+import {
+  NotifSuccess,
+  NotifError,
+} from "../../../Common/ToastNotifs/ToastNotifs";
+
 export default function EditProfile({ language, onClose, onRefresh }) {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -80,6 +85,7 @@ export default function EditProfile({ language, onClose, onRefresh }) {
       console.log("Backend updated user:", response.data);
 
       const updatedUserFromBackend = response.data.data;
+      NotifSuccess("User information updated");
 
       if (updateUser) {
         updateUser(updatedUserFromBackend); // Update AuthContext
@@ -91,6 +97,7 @@ export default function EditProfile({ language, onClose, onRefresh }) {
       handleClose();
     } catch (error) {
       console.error("Error updating user:", error);
+      NotifError("User information update");
       // Add user-friendly error handling here
     }
   };
@@ -196,13 +203,13 @@ export default function EditProfile({ language, onClose, onRefresh }) {
         <div className="flex justify-between items-center px-6 py-4 bg-white/80 backdrop-blur-sm border-t border-gray-200 rounded-b-2xl">
           <button
             onClick={handleClose}
-            className="px-5 py-2 border border-gray-300 rounded-md hover:bg-gray-100 transition"
+            className="px-5 py-2 border border-gray-300 rounded-md hover:bg-gray-100 transition cursor-pointer"
           >
             Cancel
           </button>
           <button
             onClick={handleUpdateUser}
-            className="px-5 py-2 rounded-md text-white font-semibold bg-gradient-to-r from-indigo-400 to-purple-400 hover:opacity-80 transition"
+            className="px-5 py-2 rounded-md text-white font-semibold bg-gradient-to-r from-indigo-400 to-purple-400 hover:opacity-80 transition cursor-pointer"
           >
             Save
           </button>

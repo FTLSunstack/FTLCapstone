@@ -11,6 +11,10 @@ import { indentWithTab } from "@codemirror/commands";
 import { keymap, logException } from "@codemirror/view";
 import axios from "axios";
 import { Sparkles } from "lucide-react";
+import {
+  NotifSuccess,
+  NotifError,
+} from "../../../Common/ToastNotifs/ToastNotifs";
 
 export default function CodeEditor({
   initialCode = "print('Hello world')",
@@ -114,12 +118,14 @@ export default function CodeEditor({
         },
         { withCredentials: true }
       );
+      NotifSuccess("Saved Snippet");
       console.log("Saved snippet:", res.data);
       setShowSaveModal(false);
       setSnippetTitle("");
       setSnippetNotes("");
     } catch (err) {
       console.error("Save failed:", err);
+      NotifError('Saved Snippet')
     }
   };
 

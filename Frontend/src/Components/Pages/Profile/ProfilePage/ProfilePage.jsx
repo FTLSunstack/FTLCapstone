@@ -14,7 +14,17 @@ export default function ProfilePage({ language, lastPage, setLanguage }) {
   const [snippetData, setSnippetData] = useState(null);
   const [refreshKey, setRefreshKey] = useState(0);
 
-  const { user } = useAuth();
+  const { user, loading } = useAuth();
+
+  // useEffect(() => {
+  //   if (user) {
+  //     console.log(user.name);
+  //     console.log(user.email);
+  //     console.log(user.location);
+  //     console.log(user.aboutMe);
+  //     console.log(user.website);
+  //   }
+  // });
 
   const popUpProfileModal = () => {
     console.log("Editing snippet in Profile Page:", snippetData);
@@ -39,6 +49,10 @@ export default function ProfilePage({ language, lastPage, setLanguage }) {
       )
     );
   };
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   if (!user) {
     return <div>Loading....</div>;
