@@ -118,13 +118,11 @@ exports.signup = async (req, res) => {
       maxAge: 2 * 24 * 60 * 60 * 1000,
     });
 
-    res
-      .status(201)
-      .json({
-        user: { userId: newUser.userId, username: newUser.username },
-        accessToken,
-        message: "User created successfully!",
-      });
+    res.status(201).json({
+      user: { userId: newUser.userId, username: newUser.username },
+      accessToken,
+      message: "User created successfully!",
+    });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Something went wrong during sign up!" });
@@ -236,7 +234,7 @@ exports.refresh = (req, res) => {
 
 exports.requestResetPassword = async (req, res) => {
   console.log("Received reset request", req.body);
-  const { email,language } = req.body;
+  const { email, language } = req.body;
 
   const user = await prisma.user.findUnique({ where: { email } });
   if (!user) {
@@ -256,28 +254,36 @@ exports.requestResetPassword = async (req, res) => {
     },
   });
 
-  //need to get the language and change it 
+  //need to get the language and change it
   let emailSubject = "Reset your Codifica password securely";
   let emailHeading = "Codifica Password Reset";
   let emailGreeting = "Hi there,";
-  let emailReceivedRequest = "We received a request to reset your password for your Codifica account.";
-  let emailClickInstructions = "To reset your password, please click the button below. This link is valid for 15 minutes:";
+  let emailReceivedRequest =
+    "We received a request to reset your password for your Codifica account.";
+  let emailClickInstructions =
+    "To reset your password, please click the button below. This link is valid for 15 minutes:";
   let emailButtonText = "Reset Password";
-  let emailCopyPasteInstructions = "Or copy and paste this link into your browser:";
-  let emailIgnoreInstructions = "If you didn’t request a password reset, please ignore this email. Your password will remain unchanged.";
-  let emailFooter = "This message was sent from Codifica. If you have any questions, reply to this email. Please pls pls dont send to spam i am making a project and sending them to myself pls";
-
+  let emailCopyPasteInstructions =
+    "Or copy and paste this link into your browser:";
+  let emailIgnoreInstructions =
+    "If you didn’t request a password reset, please ignore this email. Your password will remain unchanged.";
+  let emailFooter =
+    "This message was sent from Codifica. If you have any questions, reply to this email. Please pls pls dont send to spam i am making a project and sending them to myself pls";
 
   if (language === "Español") {
     emailSubject = "Restablece tu contraseña de Codifica de forma segura";
     emailHeading = "Restablecimiento de Contraseña de Codifica";
     emailGreeting = "Hola,";
-    emailReceivedRequest = "Hemos recibido una solicitud para restablecer la contraseña de tu cuenta de Codifica.";
-    emailClickInstructions = "Para restablecer tu contraseña, haz clic en el botón de abajo. Este enlace es válido por 15 minutos:";
+    emailReceivedRequest =
+      "Hemos recibido una solicitud para restablecer la contraseña de tu cuenta de Codifica.";
+    emailClickInstructions =
+      "Para restablecer tu contraseña, haz clic en el botón de abajo. Este enlace es válido por 15 minutos:";
     emailButtonText = "Restablecer Contraseña";
     emailCopyPasteInstructions = "O copia y pega este enlace en tu navegador:";
-    emailIgnoreInstructions = "Si no solicitaste un restablecimiento de contraseña, por favor ignora este correo. Tu contraseña permanecerá sin cambios.";
-    emailFooter = "Este mensaje fue enviado desde Codifica. Si tienes alguna pregunta, responde a este correo electrónico. Por favor, por favor, no lo envíes a spam, estoy haciendo un proyecto y enviándolos a mí mismo, por favor.";
+    emailIgnoreInstructions =
+      "Si no solicitaste un restablecimiento de contraseña, por favor ignora este correo. Tu contraseña permanecerá sin cambios.";
+    emailFooter =
+      "Este mensaje fue enviado desde Codifica. Si tienes alguna pregunta, responde a este correo electrónico. Por favor, por favor, no lo envíes a spam, estoy haciendo un proyecto y enviándolos a mí mismo, por favor.";
   }
 
   // link that will be sent to the user’s email.
@@ -394,6 +400,7 @@ exports.me = async (req, res) => {
         website: true,
         location: true,
         aboutMe: true,
+        createdAt: true, // Include createdAt field
       },
     });
 

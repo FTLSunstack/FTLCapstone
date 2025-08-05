@@ -7,7 +7,13 @@ import ExplanationBox from "../ExplanationBox/ExplanationBox";
 import IDEContainer from "../IDEContainer/IDEContainer";
 import AdditionalResources from "../AdditionalResources/AdditionalResources";
 
-function IDEPage({ language, setLanguage, setLastPage }) {
+function IDEPage({
+  language,
+  setLanguage,
+  setLastPage,
+  codeInput,
+  setCodeInput,
+}) {
   const [codeInstance, setCodeInstance] = useState(null);
 
   const handleCodeExplanation = (code) => {
@@ -27,6 +33,8 @@ function IDEPage({ language, setLanguage, setLastPage }) {
           <IDEContainer
             language={language}
             onCodeExplanation={handleCodeExplanation}
+            codeInput={codeInput}
+            setCodeInput={setCodeInput}
           />
         </div>
         <div className="flex-1 flex flex-col h-full w-full">

@@ -42,6 +42,8 @@ function App() {
                     language={language}
                     setLanguage={setLanguage}
                     setLastPage={setLastPage}
+                    codeInput={codeInput}
+                    setCodeInput={setCodeInput}
                   />
                 }
               />

@@ -58,13 +58,16 @@ export default function ProfilePage({ language, lastPage, setLanguage }) {
         location={user.location}
         website={user.website}
         about={user.aboutMe}
+        createdAt={user.createdAt}
         editProfileModal={popUpProfileModal}
         editSnippetModal={popUpSnippetModal}
         userId={user.userId}
+        user={user}
         language={language}
         setSnippetData={setSnippetData}
         snippets={snippets}
         setSnippets={setSnippets}
+        onUpdateSnippet={handleSnippetUpdate}
       />
       <Footer language={language} />
       {showProfileModal && (

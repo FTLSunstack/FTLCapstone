@@ -59,7 +59,7 @@ export default function ProfileSection(props) {
     };
 
     if (props.userId) fetchSnippets();
-  }, [props.userId, props.snippets]);
+  }, [props.userId]);
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen w-full bg-gradient-to-br from-purple-700 via-violet-600 to-blue-600 py-10 px-5">
@@ -85,7 +85,13 @@ export default function ProfileSection(props) {
           <div className="flex flex-row items-center gap-2 group cursor-pointer transition ease-in-out">
             <Calendar className="w-4 h-4 text-white opacity-70 group-hover:opacity-100 transition ease-in-out" />
             <h2 className="text-white opacity-70 group-hover:opacity-100 transition ease-in-out">
-              Joined March 2023
+              {(() => {
+                const formatted = new Date(props.createdAt).toLocaleDateString(
+                  props.language === "Español" ? "es-ES" : "en-US",
+                  { month: "long", year: "numeric" }
+                );
+                return formatted.charAt(0).toUpperCase() + formatted.slice(1);
+              })()}
             </h2>
           </div>
           <button
