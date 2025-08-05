@@ -13,7 +13,7 @@ function PasswordModal({ email, setEmail, closePasswordModal, language }) {
   );
   const [emailLabel, setEmailLabel] = useState("Correo electrónico");
   const [loginButtonTxt, setLoginButtonTxt] = useState("Iniciar Sesión");
-  const [WelcomeTxt, setWelcomeTxt] = useState("¡Bienvenido de vuelta!");
+  const [WelcomeTxt, setWelcomeTxt] = useState("¿Olvidó su contraseña? ¡No se procupe!");
   const [backLoginTxt, setBackLoginTxt] = useState(
     "¡Jaja! He recordado mi contraseña!"
   );
@@ -30,6 +30,7 @@ function PasswordModal({ email, setEmail, closePasswordModal, language }) {
       setEmailPlaceholder("Enter your email");
       setEmailLabel("Email");
       setLoginButtonTxt("Send Email");
+      setWelcomeTxt("Forgot your password? No worries!");
       setBackLoginTxt("JK! I remember my password");
     }
   }, [language]);
