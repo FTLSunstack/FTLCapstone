@@ -57,7 +57,12 @@ function GlossaryPage({ language, setLanguage, setLastPage }) {
         <Footer language={language} />
       </div>
       {show && modalTerm && (
-        <TermModal language={language} onClose={onClick} term={modalTerm} />
+        <TermModal
+          language={language}
+          onClose={onClick}
+          term={modalTerm}
+          isOpen={show}
+        />
       )}
     </>
   );

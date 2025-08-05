@@ -80,6 +80,34 @@ exports.saveSnippet = async (req, res) => {
   }
 };
 
+exports.updateSnippet = async (req, res) => {
+  try {
+    console.log("Request body:", req.body); // 🧪 Add this
+    const { codeId } = req.params;
+    const { code, codeLang, title, notes, userId } = req.body;
+
+    if (!codeId) {
+      return res.status(400).json({ message: "Missing code snippet ID" });
+    }
+
+    const editedSnippet = await prisma.codeSnippet.update({
+      where: { id: parseInt(codeId) },
+      data: {
+        userId: parseInt(userId),
+        code,
+        codeLang,
+        title,
+        notes,
+      },
+    });
+
+    res.status(200).json(editedSnippet);
+  } catch (err) {
+    console.error("Error updating snippet:", err);
+    res.status(500).json({ message: "Server error" });
+  }
+};
+
 exports.deleteSnippet = async (req, res) => {
   try {
     const { codeId } = req.params;

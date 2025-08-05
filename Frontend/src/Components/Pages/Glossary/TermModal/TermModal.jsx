@@ -1,11 +1,28 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ReactMarkdown from "react-markdown";
 import "../../../../tailwind.css";
 import axios from "axios";
 
-function TermModal({ language, onClose, term }) {
+function TermModal({ language, onClose, term, isOpen }) {
   const [exampleTerm, setExampleTerm] = useState("");
   const [exampleLoading, setExampleLoading] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    if (isOpen) {
+      const timer = setTimeout(() => setIsVisible(true), 10);
+      return () => clearTimeout(timer);
+    } else {
+      setIsVisible(false);
+    }
+  }, [isOpen]);
+
+  const handleClose = () => {
+    setIsVisible(false);
+    setTimeout(() => {
+      if (onClose) onClose();
+    }, 300);
+  };
 
   const refreshExample = async (term) => {
     console.log(term.en.term);
@@ -98,12 +115,18 @@ function TermModal({ language, onClose, term }) {
   return (
     <>
       <div
-        onClick={onClose}
-        className="bg-[rgba(0,0,0,0.5)] fixed inset-0 z-[100] flex items-center justify-center transition-all duration-300"
+        onClick={handleClose}
+        className={`bg-[rgba(0,0,0,0.5)] fixed inset-0 z-[100] flex items-center justify-center transition-all duration-300 ${
+          isVisible ? "bg-black/50 opacity-100" : "bg-black/0 opacity-0"
+        }`}
       >
         <div
           onClick={(e) => e.stopPropagation()}
-          className="bg-white w-11/12 max-w-2xl sm:p-10 p-6 rounded-2xl shadow-2xl relative flex flex-col gap-6 border-t-8 border-purple-600 animate-fade-in-scale duration-300"
+          className={`bg-white w-11/12 max-w-2xl sm:p-10 p-6 rounded-2xl shadow-2xl relative flex flex-col gap-6 border-t-8 border-purple-600 animate-fade-in-scale duration-300 ${
+            isVisible
+              ? "opacity-100 scale-100 translate-y-0"
+              : "opacity-0 scale-95 translate-y-4"
+          }`}
         >
           {/* Header */}
           <div className="text-center">
