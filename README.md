@@ -1,4 +1,3 @@
-📝 `NOTE` Use this template repo to initialize the contents of your group's capstone repo project. As you work on your assignment over the course of the week, update the appropriate repo deliverables. All project planning should be included in the planning directory. (🚫 Remove this paragraph before submitting your assignment.)
 
 # SITE Capstone Project
 
@@ -12,15 +11,25 @@ Mentors Names: **Lisa Church, Ashwin Tumma, Santhosh Raja**
 
 Project Code Repository Links
 
-* [Frontend Repo Link]()
-* [Backend Repo Link]()
+* [Frontend Repo Link](https://github.com/FTLSunstack/FTLCapstone/tree/main/Backend)
+* [Backend Repo Link](https://github.com/FTLSunstack/FTLCapstone/tree/main/Frontend)
 
 ## Project Overview
 
-Add a quick summary of what your project theme and objectives are. 
+Codifica is a web-based application designed to lower the barrier to entry for Spanish-speaking individuals in the technology industry. The platform addresses the challenge of a language gap in coding education by providing a comprehensive, multilingual learning environment.
 
-Deployment Website: **Add Link to Deployed Project**
+Our objective is to empower aspiring developers by offering:
+  
+  - Real-time code execution in a sandboxed environment.
+  
+  - AI-powered code explanations and technical definitions in the user's native language.
+  
+  - Seamless translation of the user interface and educational content.
+
+*By integrating robust code execution with on-demand, language-specific support, Codifica fosters an inclusive pathway into programming for a diverse global audience.*
+
+Deployment Website: **[Codifica Deployed Website](https://codifica.it.com/)**
 
 ### Open-source libraries used
 
-- Add any links to open-source libraries used in your project.
+- [Glosario](https://github.com/carpentries/glosario)
