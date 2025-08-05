@@ -110,7 +110,7 @@ export default function CodeEditor({
       const res = await axios.post(
         `${import.meta.env.VITE_BACKEND_URL}/code/${user.userId}`,
         {
-          code: "print('hello world')",
+          code: codeInput,
           language: "English",
           codeLang: "Python",
           title: snippetTitle,
@@ -125,7 +125,7 @@ export default function CodeEditor({
       setSnippetNotes("");
     } catch (err) {
       console.error("Save failed:", err);
-      NotifError('Saved Snippet')
+      NotifError("Saved Snippet");
     }
   };
 
@@ -191,7 +191,7 @@ export default function CodeEditor({
       });
 
       viewRef.current = new EditorView({
-        doc: initialCode,
+        doc: codeInput || initialCode,
         extensions: [
           basicSetup, // This automatically adds line numbers, syntax highlighting, etc.
           python(),
@@ -199,6 +199,12 @@ export default function CodeEditor({
           barf,
           editorLayoutTheme,
           keymap.of([indentWithTab, ...completionKeymap]), // Tab for indent, Enter/Tab for completions
+          EditorView.updateListener.of((update) => {
+            if (update.docChanged) {
+              const newCode = update.state.doc.toString();
+              setCodeInput(newCode); // Update parent state with new code
+            }
+          }),
         ],
         parent: editorRef.current,
       });
@@ -208,6 +214,7 @@ export default function CodeEditor({
         viewRef.current.destroy();
         viewRef.current = null;
       }
+      console.log("codeInput updated:", codeInput);
     };
   }, [initialCode]);
 
