@@ -22,6 +22,8 @@ export default function CodeEditor({
   onError,
   onRun,
   onInput,
+  codeInput,
+  setCodeInput,
 }) {
   const editorRef = useRef(null);
   const viewRef = useRef(null);
@@ -33,6 +35,7 @@ export default function CodeEditor({
   const [showSaveModal, setShowSaveModal] = useState(false);
   const [snippetTitle, setSnippetTitle] = useState("");
   const [snippetNotes, setSnippetNotes] = useState("");
+  // const [codeInput, setCodeInput] = useState("");
 
   const { user } = useAuth();
 

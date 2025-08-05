@@ -17,6 +17,7 @@ import "react-toastify/ReactToastify.css";
 function App() {
   const [language, setLanguage] = useState("Español");
   const [lastPage, setLastPage] = useState("home");
+  const [codeInput, setCodeInput] = useState("print('Hello world')");
 
   return (
     <>

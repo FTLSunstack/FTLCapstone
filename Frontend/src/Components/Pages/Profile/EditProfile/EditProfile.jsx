@@ -118,7 +118,9 @@ export default function EditProfile({ language, onClose, onRefresh }) {
       >
         {/* Header */}
         <div className="flex justify-between items-center bg-gradient-to-r from-indigo-400 to-purple-400 rounded-t-2xl px-6 py-4 text-white">
-          <h1 className="text-xl font-bold">Edit Profile</h1>
+          <h1 className="text-xl font-bold">
+            {language === "Español" ? "Editar Perfil" : "Edit Profile"}
+          </h1>
           <X
             className="h-5 w-5 hover:opacity-50 cursor-pointer transition"
             onClick={handleClose}
@@ -130,40 +132,40 @@ export default function EditProfile({ language, onClose, onRefresh }) {
           {[
             {
               icon: <User className="h-5 w-5" />,
-              label: "Full Name",
+              label: language === "Español" ? "Nombre completo" : "Full Name",
               value: user.name,
               name: "",
               readOnly: true,
             },
             {
               icon: <span>@</span>,
-              label: "Username",
+              label: language === "Español" ? "Nombre de usuario" : "Username",
               value: user.username,
               name: "",
               readOnly: true,
             },
             {
               icon: <Mail className="h-5 w-5" />,
-              label: "Email",
+              label: language === "Español" ? "Correo electrónico" : "Email",
               value: user.email,
               name: "",
               readOnly: true,
             },
             {
               icon: <MapPin className="h-5 w-5" />,
-              label: "Location",
+              label: language === "Español" ? "Ubicación" : "Location",
               value: formData.location,
               name: "location",
             },
             {
               icon: <FileText className="h-5 w-5" />,
-              label: "Bio",
+              label: language === "Español" ? "Biografía" : "Bio",
               value: formData.bio,
               name: "bio",
             },
             {
               icon: <Globe className="h-5 w-5" />,
-              label: "LinkedIn",
+              label: language === "Español" ? "LinkedIn" : "LinkedIn",
               value: formData.linkedIn,
               name: "linkedIn",
             },
